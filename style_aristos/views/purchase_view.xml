@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>        
+<!--========================================= ===============================================================================-->	
+        <record id="style_aristos_purchase_form" model="ir.ui.view">
+            <field name="name">purchase.style_aristos.form.inh</field>
+            <field name="model">purchase.order</field> 
+            <field name="type">form</field> 
+	        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='minimum_planned_date']" position="replace"/>            							
+                <xpath expr="//field[@name='date_order']" position="after"> 
+					<field name="minimum_planned_date" />
+				</xpath>
+                  	
+			</field> 
+        </record>        
+
+
+
+    </data>
+</openerp> 

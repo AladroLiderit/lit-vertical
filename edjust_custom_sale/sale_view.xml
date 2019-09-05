@@ -1,0 +1,806 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="sale_order_pub_form_view" model="ir.ui.view">
+            <field name="name">sale.order.pub.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <field name="user_id" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </field>
+                <xpath expr="//field[@name='project_id']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+               </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                  <attribute name="domain">[('parent_id','=',False)]</attribute>
+                  
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+
+                  <field name="contacto_aviso" domain="[('parent_id','=',partner_id)]"/>
+                </xpath>
+                <xpath expr="//field[@name='pricelist_id']" position="after">
+
+                  <field name="no_avisar"/>
+                </xpath>
+                
+                <xpath expr="//field[@name='order_line']//form//field[@name='address_allotment_id']" position="replace">
+
+                  <field name="address_allotment_id" invisible="True"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//form//field[@name='th_weight']" position="replace">
+
+                  <field name="th_weight" invisible="True"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//tree//field[@name='purchase_price']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='margin']" position="attributes">
+                     <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']//tree//field[@name='product_id']" position="after">
+                  <field name="medio_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                            />
+                  <!--field name="categ_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"                           
+                           /-->
+                  <field name="edicion_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                           domain="[('medio_id','=',medio_id)]"
+                           />
+                </xpath>
+                
+                <xpath expr="//field[@name='order_line']//form//field[@name='product_id']" position="before">
+                  <field name="medio_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                            />
+                  <!--field name="categ_id" invisible="True"/-->
+                  <!--field name="usable_product_ids" invisible="True"/-->
+                </xpath>
+                <xpath expr="//field[@name='order_line']//form//field[@name='product_id']" position="after">
+                  <field name="edicion_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                           domain="[('medio_id','=',medio_id),('year','&gt;=',time.strftime('%%Y')),('mes_desde','&gt;=',time.strftime('%%m'))]"
+                           />
+                </xpath>
+                <field name="project_id" position="after">
+                  <field name="user_id"/>
+                </field>
+                <field name="note" position="after">
+                  <field name="internal_note" class="oe_inline" placeholder="Internal note DOES NOT GO OUT ON INVOICE..."/>
+                </field>
+                
+            </field>
+        </record>
+
+        <!--ampliamos las busquedas de sale order para permitir buscar por publicacion y edicion-->
+        <record id="view_saleorder_edjust_search" model="ir.ui.view">
+            <field name="name">saleorder.edjust.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter" />
+            <field name="arch" type="xml">
+              <xpath expr="//search[@string='Search Sales Order']" position="inside">
+                  <field name="sale_pub" string="Medium and Edition"
+                         filter_domain="['|','|',('sale_pub','ilike',self),
+                         ('sale_edicion','ilike',self),
+                         ('sale_subcateg','ilike',self)]"/>
+              </xpath>
+              <xpath expr="//group[@string='Group By']" position="inside">
+                <filter string="Medium / Edition" context="{'group_by':'sale_med_edicion'}"/>
+                <filter string="Type" context="{'group_by':'sale_subcateg'}"/>
+              </xpath>
+            </field>
+        </record>
+        
+
+
+        <!--forms para matenimiento de publicaciones-->
+        <!--menu-->
+        <menuitem id="menu_mant_publicaciones" name="Maintenance of Publications" parent="base.menu_base_config"
+      sequence="11" groups="edjust_custom_partner.group_edjust_admin"/>
+
+
+       <!--para publicaciones-->
+        <record model="ir.ui.view" id="view_edjust_publicaciones_tree">
+            <field name="name">edjust.publicaciones.mode.tree</field>
+            <field name="model">edjust.sale.medio</field>
+            <field name="arch" type="xml">
+                <tree string="Publications" editable="top">
+                    <field name="name"/>
+                    <field name="categ_id"/>
+                    <field name="product_id" domain="[('categ_id','=',categ_id),('edjust_medio_ids','=',False)]" 
+                      context="{'categ_id':categ_id, 'default_name':name, 'default_purchase_ok':'0', 'default_type':'service'}"/>
+                    <field name="pub_interval"/>
+                    <field name="pub_rule_type"/>
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_publicaciones_view">
+          <field name="name">Publications</field>
+          <field name="res_model">edjust.sale.medio</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_origenes_sub" name="Publications" parent="menu_mant_publicaciones"
+      sequence="10" action="act_open_publicaciones_view"/>
+
+
+      <!--para ediciones-->
+      <record id="edjust_edicion_form_view" model="ir.ui.view">
+            <field name="name">edjust.edicion.form</field>
+            <field name="model">edjust.sale.edicion</field>
+            <field name="arch" type="xml">
+                <form string="Media Editions">
+                    <header>
+                      <button type="object" name="do_create_dist_list"
+                                string="Crete List" class="oe_highlight" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="medio_id" col="4" colspan="4">
+                                <field name="medio_id"/>
+                                <field name="year"/>
+                            </group>
+                            <group name="edicion" col="4" colspan="4">
+                                <field name="mes_desde"/>
+                                <field name="mes_hasta"/>
+                               
+                            </group>
+                        </group>
+                      <notebook colspan="4">
+                        <page name="difusion_ids" string="Diffusion list">
+                          <group>
+                            
+                          </group>
+                          <field name="difusion_ids">
+                            <tree string="diffusion list">
+                              <field name ="name"/>                                                       
+                              <field name ="difusion_date"/>
+                              <field name = "total_difusion"/>
+                            </tree>
+                          </field>
+                        </page>
+                        <page name="compromiso_ids" string="Commitments Drafting">
+                          <field name="compromiso_ids">
+                            <tree string="Commitments">
+                              <field name ="date"/>
+                              <field name ="partner_id"/>
+                              <field name ="tipo_id"/>
+                              <field name ="extension"/>
+                              <field name ="num_pagina"/>
+                              <field name ="realizado"/>
+                            </tree>
+                          </field>
+                        </page>
+                      </notebook>
+                    </sheet>
+                </form>
+                
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_edjust_ediciones_tree">
+            <field name="name">edjust.edicion.mode.tree</field>
+            <field name="model">edjust.sale.edicion</field>
+            <field name="arch" type="xml">
+                <tree string="Editions">
+                    <field name="year"/>
+                    <field name="medio_id"/>
+                    <field name="mes_desde"/>
+                    <field name="mes_hasta"/>
+                    <field name="name"/>
+                    <field name="compromiso_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- filtro para ediciones-->
+        <record id="view_ediciones_search" model="ir.ui.view">
+            <field name="name">view.ediciones.search</field>
+            <field name="model">edjust.sale.edicion</field>
+            <field name="arch" type="xml">
+              <search string="Search editions">
+                   <field name="name" string="Edition" filter_domain="[('name','ilike', self)]"/>
+                   <field name="medio_id" string="Publication" filter_domain="[('medio_id','ilike', self)]"/>
+                   <separator/>
+                   <!--filter string="No realizados" name="no_realizado" domain="[('realizado','=',0)]"/-->
+
+                   <group expand="0" string="Group By">
+                       <filter string="Publication" icon="terp-personal" domain="[]" context="{'group_by' : 'medio_id'}"/>
+                       <filter string="Edition" icon="terp-personal" domain="[]" context="{'group_by' : 'name'}"/>
+                   </group>
+               </search>
+            </field>
+      </record>
+
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_edicion_view">
+          <field name="name">Ediciones</field>
+          <field name="res_model">edjust.sale.edicion</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="view_ediciones_search" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_edicion_view_form">
+          <field name="act_window_id" ref="act_open_edicion_view" />
+          <field name="sequence" eval="20" />
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="edjust_edicion_form_view" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_edicion_view_tree">
+          <field name="act_window_id" ref="act_open_edicion_view" />
+          <field name="sequence" eval="10" />
+          <field name="view_mode">tree</field>
+          <field name="view_id" ref="view_edjust_ediciones_tree" />
+        </record>
+
+        <!--sub menu-->
+        <menuitem id="menu_ediciones_sub" name="Editions" parent="menu_mant_publicaciones"
+      sequence="10" action="act_open_edicion_view"/>
+
+
+
+      <!--forms para matenimiento de comunicaciones-->
+
+      <!-- filtro para las comunicaciones-->
+      <record id="view_comunicaciones_search" model="ir.ui.view">
+            <field name="name">comunicaciones.search</field>
+            <field name="model">edjust.compromiso</field>
+            <field name="arch" type="xml">
+              <search string="Seach communications">
+                   <filter help="My communications" icon="terp-personal+" domain="[('user_id','=',uid)]"/>
+                   <field name="sale_med_edicion" string="Edition" filter_domain="[('sale_med_edicion','ilike', self)]"/>
+                   <field name="partner_id" string="Partner" filter_domain="[('partner_id','ilike', self)]"/>
+                   <separator/>
+                   <filter string="Not finished" name="no_realizado" domain="[('realizado','=',0)]"/>
+
+                   <group expand="0" string="Group By">
+                       <filter string="Medium / Edition" icon="terp-personal" domain="[]" context="{'group_by' : 'sale_med_edicion'}"/>
+                       <filter string="communication type" context="{'group_by': 'tipo_id'}"/>
+                   </group>
+               </search>
+            </field>
+      </record>
+      
+      <!--vista form-->
+        <record model="ir.ui.view" id="view_edjust_compromiso_form">
+            <field name="name">edjust.compromiso.mode.form</field>
+            <field name="model">edjust.compromiso</field>
+            <field name="arch" type="xml">
+              <form string="Editorial commitment">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="partner" col="4" colspan="4">
+                                <field name="partner_id"/>
+                                <field name="contacto_aviso" domain="[('parent_id','=',partner_id)]"/>
+                                <field name="sale_id" domain="[('order_partner_id','=',partner_id)]"/>
+                            </group>
+                            <group name="edicion" col="4" colspan="4">
+                                <field name="sale_pub"/>
+                                <field name="date"/>
+                                <field name="sale_edicion" domain="[('medio_id','=',sale_pub)]"/>
+                                <field name="num_pagina"/>
+                            </group>
+                            <group name="tipo" col="4" colspan="4">
+                                <field name="tipo_id"/>
+                                <field name="extension"/>
+                                <field name="realizado"/>
+                                <field name="no_avisar"/>
+                            </group>
+                        </group>
+                      <notebook colspan="4">
+                        <page name="notes" string="Observations">
+                          <field name="notes"/>
+                        </page>
+                        <page name="notes_red" string="Writing Notes">
+                          <field name="notes_red"/>
+                        </page>
+                      </notebook>
+                    </sheet>
+                </form>      
+
+            </field>
+        </record>
+
+       <!--vista lista-->
+        <record model="ir.ui.view" id="view_edjust_compromiso_tree">
+            <field name="name">edjust.compromiso.mode.tree</field>
+            <field name="model">edjust.compromiso</field>
+            <field name="arch" type="xml">
+                <tree string="Editorial commitments">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="sale_pub"/>
+                    <field name="sale_edicion"/>
+                    <field name="partner_id"/>
+                    <field name="tipo_id"/>
+                    <field name="extension"/>
+                    <field name="realizado"/>
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_compromiso_view">
+          <field name="name">Commitments Drafting</field>
+          <field name="res_model">edjust.compromiso</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="view_comunicaciones_search" />
+        </record>
+
+
+      <!--menu-->
+      <menuitem id="menu_compromiso" name="Editorial commitments" parent="base.menu_sales"
+      sequence="11" groups="edjust_custom_partner.group_edjust_user" action="act_open_compromiso_view"/>
+
+
+      <!--boton para las comunicaciones de un cliente-->
+      <record model="ir.ui.view" id="partner_view_button_compromiso_count">
+            <field name="name">partner.view.button.compromiso_count</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="30"/>
+            <field name="groups_id" eval="[(4, ref('edjust_custom_partner.group_edjust_user'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <!--button class="oe_inline oe_stat_button" type="action" name="%(edjust_custom_sale.act_open_compromiso_view)d" 
+                        icon="fa-check-circle">
+                        <field string="Comunicaciones" name="comunicaciones_count" widget="statinfo"/>
+                    </button-->
+                    <button name="return_comunic_items"
+                    class="oe_inline oe_stat_button"
+                    type="object"
+                    icon="fa-check-circle"
+                    help="Show compromises for this partner" >
+                    <field name="comunicaciones_count" widget="statinfo" string="Commitments"/>
+            </button>
+                </xpath>
+            </field>
+      </record>
+       <!-- filtro para listas de distrubucion-->
+        <record id="edjust_difusion_search_view" model="ir.ui.view">
+            <field name="name">edjust.difusion.search.view</field>
+            <field name="model">edjust.difusion</field>
+            <field name="arch" type="xml">
+              <search string="Search diffusion list">
+                   
+                   <filter help="Enabled" name="Enabled" icon="terp-personal+" domain="[('enabled','=',True)]" select="1"/>
+                   <separator/>
+                   
+                   <group expand="0" string="Group By">
+                       <filter string="Date" icon="terp-personal" domain="[]" context="{'group_by' : 'difusion_date'}"/>
+                       <filter string="Edition" icon="terp-personal" domain="[]" context="{'group_by' : 'edicion_id'}"/>
+                       <filter string="Publication" icon="terp-personal" domain="[]" context="{'group_by' : 'medio_id'}"/>
+                   </group>
+              </search>
+            </field>
+      </record>
+
+      <record model="ir.actions.act_window" id="act_open_difusion">
+          <field name="name">Diffusion</field>
+          <field name="res_model">edjust.difusion</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="edjust_difusion_search_view"/>
+          <field name="context">{"search_default_Enabled":1}</field>
+          
+       </record>
+
+      <!-- menu distribución-->
+      <menuitem id="menu_difusion" name="Distribution" parent="base.menu_sales"
+        sequence="12" groups="edjust_custom_partner.group_edjust_user" action="act_open_difusion"/>
+
+     
+
+     
+        
+      
+      
+       <!-- form view for difusion list-->
+       <record id="edjust_difusion_form_view" model="ir.ui.view">
+            <field name="name">edjust.difusion.form</field>
+            <field name="model">edjust.difusion</field>
+            <field name="arch" type="xml">
+                <form string="Diffusion">
+                  <header>
+                    <!-- Boton de carga masiva de clientes para pruebas-->
+                     <!-- <button type="object" name="do_create_clients"
+                                string="crear clientes" class="oe_highlight" /> -->
+
+                                
+                  </header> 
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="inicio" invisible="True"/>
+                                <field name="id" invisible="True"/>
+
+                                <field name="name" readonly="True"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="medio_id" col="5" colspan="5">
+                                <field name="medio_id" readonly="True"/>
+                                <field name ="edicion_id" readonly="True"/>
+                                
+                                
+                                <button type="object" name="call_wizard_actl"
+                                string="Add Guests" class="oe_highlight" />
+                            </group>
+                            <group name="fecha" col="5" colspan="5">
+                                <field name="difusion_date"/>
+                                <field name="enabled" />
+                                <group>
+                                  
+                                  <field name="edit_exclude_from" domain="[('medio_id','=',medio_id)]" options="{'no_create_edit': True}"/>
+                                  <field name="edit_exclude_to" domain="[('medio_id','=',medio_id)]" attrs="{'readonly': [('edit_exclude_from','=',False)]}" options="{'no_create_edit': True}" />
+                                </group>
+
+                            </group>
+                        </group>
+                      <notebook colspan="4">
+                        <page name="difusion_ids" string="Diffusion">
+                          <group col="4">
+                            <field name = "total_difusion" />
+                            <field name = "num_subscriber"/>
+                            <field name = "num_gratis" />
+                            <field name = "num_anunci" />
+                            <field name = "num_invitado" />
+                          </group>
+                          <button name="open_difusion_lines" string="Print list" type="object"/>
+                          
+                        </page>
+                       <page name ="posible_guests" string ="Guests">
+                        <field name="page" invisible="True"/>
+                        <button type="object" name="do_calculate_activities"
+                                string="Activities" />
+                        <button type="object" name="do_calculate_sectors"
+                                string=" Sectors  " />
+                        <button type="object" name="do_calculate_groups"
+                                string="  Groups  " />
+                        <button type="object" name="do_calculate_positions"
+                                string="Positions " />
+                        <button type="object" name="do_calculate_states"
+                                string="States " />
+                        <button type="object" name="do_calculate_countries"
+                                string="Country " />
+                        
+                          <notebook>
+                            <page name="activities"  attrs="{'invisible': [('page','!=',1)]}">
+                              <field name="activities_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="activity_id"  readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page>
+                            <page name="sectors"  attrs="{'invisible': [('page','!=',2)]}">
+                              <field name="sectors_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="sector_id" readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page> 
+                            <page name="groups" attrs="{'invisible': [('page','!=',3)]}">
+                              <field name="groups_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="group_id" readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page>
+                            <page name="positions" attrs="{'invisible': [('page','!=',4)]}">
+                              <field name="positions_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="position_id" readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page>
+                            <page name="states" attrs="{'invisible': [('page','!=',5)]}">
+                              <field name="states_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="state_id" readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page>
+                            <page name="country" attrs="{'invisible': [('page','!=',6)]}">
+                              <field name="country_ids">
+                                <tree create="false" delete="false" editable="false" > 
+                                  <field name="country_id" readonly="True"/>
+                                  <field name="quantity" readonly="True"/>
+                                </tree>
+                              </field>
+                            </page>
+                          </notebook>
+                        
+                        </page>
+                        <page name="dif_lin_ids" string="Diffusion List">
+                          
+                          <field name="difusion_line_ids" >
+                             <tree string="Diffusion list">
+                              <field name ="name"/>
+                              <field name ="partner_id"/>
+                              <field name ="difusion_type"/>
+                              <field name ="num_ejemplares"/>
+                            </tree> 
+                          </field>
+                        </page>
+                      </notebook>
+                    </sheet>
+                </form>
+                
+            </field>
+        </record>
+
+      <record id="edjust_difusion_list_tree_form" model="ir.ui.view">
+        <field name="name">Edjust Diffusion List</field>
+        <field name="model">edjust.difusion.lines</field>
+        <field name="arch" type="xml">
+          <form string="Difussion Lines">
+           
+              <tree>
+                <label for="name" string="Descripción"/>
+                <field name="name" />
+                <label for="difusion_id" string="Lista de distribución"/>
+                <field name="difusion_id" />
+                <label for="partner_id" string="Cliente"/>
+                <field name="partner_id" />
+                <label for="difusion_type" string="Tipo de Suscripción"/>
+                <field name="difusion_type" />
+                <label for="num_ejemplares" string="Nª de ejemplares"/>
+                <field name="num_ejemplares" />
+              </tree>
+            
+            
+        </form>
+      </field>
+    </record>
+    
+
+    <!-- wizard para añadir a lista de distribucion desde Difusion -->
+    <record id="view_filter_difusion_list_wizard" model="ir.ui.view">
+        <field name="name">Add partners to difusion list with filters</field>
+        <field name="model">edjust.difusion.list.wizard</field>
+
+        <field name="arch" type="xml">
+
+          <form string="Add partners to diffusion list">
+            <field name="difusion_id" readonly="True"/>
+            <field name="date_exclude_from" invisible="True"/>
+            <field name="date_exclude_to" invisible="True"/>
+            <field name="edicion_id" invisible="True"/>
+            <group col="3">
+
+              <group col="1">       
+                <field name = "sectors_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+              </group>
+              <group col="1">
+                <field name = "activities_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+              </group>
+              <group col="1">
+                <field name = "groups_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+              </group>
+              <group col="1">
+                <field name = "positions_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>            
+              </group>
+              <group col="1">
+                <field name = "states_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>            
+              </group>
+              <group col="1">
+                <field name = "country_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>            
+              </group>
+              <group col="1">
+                <field name = "partners_ids" widget="many2many_tags" options="{'no_create_edit': True}" domain="[('child_ids','!=',False)]"/>            
+              </group>
+            </group>
+
+            <group colspan="2">
+              <field name="num_ejemplares"/> 
+              <field name="total_lista" readonly="True"/>
+              <field name="cont_inv" readonly="True"/>
+            </group>
+
+            <footer>
+                    <button type="object" name="do_add_to_list"
+                            string="Add to list" attrs="{'invisible': [('cont_inv','=',0)]}" />
+                    <button special="cancel" string="Cancel"/>
+            </footer>  
+          </form>
+
+        </field>
+     </record>
+
+     <!-- <record id="view_filter_difusion_list_wizard" model="ir.ui.view">
+        <field name="name">Add partners to difusion list with filters</field>
+        <field name="model">edjust.difusion.list.wizard</field>
+
+        <field name="arch" type="xml">
+
+          <form string="Add partners to diffusion list">
+            <group>
+
+              <field name="difusion_id" readonly="True"/>        
+              <field name = "activities_ids" widget="many2many_tags"/>
+              <field name = "sectors_ids" widget="many2many_tags"/>
+              <field name = "groups_ids" widget="many2many_tags"/>
+                           
+              <field name="num_ejemplares" />
+            </group>
+
+            <group colspan="2"> 
+              <field name="total_lista" readonly="True"/>
+              <field name="cont_inv" readonly="True"/>
+            </group>
+
+            <footer>
+                    <button type="object" name="do_add_to_list"
+                            string="Add to list"  />
+                    <button special="cancel" string="Cancel"/>
+            </footer>  
+          </form>
+
+        </field>
+     </record> -->
+
+     <!-- <act_window name="add partners to list"
+            res_model="edjust.difusion.list.wizard"
+            src_model="edjust.difusion"
+            view_mode="form"
+            target="new"
+            context="{'current_id': id}"
+            key2="client_action_multi"
+            id="action_add_partners_to_list_filter" /> -->
+
+
+
+
+    <record id="edjust_difusion_list_tree"
+      model="ir.ui.view">
+      <field name="name">EdJust diffusion list</field>
+      <field name="model">edjust.difusion.lines</field>
+      
+      <field name="arch" type="xml">
+        
+        <tree>
+          <field name="name"/>
+          <field name="difusion_id" />
+          <field name="partner_id" />
+          <field name="num_ejemplares" />                    
+        </tree>
+
+      </field>
+    </record>
+    
+    <record id="edjust_difusion_list_form"
+      model="ir.ui.view">
+      <field name="name">EdJust diffusion list</field>
+      <field name="model">edjust.difusion.lines</field>
+      
+      <field name="arch" type="xml">
+        
+        <form readonly='True'>
+        <group>
+          <field name="partner_id" />
+          <field name="difusion_id" />
+          <field name="name"/>
+          <field name="num_ejemplares" />                    
+        </group>
+        </form>
+
+      </field>
+    </record>
+
+    <record id="edjust_difusion_tree_view"
+      model="ir.ui.view">
+      <field name="name">Diffusion Lists</field>
+      <field name="model">edjust.difusion</field>
+      <field name="arch" type="xml">
+        
+        <tree colors="grey:enabled==False" >
+          <field name="name"/>
+          <field name="edicion_id" />
+          <field name ="medio_id" />
+          <field name ="difusion_date" />
+          <field name="enabled" />                    
+        </tree>
+
+      </field>
+    </record>
+   
+
+
+   
+    <record model="ir.ui.view" id="edjust_view_sale_order_line_tree_in">
+        <field name="name">edjust.view.sale.order.line.tree.in</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.view_order_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_id']" position="after">
+                <field name="medio_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                            />
+                <field name="categ_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"                           
+                           />
+                <field name="edicion_id" attrs="{'readonly': [('state', 'not in', ('draft', 'send'))]}"
+                           domain="[('medio_id','=',medio_id)]"
+                           />
+            </xpath>
+            
+        </field>
+    </record>
+    <!-- <record model="ir.ui.view" id="edjust_view_sale_order_line_margin_in">
+        <field name="name">edjust.view.sale.order.line.margin.in</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_margin_uom.sale_margin_sale_order_line"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_price']" position="replace">
+                <field name="purchase_price" groups="base.group_sale_manager"/>
+            </xpath>
+        </field>
+    </record> -->
+
+
+     <!-- filtro para las lineas de pedido-->
+      <record id="eview_sale_order_line_search" model="ir.ui.view">
+            <field name="name">eview.sale.order.line_.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+              <search string="Seach Sale Order Line">
+                   
+                   <field name="edicion_id" string="Edition" filter_domain="[('edicion_id','ilike', self)]"/>
+                   <field name="order_partner_id" string="Partner" filter_domain="[('order_partner_id','ilike', self)]"/>
+                   <separator/>
+                   <filter string="Confirmed" name="confirmado" domain="[('state','=','confirmed')]"/>
+                   <filter string="Canceled" name="cancelado" domain="[('state','=','cancel')]"/>
+                   <filter string="Not Done" name="not_done" domain="[('state','!=','done'),('state','!=','draft')]"/>
+                   <filter string="Not invoiced" name="no_facturado" domain="[('invoiced','=',0),('state','!=','draft')]" select="1"/>
+
+                   <group expand="0" string="Group By">
+                      <filter string="Medium" icon="terp-personal" domain="[]" context="{'group_by' : 'medio_id'}"/>
+                      <filter string="Edition" icon="terp-personal" domain="[]" context="{'group_by' : 'edicion_id'}"/>
+                      <filter string="Partner" context="{'group_by': 'order_partner_id'}"/>
+                   </group>
+               </search>
+            </field>
+      </record>
+
+    <!--action lineas de pedido-->
+      <record model="ir.actions.act_window" id="act_open_sale_order_line_view">
+        <field name="name">Order Lines</field>
+        <field name="res_model">sale.order.line</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="eview_sale_order_line_search" />
+        <field name="context">{"search_default_no_facturado":1}</field>
+        <field name="domain">[('state', 'not in', ('draft', 'send'))]</field>
+      </record>
+
+
+      <!--menu lineas de pedido-->
+      <menuitem id="menu_order_lines" name="Order Lines" parent="base.menu_sales"
+      sequence="12" groups="edjust_custom_partner.group_edjust_user" action="act_open_sale_order_line_view"/>
+
+
+     
+  </data>
+</openerp>
+
+

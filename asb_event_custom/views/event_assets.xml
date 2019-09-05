@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="web_asb_event_custom_backend"
+                  name="web_asb_event_coustom_backend"
+                  inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script src="/asb_event_custom/static/src/js/web_task_color.js"
+                        type="text/javascript"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>

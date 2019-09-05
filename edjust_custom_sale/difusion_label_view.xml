@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+<!-- Vista de líneas de difusion para etiquetas y lsitados-->
+
+
+        
+
+        <record id="view_edjust_difusion_line_form1" model="ir.ui.view">
+            <field name="name">view.edjust.difusion.line.form1</field>
+            <field name="model">difusion.line.label</field>
+            <field name="arch" type="xml">
+                <form string="Difusion Line">
+                    <group>
+                        <field name="difusion_id" invisible="True" />
+                        <field name="difusion_name"/>
+                        <field name="difusion_type"/>
+                        <field name="parent_name"/>
+                        <field name="name"/>
+                        <field name="ref"/>
+                    </group>
+                    <group>
+                        <field name="street"/>
+                        <field name="zip"/>
+                        <field name="city"/>
+                        <field name="provincia"/>
+                        <field name="country"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_edjust_difusion_line_tree1" model="ir.ui.view">
+            <field name="name">view.edjust.difusion.line.tree1</field>
+            <field name="model">difusion.line.label</field>
+            <field name="priority">90</field>
+            <field name="arch" type="xml">
+                <tree string="Difusion Lines">
+                    <field name="difusion_id" invisible="True" />
+                    <field name="ref"/>
+                    <field name="difusion_type"/>
+                    <field name="parent_name"/>
+                    <field name="name"/>
+                    <field name="street"/>
+                    <field name="zip"/>
+                    <field name="city"/>
+                    <field name="provincia"/>
+                    <field name="country"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_edjust_difusion_line_search" model="ir.ui.view">
+            <field name="name">edjust.difusion.line.search</field>
+            <field name="model">difusion.line.label</field>
+            <field name="arch" type="xml">
+                <search string="Difusion Lines">
+                    <field name="name" string="Customer"/> 
+                    <field name="parent_name" string="Customer Company"/>
+                    <field name="ref" string="Reference"/>
+                    <field name="difusion_name" string="Difusion Name"/>
+
+                    <group expand='1' string='Group by...'>
+                        <filter string='Customer' name='customer' icon="terp-stock_symbol-selection" 
+                            domain="[]" context="{'group_by' : 'name'}" />
+                        <filter string='Customer Company' name='customer_company' icon="terp-stock_symbol-selection" 
+                            domain="[]" context="{'group_by' : 'parent_name'}" />
+                        <filter string='State' name='state' icon="terp-stock_symbol-selection" domain="[]" 
+                            context="{'group_by' : 'provincia'}" />
+                        <filter string='City' name='city' icon="terp-stock_symbol-selection" domain="[]" 
+                            context="{'group_by' : 'city'}" />
+                        <filter string='Difusion' name='difusion' icon="terp-stock_symbol-selection" domain="[]" 
+                            context="{'group_by' : 'difusion_id'}" />
+                        <filter string='Type' name='type' icon="terp-stock_symbol-selection" domain="[]" 
+                            context="{'group_by' : 'difusion_type'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+
+
+
+    </data>
+</openerp>

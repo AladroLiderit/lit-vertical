@@ -1,0 +1,38 @@
+{
+    "name": "style_aristos",
+    "version": "1.11",
+      "depends": ['base','sale_commission','account','purchase','stock',
+    'base_partner_sequence','partner_search_by_ref',
+    'product_multi_image','product_search_supplier_code','stock_move_sale_line',
+    'sale_sourced_by_line','sale_exception_nostock', 'sale_exceptions_groups','purchase_product_variants',
+    'sale_product_variants','liderit_partner_alta','partner_paydays','liderit_product_variant_defaultcode',
+    'account_invoice_split','mrp_repair','account_chart_update','l10n_es_dua','sale_order_invisible_for_customer',
+    'stock_reserve','stock_reserve_sale_liderit','sale_stock','web_translate_dialog' ],
+        
+
+    "author": "Lider IT",
+    "category": "Sales",
+    "description": """	Gestion Style Aristos   """,
+    "website":'http://www.liderit.es',
+   
+    "init_xml": [],
+    'update_xml': [
+                    'security/ir.model.access.csv',
+                    'security/groups.xml',
+                    'views/settlement_view.xml',
+                    'views/product_view.xml',
+                    'views/res_partner_view.xml',
+                    'views/type_of_material_view.xml',                   
+                    'views/parameters_view.xml',
+                    'views/colection_view.xml',
+                    'views/sale_view.xml',
+                    'wizard_desactivate/product_desactivate_view.xml',
+                    'wizard_desactivate/product_get_image_view.xml',
+                    'views/menu.xml',
+                   ],
+#     'data': ['workflow/wuorkflow.xml'],
+    'demo_xml': [],
+#     'data': ['general_data.xml'],
+    'installable': True,
+	'active': False,
+}   

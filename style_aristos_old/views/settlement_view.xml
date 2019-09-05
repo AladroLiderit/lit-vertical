@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data> 
+  <!--========================================= ===============================================================================-->
+       <record id="grupo_aristos_view_settlement_form" model="ir.ui.view">
+            <field name="name">grupo_aristos_view_settlement_form.inherit</field>
+            <field name="model">sale.commission.settlement</field>
+            <field name="inherit_id" ref="sale_commission.view_settlement_form"/>
+            <field name="arch" type="xml"> 
+             	<xpath expr="//field[@name='lines']" position="replace">  
+             	 <field name="lines" nolabel="1">
+                                <tree string="Settlement lines">
+                                    <field name="date"/>
+                                    <field name="invoice"/>
+                                    <field name="invoice_line"/>
+                                    <field name="commission"/>
+                                    
+                                    <field name="invoice_line_vencimiento"/>
+                                    <field name="paid_date"/> 
+                                    <field name="porcent"/>
+                                    <field name="amount"/>
+                                    <field name="settled_amount"  bg_color="red:invoice_line_vencimiento==True" />
+                                </tree>
+             	  
+             	  				<form string="Settlement line">
+                                   <group>
+	                                    <field name="company_id"/>
+	                                 	<field name="agent"/>
+	                               </group>
+	                               <group>
+	                               <newline/> 
+	                                    <field name="date"/>
+	                                    <field name="invoice"/>
+	                                    <field name="invoice_line"/>
+	                                    <field name="commission"/>
+	                                    <field name="settled_amount"  bg_color="red:invoice_line_vencimiento==True;"/>
+	                                    
+                                    </group>
+                                  	
+                                   	<group> 
+                                   	<newline/> 
+                                    	<field name="invoice_line_vencimiento"/> 
+                                    	<field name="paid_date"/> 
+                                    	<field name="porcent" />
+                                    	<field name="amount"/> 
+                                   </group>
+                                </form>
+ 
+             	  </field>                             
+		    	</xpath>
+           		<xpath expr="//group[@class='oe_subtotal_footer oe_right']" position="replace">  
+                    <group class="oe_subtotal_footer oe_right">
+                    		<field name="total_due"
+                                   class="oe_subtotal_footer_separator"
+                                   widget="monetary"
+                                   options="{'currency_field': 'currency_id'}"/>
+  
+                            <field name="total"
+                                   class="oe_subtotal_footer_separator"
+                                   widget="monetary"
+                                   options="{'currency_field': 'currency_id'}"/>
+                        </group>
+   
+           		</xpath>
+            </field>
+       </record>     
+     <!--========================================= ===============================================================================-->
+       <record id="grupo_aristos_view_settlement_tree" model="ir.ui.view">
+            <field name="name">grupo_aristos_view_settlement_tree.inherit</field>
+            <field name="model">sale.commission.settlement</field>
+            <field name="inherit_id" ref="sale_commission.view_settlement_tree"/>
+            <field name="arch" type="xml"> 
+             	<xpath expr="//field[@name='total']" position="before">      
+    				<field name="total_due" sum="Settled total"/>
+           		</xpath>
+            </field>
+       </record>   
+    </data>
+</openerp>

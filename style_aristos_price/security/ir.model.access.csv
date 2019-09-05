@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_staristo_st_parameters_line_price,access_staristo_st_parameters_line_price,style_aristos_price.model_st_parameters_line_price,base.group_user,1,1,1,1

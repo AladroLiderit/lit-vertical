@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data>
+    
+    <record id="invoice_form" model="ir.ui.view">
+      <field name="name">account.invoice.split</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_form"/>
+      <field name="arch" type="xml">
+        <button name="invoice_cancel" position="after">
+          <button string="Split Invoice"
+                  groups="base.group_sale_salesman"
+                  states="draft"
+                  name="split_invoice"
+                  type="object"
+                  icon="STOCK_PREFERENCES"/>
+        </button>
+
+        <!--xpath expr="//field[@name='type']" position="after"-->
+        <xpath expr="//sheet/notebook" position="before">
+          <field name="invoice_to_split" invisible="1" />
+          <group attrs="{'invisible':[('invoice_to_split', '!=',True)]}">
+
+            <group>
+              <field name='split_journal'/>
+              <field name='split_style'/>
+              <field name='split_amount'/>
+              <group>            
+                <button string="Cancel Split"
+                    groups="base.group_sale_salesman"
+                    states="draft"
+                    name="cancel_split_invoice"
+                    type="object"
+                    class="oe_highlight"/> 
+                <button string="Recalc"
+                  groups="base.group_sale_salesman"
+                  states="draft"
+                  name="do_nothing"
+                  type="object"
+                  class="oe_highlight"/> 
+              </group>
+            </group>
+
+            <group>
+              <label for="split_total"/>
+              <h1><field name='split_total'/></h1>
+              <label for="split_condition"/> 
+              <h1><field name='split_condition'/></h1>
+              <label for="split_pendant"/> 
+              <h1><field name='split_pendant'/></h1>
+              <button string="End Split"
+                  groups="base.group_sale_salesman"
+                  states="draft"
+                  name="end_split_invoice"
+                  type="object"
+                  class="oe_highlight"/>
+            </group>
+
+          </group>
+        </xpath>
+
+        <xpath expr="//tree[@string='Invoice Lines']/field[@name='price_subtotal']" position="after">
+          <!--la visibildad por funcion fields_view_get en py-->
+          <field name='conditional'/>
+        </xpath>
+
+      </field>
+    </record>
+
+    <!--record id="invoice_supplier_form" model="ir.ui.view">
+      <field name="name">account.invoice.split</field>
+      <field name="model">account.invoice</field>
+      <field name="inherit_id" ref="account.invoice_supplier_form"/>
+      <field name="arch" type="xml">
+        <button name="invoice_cancel" position="after">
+          <button string="Split Invoice"
+                  groups="account.group_account_manager"
+                  states="draft"
+                  name="split_invoice"
+                  type="object"
+                  icon="STOCK_PREFERENCES"/>
+        </button>
+      </field>
+    </record-->
+    
+  </data>
+</openerp>

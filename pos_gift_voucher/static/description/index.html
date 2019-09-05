@@ -1,0 +1,185 @@
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan">POS Gift Coupon Management</h2>
+            <h3 class="oe_slogan">Boost sales productivity, improve win rates, grow revenue</h3>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_demo oe_picture oe_screenshot">
+                <a href="https://www.openerp.com/saas_master/demo?lang=en_US&module=pos_gift_voucher">
+                    <img src="Coupon.jpg">
+                </a>
+                <div class="oe_demo_footer oe_centeralign">Online Demo</div>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+In Retail industry now a days we do have trend that people do prefer to procure "Gift Coupons" from shop that actually giving  Hard Cash as a gift on various occasion. Using Gift Coupons appears more handy in terms of transaction without hassle. 
+Retail shop may have preprinted gift coupons as well as runtime generated gift coupons, with different currency denominations.
+            </p>
+            <div class="oe_centeralign oe_websiteonly">
+                <a href="http://www.openerp.com/start?app=pos_gift_voucher" class="oe_button oe_big oe_tacky">Start your <span class="oe_emph">free</span> trial</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Gift Coupon Management Configuration</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+There are 2 main parts to define Gift Coupon Management as follows :<br/>
+<b>Gift Coupon Issue :</b> This will allow user to to sell multiple Gift Coupons with unique barcode to each Gift Coupon.<br/><br/> 
+<b>Gift Coupon Redemption :</b> This will facilitate customer to redeem their purchased Gift Coupons  .
+            </p><p  class="oe_mt32">
+<b>Path : Point Of Sale => Products => Products</b><br/>
+In this system Gift Coupons are treated as service products. User can defined Sales Price for such gift coupon. We have created couple of Gift Coupons "Gift Coupon 1 K"
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Gift_Coupon_Definition.png">
+            </div>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+    	<div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Gift_Coupon_Definition_2.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Click on one of the record to see the details captured in this Product form :</p><p>
+In order to treat product as a  Gift Coupon user will have to set boolean field as "Gift Coupon". This will set product type to "Service". 
+Validity : This is an integer field to indicate validity days from the date of sell of each gift voucher. 
+Rest fields in product master are remained as it is.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Payment Method Configurations</h2>
+        <h3 class="oe_slogan">Path : Point Of Sales => Configurations => Payment Methods</h3>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Payment_Method_Configurations.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+User can maintain a list of  different payment mode accepted on different billing counters and can be seen as follows 
+            </p><p>
+Lets go to "payment method" method to see the changes 
+There is a boolean fields added on this panel as follows :
+For Gift Coupons : When click on such payment methods , system will generate generate additional field on payment screen to capture Gift Coupon codes to be redeemed. This will compute discount amount to be reduced form total bill amount against Redeemed Gift Coupon. Accounts posting will be done in accounts linked with such Payment methods.
+Just link different payment methods to each POS terminal through “Point of Sales” menu in Configuration.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">POS Transactions => Gift Coupon Issue</h2>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Path :  Point of Sales => Daily Operations => Your Session
+            </p><p>
+User can create new session in order to sell products/ gift coupons through POS screen.Here are some of the products and gift coupons listed on RHS panel. Out of which I have selected two Gift Coupons as Gift Coupon 1k with Qty 2 .
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Gift_Coupon_Issue.png">
+            </div>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+    	<div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Gift_Coupon_Issue_2.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Assume this sales order is paid by cash as follows
+            </p><p>
+System will generate unique barcode for each of the gift coupon sold. These codes will have validity in no. of as days as defined in product master. These barcodes will be scanned at the time of Gift Coupon redemption.  
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Gift Coupon Redemption</h2>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Coupon_Redemption_0.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+<b>Path : Point Of Sales => Daily Transactions</b><br/>
+Let's create one more POS order with purchase of couple of products as in Image.Let's create one more POS order with purchase of couple of products as follows :
+            </p>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+    	 <div class="oe_span6">
+            <p class="oe_mt32">
+User can provide customer name for billing purpose.Gift Voucher Code : In this field user will have to scan Gift voucher code and click on add. System will bring corresponding amount in "Gift Voucher Redemption" field and will get deducted from the total bill amount.
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Coupon_Redemption.png">
+            </div>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Coupon_Redemption_2.png">
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+Validations are maintained on gift voucher code in order to avoid unauthorized Gift Voucher Code scan or repeated scan of same Gift Voucher Code. 
+            </p>
+        </div>
+    </div>
+    <div class="oe_row oe_spaced">
+    	<div class="oe_span6">
+            <p class="oe_mt32">
+System will add up amount for all the scanned Gift Codes and displayed on the screen.Balance amount can be accepted by other payment methods as  Cash or Cheque etc. 
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Coupon_Redemption_3.png">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <h2 class="oe_slogan">Available Gift Voucher Codes</h2>
+        <h3 class="oe_slogan">Path : Point of Sales => Configurations => Loyalty Management => Gift Voucher Analysis</h3>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+            This menu will allow user to check the Sold Vouchers , Redeemed Vouchers, Active Vouchers, Expired Gift Vouchers
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="Available_Gift_Voucher_Codes.png">
+            </div>
+        </div>
+    </div>
+</section>

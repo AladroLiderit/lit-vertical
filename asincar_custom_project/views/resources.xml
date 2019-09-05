@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+	<!-- Adds all assets in Odoo -->
+        <template id="project_code_backend" name="project_code assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+		         <!-- All links to CSS and JS files should be added in here. -->
+		         <link rel="stylesheet" href="/asincar_custom_project/static/src/css/style.css"/>
+            </xpath>
+        </template>
+    </data>
+</openerp>

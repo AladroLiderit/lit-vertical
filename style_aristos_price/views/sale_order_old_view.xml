@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	
+	<!--=========================================================================== Vista form ======================================================================================= -->
+	 	<record id="grupo_style_aristos_cost_price_1" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_sale.order_cost_price_1</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+		    <field name="arch" type="xml">
+		    		<xpath expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+		        	<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+				   </xpath>
+		    </field>
+		</record>
+	<!--==============================================  Cost_price Vista tree ==== -->	
+		<record id="grupo_style_aristos_cost_price_2" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_sale.order_cost_price_2</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line"/>
+		    <field name="arch" type="xml">
+		        <field name='purchase_price' position="attributes">
+		        	<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+				</field>
+		    	
+		    </field>
+		</record>
+	<!--==============================================  margin  Vista form ==== -->	
+		<record id="grupo_style_aristos_margin_1" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_sale.order_margin_1</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_margin.sale_margin_sale_order"/>
+		    <field name="arch" type="xml">
+		        <field name='margin' position="attributes">
+		          	<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+				</field>
+		    </field>
+		</record>
+	<!--==============================================  margin percen Vista form de momento no se instala el modulo q visualiza porcen% ==== -->	
+		<!-- <record id="grupo_style_aristos_margin_2" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_sale.order_margin_2</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_margin_liderit.sale_margin_sale_order"/>
+		    <field name="arch" type="xml">
+		        <field name='margin_percent' position="attributes">
+		          	<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+				</field>
+		    </field>
+		</record> -->
+	
+	<!--==============================================  comisiones  Vista detalle/total ==== -->	
+		<record id="grupo_style_aristos_commission_1" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_sale.order_commission_1</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_commission.view_order_agent_form_inherit"/>
+		    <field name="arch" type="xml">
+		      	
+		      	<xpath expr="//field[@name='order_line']/tree//field[@name='commission_free']" position="attributes">
+		      		<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+                 </xpath>  
+                 <xpath expr="//field[@name='order_line']/tree//field[@name='agents']" position="attributes">
+		      		<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+                 </xpath>  
+                 
+                <xpath expr="//field[@name='order_line']/form//field[@name='commission_free']" position="attributes">
+                  <attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+                </xpath>    
+                <xpath expr="//field[@name='order_line']/form//field[@name='agents']" position="attributes">
+                  <attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+                </xpath>     
+                    
+		        <field name='commission_total' position="attributes">
+		          	<attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute>
+				</field>
+		    </field>
+		</record>
+	
+	
+	
+	</data>
+</openerp>
+
+

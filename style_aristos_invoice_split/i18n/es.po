@@ -1,0 +1,150 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* style_aristos_invoice_split
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-15 09:33+0000\n"
+"PO-Revision-Date: 2019-02-15 10:35+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:173
+#, python-format
+msgid "At least two invoice lines required for a split"
+msgstr "Se necesitan al menos dos líneas para dividir una factura"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:135
+#: code:addons/style_aristos_invoice_split/wizard/account_invoice_split.py:78
+#, python-format
+msgid "Can't split invoice. No invoice line with subtotal minor than amount."
+msgstr "No se pudo dividir. No hay líneas con importe menor al indicado."
+
+#. module: style_aristos_invoice_split
+#: view:account.invoice:style_aristos_invoice_split.invoice_form
+msgid "Cancel Split"
+msgstr "Cancelar División"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_condition:0
+#: field:account.invoice.line,conditional:0
+msgid "Conditional"
+msgstr "Condicional"
+
+#. module: style_aristos_invoice_split
+#: view:account.invoice:style_aristos_invoice_split.invoice_form
+msgid "End Split"
+msgstr "Dividir"
+
+#. module: style_aristos_invoice_split
+#: model:ir.model,name:style_aristos_invoice_split.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: style_aristos_invoice_split
+#: model:ir.model,name:style_aristos_invoice_split.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linea de factura"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:79
+#: code:addons/style_aristos_invoice_split/wizard/account_invoice_split.py:110
+#, python-format
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: style_aristos_invoice_split
+#: selection:account.invoice,split_style:0
+msgid "Max First"
+msgstr "Mayor Primero"
+
+#. module: style_aristos_invoice_split
+#: selection:account.invoice,split_style:0
+msgid "Min First"
+msgstr "Menor Primero"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:169
+#, python-format
+msgid "Only draft invoices can be splitted"
+msgstr "Sólo se pueden dividir facturas en borrador"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_style:0
+msgid "Order of Lines"
+msgstr "Orden en líneas"
+
+#. module: style_aristos_invoice_split
+#: view:account.invoice:style_aristos_invoice_split.invoice_form
+msgid "Recalc"
+msgstr "Recalcular"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,reset_taxes:0
+msgid "Reset taxes"
+msgstr "Limpiar Impuestos"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_pendant:0
+msgid "Rest amount to Split without taxes"
+msgstr "Resta por Dividir"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:36
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:108
+#, python-format
+msgid "Set a journal for the split invoice"
+msgstr "Indicar un diario para la factura dividida"
+
+#. module: style_aristos_invoice_split
+#: view:account.invoice:style_aristos_invoice_split.invoice_form
+msgid "Split Invoice"
+msgstr "Dividir Factura"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_journal:0
+msgid "Split journal"
+msgstr "Diario Factura Dividida"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/wizard/account_invoice_split.py:87
+#, python-format
+msgid "The amount of the resulting invoices must be > 0."
+msgstr "Los importes de las facturas tienen que ser > 0."
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,invoice_to_split:0
+msgid "To Split"
+msgstr "A Dividir"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_total:0
+msgid "Total"
+msgstr "Total"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/models/account_invoice.py:112
+#, python-format
+msgid "Total amount is less than split amount"
+msgstr "El total de factura es menor que el importe a dividir"
+
+#. module: style_aristos_invoice_split
+#: field:account.invoice,split_amount:0
+msgid "Total amount to Split without taxes"
+msgstr "Importe a Dividir sin Impuestos"
+
+#. module: style_aristos_invoice_split
+#: code:addons/style_aristos_invoice_split/wizard/account_invoice_split.py:50
+#, python-format
+msgid "You have to set a sale journal."
+msgstr "Tiene que indicar un diario de facturación."

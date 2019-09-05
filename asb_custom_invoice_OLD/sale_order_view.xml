@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_asb_invoice" model="ir.ui.view">
+            <field name="name">sale.order.form.asb_invoice</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="///form/sheet/notebook" position="before">
+                    <group col="6">
+                        <field name="depart" colspan="2"/>
+                        <field name="att" colspan="2"/>
+                        <field name="destino" colspan="2"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="///group/field[@name ='payment_term']" position="replace"/>
+
+                <field name="project_id" position="after">
+                    <field name="payment_term"/>
+                    <field name="payment_mode_id"
+                        domain="[('sale_ok', '=', True)]"
+                        widget="selection"/>
+                </field>
+
+
+            </field>
+        </record>
+
+        <!-- modificar vista de pedidos de venta a lista con menos campos-->
+        <record id="view_order_line_tree_asb" model="ir.ui.view">
+            <field name="name">sale.order.line.tree.asb</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form_editable_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="editable">top </attribute>
+                </xpath>
+
+
+            </field>
+        </record>
+
+
+        <!--mover el campo de fecha de compromiso-->
+        <record id="view_sale_asb_orderfor" model="ir.ui.view">
+            <field name="name">sale.asb.orderfor.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_order_dates.view_sale_orderfor"/>
+            <field name="arch" type="xml">
+                <xpath expr="///group/field[@name ='requested_date']" position="replace"/>
+
+                <!--xpath expr="///group/field[@name ='commitment_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath-->
+
+                <field name="date_order" position="after">
+                    <field name="requested_date"/>
+                </field>
+
+            </field>
+        </record>
+
+        <!--mover el campo modo de pago-->
+        <record id="view_asb_paymode_order_form" model="ir.ui.view">
+            <field name="name">asb.paymode.sale_order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="account_payment_sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="///field[@name ='payment_mode_id']" position="replace"/>
+            </field>
+        </record>
+
+    </data>
+</openerp>

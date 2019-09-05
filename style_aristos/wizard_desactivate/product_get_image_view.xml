@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_product_get_image" model="ir.ui.view">
+            <field name="name">Product Get Image</field>
+            <field name="model">product.get.image</field>
+            <field name="arch" type="xml">
+                <form string="Product Get Image">
+                    <group>
+                        <separator
+                            string="Type the complete route where images are load"
+                            colspan="4" />
+                        <field name="directory"/>
+                        <field name="file_type"/>
+                        <p>
+Please note that:<br/><br/>
+* Files must have .jpg or .png extension<br/>
+* Maximun size from images: width: 1500px, height: 1000px <br/>
+* Recomended size: 750 x 371.
+* If you deactivate the product their image will be deleted<br/><br/>
+                            </p>
+                    </group>
+                    
+                    <footer>
+                        <button name="p_get_images" string="Get Products Image"
+                            type="object" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link"
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Product Get Image" res_model="product.get.image"
+            src_model="product.template" view_mode="form" target="new"
+            multi="True" key2="client_action_multi" id="action_p_get_images" />
+
+    </data>
+</openerp>

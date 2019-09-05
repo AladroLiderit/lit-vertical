@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="liderit_hielos_invoice_report_print"
+            string="Factura Hielos"
+            model="account.invoice"
+            report_type="qweb-pdf"
+            file="liderit_hielos_invoice_report.liderit_hielos_invoice_report"
+            name="liderit_hielos_invoice_report.liderit_hielos_invoice_report"
+           
+        />
+
+
+      <record id="liderit_hielos_invoice_report_print" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="liderit_hielos_invoice_report.paperformat_euro_2"/>
+        </record>
+        
+
+    </data>
+</openerp>

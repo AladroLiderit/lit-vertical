@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!--cambios en el formulario de eventos-->
+     <record model="ir.ui.view" id="view_mrp_repair_aristos_form">
+       <field name="name">Reparaciones Aristos Form</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='product_id']" position="before">
+            <field name="fecha_recepcion"/>
+          </xpath>
+
+          <!-- esto porque se puede facturar desde el albaran y entonces queda en estado 2binvoiced y se puede volver a facturar-->
+          <xpath expr="//header/button[@name='action_invoice_create']" position="attributes">
+            <attribute name="attrs">{'invisible': ['|',('state','not_in','["2binvoiced"]'),('invoice_id','&lt;&gt;', False)],'state':""}</attribute>
+          </xpath>
+
+
+          <xpath expr="//field[@name='product_id']" position="attributes">
+              <attribute name="on_change">""</attribute>
+              <!--attribute name="readonly">"True"</attribute-->
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Notes']" position="replace">
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Operations']" position="before">
+            <page string="Notes">
+              <field name="internal_notes" placeholder="Add internal notes..."/>
+              <field name="quotation_notes" placeholder="Add quotation notes..."/>
+            </page>
+ 
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Operations']" position="replace">
+          </xpath>
+
+          <!-- para cambiar el onchange de product_id-->
+          <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='product_id']" position="replace">
+            <field name="product_id" on_change="onchange_product_id(parent.pricelist_id, product_id, product_uom, product_uom_qty, parent.partner_id,parent.guarantee_limit, parent.active_id, context)"/>
+          </xpath>
+
+          <!--para dar permisos a la pestaña de Informacion a usuarios de ventas-->
+          <xpath expr="//notebook/page[@string='Extra Info']" position="attributes">
+            <attribute name="groups">base.group_sale_salesman</attribute>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/group/field[@name='pricelist_id']" position="after">
+            <field name="amount_untaxed"/>
+            <field name="amount_tax"/>
+            <field name="amount_total" string="Total Reparación" />
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='product_id']" position="before">
+            <field name="sequence" widget="handle"/>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='tax_id']" position="before">
+            <field name="discount"/>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='tax_id']" position="attributes">
+            <attribute name="domain">"[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"</attribute>
+          </xpath>
+
+           <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='product_id']" position="attributes">
+            <attribute name="required">"True"</attribute>
+          </xpath>
+
+       </field>
+     </record>
+
+<!--cambios en el formulario de inscripciones-->
+    <record model="ir.ui.view" id="view_mrp_repair_aristos_tree">
+       <field name="name">Reparaciones Aristos Tree</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_tree"/>
+       <field name="arch" type="xml">
+
+           <xpath expr="//field[@name='product_id']" position="before">
+            <field name="fecha_recepcion"/>
+            <field name="fecha_reparacion"/>
+          </xpath>
+
+       </field>
+     </record>
+
+
+<!--cambios en el formulario de busquedas-->
+     <record model="ir.ui.view" id="view_mrp_repair_aristos_search">
+       <field name="name">Reparaciones Aristos Search</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_form_filter"/>
+       <field name="arch" type="xml">
+
+         <xpath expr="//search/field[@name='product_id']" position="after">
+           <field name="referencia" string="Referencia" help="Buscar por referencia"/>
+           <field name="lot_id" string="Número de serie" help="Buscar por número de serie"/>    
+         </xpath>
+
+         
+       </field>
+
+     </record>
+
+<!-- pestaña en facturas para ver la orden de reparacion relacionada-->
+
+    <record model="ir.ui.view" id="view_invoice_repair_aristos_form">
+       <field name="name">Reparaciones en Factura Aristos Form</field>
+       <field name="model">account.invoice</field>
+       <field name="inherit_id" ref="account.invoice_form"/>
+       <field name="arch" type="xml">
+
+
+          <xpath expr="//notebook" position="inside">
+              <page string="Reparaciones" name="repairs">        
+                  <field name="repair_id" readonly="True"/>
+              </page>
+          </xpath>
+          
+        </field>
+      </record>
+
+
+
+     <!--ampliar estados en el workflow-->
+     <record id="mrp_repair.trans_confirm_wait_ship" model="workflow.transition">
+            <field name="act_from" ref="mrp_repair.act_confirm"/>
+            <field name="act_to" ref="mrp_repair.act_wait_repair"/>
+            <field name="condition">(invoice_method=='after_repair' or invoice_method=='none' or invoice_method=='picking' or invoice_method=='warranty')</field>
+            <field name="group_id" ref=""/>
+        </record>
+
+      <!--ampliar estados en el workflow-->
+      <record id="mrp_repair.trans_reapir_end_done" model="workflow.transition">
+            <field name="act_from" ref="mrp_repair.act_repair_end"/>
+            <field name="act_to" ref="mrp_repair.act_done"/>
+            <field name="condition">invoice_method=='none' or invoice_method=='b4repair' or invoice_method=='picking' or invoice_method=='warranty'</field>
+        </record>
+
+
+
+
+     
+    </data>
+</openerp>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- INHERITED VIEW FOR THE OBJECT : purchase_order -->
+
+        <record id="purchase_order_view_form" model="ir.ui.view">
+            <field name="name">purchase_global_discount.view_form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field eval="16" name="priority"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='origin']" position="after">
+                        <field name="discount_type" groups="sale.group_discount_per_so_line" on_change="onchange_type_discount(context)"/>
+                        <field name="global_discount" groups="sale.group_discount_per_so_line" on_change="onchange_global_discount(global_discount, context)" attrs="{'invisible':[('discount_type','=','total')]}"/>
+                        <field name="amount_discount" groups="sale.group_discount_per_so_line" on_change="onchange_amount_discount(amount_discount, context)" attrs="{'invisible':[('discount_type','=','percen')]}"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+        <!-- INHERITED VIEW FOR THE OBJECT : account_invoice -->
+
+        <record id="account_invoice_view_form" model="ir.ui.view">
+            <field name="name">invoice_global_discount.view_form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field eval="16" name="priority"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <data>
+                    <xpath expr="//field[@name='date_due']" position="after">
+                        <field name="discount_type" groups="sale.group_discount_per_so_line" on_change="onchange_type_discount(context)"/>
+                        <field name="global_discount" groups="sale.group_discount_per_so_line" on_change="onchange_global_discount(global_discount, context)" attrs="{'invisible':[('discount_type','=','total')]}"/>
+                        <field name="amount_discount" groups="sale.group_discount_per_so_line" on_change="onchange_amount_discount(amount_discount, context)" attrs="{'invisible':[('discount_type','=','percen')]}"/>
+                    </xpath>
+                </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+            

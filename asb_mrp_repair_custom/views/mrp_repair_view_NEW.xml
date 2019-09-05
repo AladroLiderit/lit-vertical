@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!--cambios en el formulario de eventos-->
+     <record model="ir.ui.view" id="view_mrp_repair_asb_form">
+       <field name="name">Reparaciones ASB Form</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='product_id']" position="before">
+            <field name="fecha_recepcion"/>
+          </xpath>
+
+          <xpath expr="//field[@name='partner_id']" position="after">
+            <field name="referencia"/>
+          </xpath>
+
+          <xpath expr="//field[@name='guarantee_limit']" position="before">
+            <field name="fecha_esperar" readonly="True"/>
+            <field name="repair_ready_date" readonly="True"/>
+            <field name="fecha_reparacion"/>
+          </xpath>
+
+          <xpath expr="//header/button[@name='repair_confirm']" position="replace">
+            <button name="repair_confirm" states="draft,send" string="Confirm Repair" class="oe_highlight"/>
+          </xpath>
+
+          <xpath expr="//header/button[@name='cancel']" position="replace">
+            <button name="cancel" states="draft,send" string="Cancel Repair"/>
+          </xpath>
+
+          <xpath expr="//header/button[@name='repair_confirm']" position="before">
+            <button string="Presupuesto enviado" type="object" name="button_enviado" class="oe_highlight" states="draft"/>
+          </xpath>
+
+          <!--xpath expr="//field[@name='lot_id']" position="attributes">
+              <attribute name="domain">[]</attribute>
+              <attribute name="context">{}</attribute>
+          </xpath-->
+
+          <xpath expr="//field[@name='lot_id']" position="replace">
+            <field name="lot_id" options="{'no_quick_create':True}"
+              domain="[]" context="{}"/>
+          </xpath>
+
+          <!--xpath expr="//field[@name='lot_id']" position="after">
+            <field name="albaran_historico_id" placeholder="Historial de movimientos"
+              options="{'no_quick_create':True,'no_create_edit':True}"/>
+          </xpath-->
+
+          <xpath expr="//field[@name='product_id']" position="attributes">
+              <attribute name="on_change">""</attribute>
+              <!--attribute name="readonly">"True"</attribute-->
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Notes']" position="replace">
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Operations']" position="before">
+            <page string="Notes">
+              <field name="internal_notes" placeholder="Add internal notes..."/>
+              <field name="quotation_notes" placeholder="Add quotation notes..."/>
+            </page>
+
+            <page string="Accs">
+                            <field name="accs">
+                                <form string="Accs">
+                                    <notebook>
+                                        <page string="Repair Line">
+                                            <group col="4">
+                                                <field name="name"/>
+                                                <field name="product_id"/>
+                                                <label for="product_uom_qty"/>
+                                                <div>
+                                                    <field name="product_uom_qty" class="oe_inline"/>
+                                                </div>
+                                            </group>
+                                        </page>
+                                    </notebook>
+                                </form>
+                                <tree string="Accs" editable="bottom">
+                                  <field name="name"/>
+                                  <field name="product_id"/>
+                                  <field name="product_uom_qty" class="oe_inline"/>
+                                </tree>
+                            </field>
+            </page>
+ 
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Operations']" position="replace">
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']" position="after">
+            <page string="Datos pedido">
+                <group col="4">
+                    <field name="num_pedido"/>
+                    <field name="att"/>
+                    <field name="depart"/>
+                    <field name="destino"/>
+                </group>
+            </page>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/group/field[@name='pricelist_id']" position="after">
+            <field name="amount_untaxed"/>
+            <field name="amount_tax"/>
+            <field name="amount_total" string="Total Reparación"/>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='tax_id']" position="attributes">
+            <attribute name="domain">"[('parent_id','=',False),('type_tax_use','&lt;&gt;','purchase')]"</attribute>
+          </xpath>
+
+           <xpath expr="//notebook/page[@string='Invoicing']/field[@name='fees_lines']/tree[@string='Fees']/field[@name='product_id']" position="attributes">
+            <attribute name="required">"True"</attribute>
+          </xpath>
+
+       </field>
+     </record>
+
+<!--cambios en el formulario de inscripciones-->
+    <record model="ir.ui.view" id="view_mrp_repair_asb_tree">
+       <field name="name">Reparaciones ASB Tree</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_tree"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='address_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='product_id']" position="before">
+            <field name="fecha_recepcion"/>
+            <field name="repair_ready_date"/>
+            <field name="fecha_reparacion"/>
+          </xpath>
+
+       </field>
+     </record>
+
+
+<!--cambios en el formulario de busquedas-->
+     <record model="ir.ui.view" id="view_mrp_repair_asb_search">
+       <field name="name">Reparaciones ASB Search</field>
+       <field name="model">mrp.repair</field>
+       <field name="inherit_id" ref="mrp_repair.view_repair_order_form_filter"/>
+       <field name="arch" type="xml">
+
+         <xpath expr="//search/field[@name='product_id']" position="after">
+           <field name="referencia" string="Referencia" help="Buscar por referencia"/>
+           <field name="lot_id" string="Número de serie" help="Buscar por número de serie"/>    
+         </xpath>
+
+         <!--xpath expr="//search/field[@name='partner_id']" position="after">
+          <field name="date_from" string="Desde Fecha Inicio" filter_domain="[('repair_ready_date','&gt;=',self)]"/>
+          <field name="date_to" string="Hasta Fecha Inicio" filter_domain="[('repair_ready_date','&lt;=',self)]"/>
+         </xpath-->
+
+         
+       </field>
+
+     </record>
+
+<!-- pestaña en facturas para ver la orden de reparacion relacionada-->
+
+    <record model="ir.ui.view" id="view_invoice_repair_asb_form">
+       <field name="name">Reparaciones en Factura ASB Form</field>
+       <field name="model">account.invoice</field>
+       <field name="inherit_id" ref="account.invoice_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//notebook" position="inside">
+              <page string="Reparaciones" name="repairs">
+                  <field name="repair_id" readonly="True"/>
+              </page>
+          </xpath>
+          
+        </field>
+      </record>
+
+
+
+<!-- amplia vista form de movimientos para tener detalle de historico en reparaciones-->
+
+      <record model="ir.ui.view" id="view_stock_historico_asb_form">
+       <field name="name">Historico en Movimientos ASB Form</field>
+       <field name="model">stock.move</field>
+       <field name="inherit_id" ref="stock.view_move_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//group[@name='destination_grp']" position="after">
+              <group name="historicos_grp" string="Historico Reparaciones">
+                <field name="alb_historico"/>
+              </group>
+          </xpath>
+
+          <xpath expr="//group[@name='main_grp_col2']" position="after">
+            <group colspan="8">
+              <field name="repair_id" string="Reparación"/>
+            </group>
+          </xpath>
+          
+        </field>
+      </record>
+
+
+<!-- amplia vista busqueda de movimientos para localizar un num serie-->
+
+      <record model="ir.ui.view" id="view_stock_search_asb_form">
+       <field name="name">view.stock.search.asb</field>
+       <field name="model">stock.move</field>
+       <field name="inherit_id" ref="stock.view_move_search"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='product_id']" position="after">
+                <field name="restrict_lot_id"/>
+          </xpath>
+          
+        </field>
+      </record>
+
+<!--cambios en el formulario de produccion-->
+<!--
+    <record model="ir.ui.view" id="view_mrp_sale_info_asb_form">
+       <field name="name">mrp.sale.info.asb.form</field>
+       <field name="model">mrp.production</field>
+       <field name="inherit_id" ref="mrp_sale_info.mrp_production_form_view"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='partner_id']" position="replace">
+          </xpath>
+       </field>
+     </record>
+
+     <record model="ir.ui.view" id="view_mrp_sale_name_asb_form">
+       <field name="name">mrp.sale.name.asb.form</field>
+       <field name="model">mrp.production</field>
+       <field name="inherit_id" ref="sale_mrp.view_mrp_production_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='sale_name']" position="replace">
+          </xpath>
+
+       </field>
+     </record>
+-->
+
+     <record model="ir.ui.view" id="view_mrp_production_asb_form">
+       <field name="name">Ordenes ASB Form</field>
+       <field name="model">mrp.production</field>
+       <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+       <field name="arch" type="xml">
+
+          <!--xpath expr="//field[@name='product_id']" position="before">
+            <field name="lot_id"/>
+          </xpath-->
+
+          <!--xpath expr="//field[@name='date_planned']" position="after">
+            <field name="partner_id"/>
+            <field name="referencia"/>
+          </xpath-->
+
+          <xpath expr="//field[@name='bom_id']" position="before">
+            <field name="venting"/>
+          </xpath>
+          <xpath expr="//page[@string='Consumed Products']" position="before">
+             <page string="List of Accesories">
+                <field name="accs">
+                  <tree string="Accs" editable="bottom">
+                      <field name="name"/>
+                      <field name="product_id"/>
+                      <field name="product_uom_qty" class="oe_inline"/>
+                  </tree>
+                </field>
+            </page>
+          </xpath>
+
+           
+
+       </field>
+     </record>
+
+
+     <record model="ir.ui.view" id="view_mrp_production_note_asb_form">
+       <field name="name">Notas en Ordenes ASB Form</field>
+       <field name="model">mrp.production</field>
+       <field name="inherit_id" ref="mrp_production_note.mrp_production_form_view"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='notes']" position="before">
+            <group>
+              <field name="observaciones_impresion"/>
+            </group>
+          </xpath>
+
+       </field>
+     </record>
+
+
+
+     
+     
+    </data>
+</openerp>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="account_invoice_tosplit_view_form" model="ir.ui.view">
+      <field name="name">Split Invoice</field>
+      <field name="model">account.invoice.tosplit</field>
+      <field name="arch" type="xml">
+        <form string="Split Invoice">
+          <group>
+            <separator string="Amount without taxes to split invoice"/>
+            <group>
+                <field name='split_amount'/>
+                <field name='split_journal' required="True"/>         
+            </group>
+
+            <group >
+              <field name='reset_taxes'/>
+              <button name="get_lines" string="Charge all lines"
+                    type="object" class="oe_highlight" /> 
+            </group>
+
+            <group>
+              <field name='amount_total'/>
+            </group>
+
+            <group>
+              <field name='amount_condition'/>
+            </group>
+
+            <separator string="Select Lines that will be moved to a new invoice"/>
+            <group>
+              <field name="line_ids" nolabel="1"/>
+            </group>
+
+          </group>
+
+          <footer>
+            <button name="split_invoice" string="Split Invoice"
+                    type="object" class="oe_highlight" />
+            or
+            <button string="Cancel" class="oe_link"
+                  special="cancel" />
+          </footer>
+        </form>
+      </field>
+    </record>
+
+  </data>
+</openerp>
+

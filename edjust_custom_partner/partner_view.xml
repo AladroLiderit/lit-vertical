@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="res_partner_edjust_form_view" model="ir.ui.view">
+            <field name="name">res.partner.edjust.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string='Internal Notes']" position="before">
+                    <page string="General">
+                        <group>
+                            <field name="cust_reten"/>
+                            <field name="cust_tipo" readonly="True"/>
+
+                            <field name="cust_origin" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="cust_relation2" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>
+
+                            <field name="cust_activities" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="cust_sector" widget="many2many_tags" readonly="True"/>
+                            <field name="cust_position" />
+                            
+                            <field name="write_date" readonly="True"/>
+                            <field name="write_user_name" readonly="True"/>
+                        </group>
+                    </page>
+                </xpath>
+                
+                <xpath expr="//button[@name='button_edit_ref']" position="replace">
+                    <button string="Cambiar Código" type="object" name="button_edit_ref"
+                        groups='base.group_document_user'/>
+                </xpath>
+
+                 <xpath expr="//field[@name='partner_type_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='ref']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+
+
+            </field>
+        </record>
+
+
+        <!--ampliamos las busquedas de res partner para permitir buscar por código, actividad, sector, origen-->
+        <record id="res_filter_edjust" model="ir.ui.view">
+            <field name="name">res.filter.edjust</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='category_id']" position="before">
+                    <field name="cust_tipo" filter_domain="[('cust_tipo','ilike',self)]" string="Partner Type"/>
+                    <field name="cust_origin_name" filter_domain="[('cust_origin_name','ilike',self)]" string="Origin"/>
+                    <field name="cust_activities" string="Actividades" filter_domain="[('cust_activities', 'ilike', self)]"/>
+                    <field name="cust_position" string="Position" filter_domain="[('cust_position', 'ilike', self)]"/>
+                </xpath>
+                <xpath expr="//filter[@name='type_person']" position="before">
+                    <filter string="not withheld"  domain="[('cust_reten','=',0)]"/>
+                </xpath>
+                <xpath expr="//group/filter[@string='Company']" position="after">
+                    <filter string="Partner Groups" name="cust_relation2" context="{'group_by': 'cust_relation2'}"/>
+                    <filter string="Partner Type" name="cust_tipo" context="{'group_by': 'cust_tipo'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--forms para matenimiento de clientes-->
+        <!--menu-->
+        <menuitem id="menu_mant_clientes" name="Mantenimiento de Clientes" parent="base.menu_base_config"
+      sequence="10" groups="group_edjust_admin"/>
+
+       <!--para origenes-->
+        <record model="ir.ui.view" id="view_edjust_origenes_tree">
+            <field name="name">edjust.origenes.mode.tree</field>
+            <field name="model">edjust.partner.origin</field>
+            <field name="arch" type="xml">
+                <tree string="Origins of the business relationship" editable="top">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_origenes_view">
+          <field name="name">Origenes Relación</field>
+          <field name="res_model">edjust.partner.origin</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_origenes_sub" name="Orígenes" parent="menu_mant_clientes"
+      sequence="10" action="act_open_origenes_view"/>
+
+      <!--para grupos de clientes-->
+        <record model="ir.ui.view" id="view_edjust_relation_tree">
+            <field name="name">edjust.relation.mode.tree</field>
+            <field name="model">edjust.partner.relation</field>
+            <field name="arch" type="xml">
+                <tree string="Partner Groups" editable="top">
+                    <field name="name"/>
+                    
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_relation_view">
+          <field name="name">Grupos de Clientes</field>
+          <field name="res_model">edjust.partner.relation</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_relation_sub" name="Grupos de clientes" parent="menu_mant_clientes"
+      sequence="10" action="act_open_relation_view"/>
+
+      <!--para actividades-->
+        <record model="ir.ui.view" id="view_edjust_activities_tree">
+            <field name="name">edjust.activities.mode.tree</field>
+            <field name="model">edjust.partner.activities</field>
+            <field name="arch" type="xml">
+                <tree string="Activities" editable="top">
+                    <field name="name"/>
+                    <field name="sector_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_activities_view">
+          <field name="name">Actividades</field>
+          <field name="res_model">edjust.partner.activities</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_activities_sub" name="Actividades" parent="menu_mant_clientes"
+      sequence="20" action="act_open_activities_view"/>
+
+      <!--para sectores-->
+        <record model="ir.ui.view" id="view_edjust_sectores_tree">
+            <field name="name">edjust.sectores.mode.tree</field>
+            <field name="model">edjust.sector</field>
+            <field name="arch" type="xml">
+                <tree string="Sectores" editable="top">
+                    <field name="name"/>
+                    <!--<field name="parent_id"/>-->
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_sectores_view">
+          <field name="name">Sectores</field>
+          <field name="res_model">edjust.sector</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_sectores_sub" name="Sectores" parent="menu_mant_clientes"
+      sequence="30" action="act_open_sectores_view"/>
+
+        <!-- Ampliamos la busqueda de partner para añadir filtros.-->
+        <record id="view_respartner_edjust_search" model="ir.ui.view">
+            <field name="name">custopartner.edjust.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+              <xpath expr="//search[@string='Search Partner']" position="inside">
+                <filter string="not consigned shipments" domain="[('cust_reten','=',False)]"/>
+              </xpath>            
+            </field>
+        </record>
+        
+
+    </data>
+</openerp>

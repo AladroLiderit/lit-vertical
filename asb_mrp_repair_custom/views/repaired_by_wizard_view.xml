@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+       <record id="wizard_repaired_by_view" model="ir.ui.view">
+         <field name="name">wizard.repaired_by.view</field>
+         <field name="model">mrp.repaired.by.wizard</field>
+         <field name="arch" type="xml">
+         <form string="Registrar Tecnico">
+          <group>
+           <field name="repaired_by"/>
+          </group>
+          <footer>
+           <button name="set_repaired_by" string="Registrar" type="object" class="oe_highlight"/>
+           or
+           <button string="Cancel" class="oe_link" special="cancel"/>
+          </footer>
+         </form>
+         </field>
+        </record>
+
+        <record id="action_wizard_repaired_by" model="ir.actions.act_window">
+         <field name="name">Registrar Tecnico</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">mrp.repaired.by.wizard</field>
+         <field name="view_type">form</field>
+         <field name="view_mode">form</field>
+         <field name="target">new</field>
+        </record>
+
+  </data>
+</openerp>

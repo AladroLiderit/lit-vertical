@@ -1,0 +1,170 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* edjust_custom_claim
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-13 11:05+0000\n"
+"PO-Revision-Date: 2018-06-13 13:10+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:22
+#: field:crm.claim,action_ids:0
+#, python-format
+msgid "Action Lines"
+msgstr "Actuaciones"
+
+#. module: edjust_custom_claim
+#: view:crm.claim:edjust_custom_claim.crm_claim_edjust_form_view
+msgid "Actions"
+msgstr "Acciones"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:20
+#: field:crm.claim,user_fault_id:0
+#, python-format
+msgid "Assing to User"
+msgstr "Asignar a"
+
+#. module: edjust_custom_claim
+#: model:ir.model,name:edjust_custom_claim.model_crm_claim
+msgid "Claim"
+msgstr "Devolución"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:58
+#: field:crm.claim.action,date:0
+#, python-format
+msgid "Claim Action Date"
+msgstr "Fecha Actuación"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:57
+#: field:crm.claim.action,name:0
+#, python-format
+msgid "Claim Action Description"
+msgstr "Detalle Actuación"
+
+#. module: edjust_custom_claim
+#: model:ir.model,name:edjust_custom_claim.model_crm_claim_stage
+msgid "Claim stages"
+msgstr "Etapas de devolución"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:24
+#: view:crm.claim:edjust_custom_claim.crm_claim_edjust_form_view
+#: field:crm.claim,closing_note:0
+#, python-format
+msgid "Closing Note"
+msgstr "Nota de cierre"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:48
+#: field:crm.claim.stage,is_close_stage:0
+#, python-format
+msgid "Closing Stage"
+msgstr "Es etapa de cierre"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:51
+#: sql_constraint:crm.claim.stage:0
+#, python-format
+msgid "Closing stage must be unique!"
+msgstr "Sólo puede haber una etapa de cierre!"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: edjust_custom_claim
+#: field:sale.order.line,partner_id:0
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: edjust_custom_claim
+#: field:crm.claim.action,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: edjust_custom_claim
+#: view:crm.claim:edjust_custom_claim.crm_claim_filter_edjust
+msgid "Open Claims"
+msgstr "Devoluciones Abiertas"
+
+#. module: edjust_custom_claim
+#: model:ir.model,name:edjust_custom_claim.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:59
+#: field:crm.claim.action,claim_id:0
+#, python-format
+msgid "Related Claim"
+msgstr "Devolución Relacionada"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:18
+#: field:crm.claim,claim_analytic_id:0
+#, python-format
+msgid "Related Contract"
+msgstr "Relativo a Suscripción"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:16
+#: field:crm.claim,claim_order_line_id:0
+#, python-format
+msgid "Related Sale Order"
+msgstr "Relativo a Publicidad"
+
+#. module: edjust_custom_claim
+#: view:crm.claim:edjust_custom_claim.crm_claim_filter_edjust
+msgid "Responsable"
+msgstr "Responsable"
+
+#. module: edjust_custom_claim
+#: model:ir.model,name:edjust_custom_claim.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: edjust_custom_claim
+#: code:addons/edjust_custom_claim/crm_claim.py:35
+#, python-format
+msgid "You have to fill a closing note in case you want to close this claim"
+msgstr "Tiene que cumplimentar la Nota de Cierre para cerrar una devolución."

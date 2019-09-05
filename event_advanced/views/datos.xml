@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate='0'>
+    
+        <record model="event_advanced.duracion_event" id="duracion1">
+            <field name="name">1 día</field>
+        </record>
+        <record model="event_advanced.duracion_event" id="duracion2">
+            <field name="name">2 días</field>
+        </record>
+        <record model="event_advanced.duracion_event" id="duracion3">
+            <field name="name">3 días</field>
+        </record>
+        <record model="event_advanced.duracion_event" id="duracion4">
+            <field name="name">1 semana</field>
+        </record>
+
+        <record model="event_advanced.subtipo_event" id="subtipo1">
+            <field name="name">General</field>
+        </record>
+	<record model="event_advanced.subtipo_event" id="subtipo2">
+            <field name="name">Integración</field>
+        </record>
+	<record model="event_advanced.subtipo_event" id="subtipo3">
+            <field name="name">Bussiness</field>
+        </record>
+
+	<record model="event_advanced.facturacion_event" id="factura1">
+            <field name="name">Individual al cobro</field>
+        </record>
+	<record model="event_advanced.facturacion_event" id="factura2">
+            <field name="name">Individual final</field>
+        </record>
+
+	<record model="event_advanced.jornada_event" id="jornada1">
+            <field name="name">Completa</field>
+        </record>
+	<record model="event_advanced.jornada_event" id="jornada2">
+            <field name="name">Media</field>
+        </record>
+
+	<record model="event_advanced.horas_event" id="horas1">
+            <field name="name">15</field>
+        </record>
+	<record model="event_advanced.horas_event" id="horas2">
+            <field name="name">20</field>
+        </record>
+
+
+	<record model="event_advanced.alojamiento_registro" id="alojamiento1">
+            <field name="name">Cabaña</field>
+        </record>
+	<record model="event_advanced.alojamiento_registro" id="alojamiento2">
+            <field name="name">Familia</field>
+        </record>
+
+	<record model="event_advanced.caracteristicas_registro" id="carac1">
+            <field name="name">Habitación individual</field>
+        </record>
+	<record model="event_advanced.caracteristicas_registro" id="carac2">
+            <field name="name">Baño compartido</field>
+        </record>
+
+	<record model="event_advanced.regimen_registro" id="regim1">
+            <field name="name">MP</field>
+        </record>
+	<record model="event_advanced.regimen_registro" id="regim2">
+            <field name="name">PC</field>
+        </record>
+	<record model="event_advanced.regimen_registro" id="regim3">
+            <field name="name">SA</field>
+        </record>
+
+	<record model="event_advanced.forma_pago_registro" id="fp1">
+            <field name="name">Contado</field>
+        </record>
+	<record model="event_advanced.forma_pago_registro" id="fp2">
+            <field name="name">Transferencia</field>
+        </record>
+	<record model="event_advanced.forma_pago_registro" id="fp3">
+            <field name="name">Tarjeta</field>
+        </record>
+
+	<record model="event_advanced.forma_pago_resto_registro" id="fpr1">
+            <field name="name">Contado</field>
+        </record>
+	<record model="event_advanced.forma_pago_resto_registro" id="fpr2">
+            <field name="name">Transferencia</field>
+        </record>
+	<record model="event_advanced.forma_pago_resto_registro" id="fpr3">
+            <field name="name">Tarjeta</field>
+        </record>
+
+	<record model="event_advanced.idioma_registro" id="idi1">
+            <field name="name">Inglés</field>
+        </record>
+	<record model="event_advanced.idioma_registro" id="idi2">
+            <field name="name">Francés</field>
+        </record>
+
+  </data>
+</openerp>

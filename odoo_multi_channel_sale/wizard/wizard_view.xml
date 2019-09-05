@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+	<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+	<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+	<record id="wizard_message_form" model="ir.ui.view">
+            <field name="name">wizard.message.form</field>
+            <field name="model">wizard.message</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form >
+					<field name="text" colspan="4" nolabel="1" readonly="1" widget="html"/>
+					<newline/>
+					<separator colspan="6"/>
+					<footer>
+						<button special="cancel" class="oe_highlight" string="Close" />
+					</footer>
+
+                </form>
+            </field>
+        </record>
+		<record id="wizard_message_action" model="ir.actions.act_window">
+            <field name="name">wizard.message</field>
+            <field name="res_model">wizard.message</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <record id="odoo_multi_channel_sale.update_mapping_wizard_form"
+                    model="ir.ui.view">
+            <field name="name">Update Mapping</field>
+            <field name="model">update.mapping.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Update Mapping">
+                    <sheet>
+                        <group>
+                            <field name='need_sync'/>
+                        </group>
+                    </sheet>
+                    <footer>
+                            <button name="save_status" string="Save"
+                                    type="object" class="oe_highlight"/>
+                            or
+                            <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="odoo_multi_channel_sale.action_update_mapping" model="ir.actions.act_window">
+            <field name="name">Update Mapping</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">update.mapping.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="odoo_multi_channel_sale.update_mapping_wizard_form"/>
+            <field name="target">new</field>
+            <field name="multi">True</field>
+        </record>
+
+        <record model="ir.values" id="odoo_multi_channel_sale.product_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_product_mappings" />
+            <field name="name">Update Product Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.product.mappings</field>
+        </record>
+
+        <record model="ir.values" id="odoo_multi_channel_sale.product_tmpl_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_template_mappings" />
+            <field name="name">Update Template Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.template.mappings</field>
+        </record>
+        <record model="ir.values" id="odoo_multi_channel_sale.product_categ_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_category_mappings" />
+            <field name="name">Update Category Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.category.mappings</field>
+        </record>
+
+        <record model="ir.values" id="odoo_multi_channel_sale.order_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_order_mappings" />
+            <field name="name">Update Order Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.order.mappings</field>
+        </record>
+        <record model="ir.values" id="odoo_multi_channel_sale.partner_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_partner_mappings" />
+            <field name="name">Update Partner Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.partner.mappings</field>
+        </record>
+        <record model="ir.values" id="odoo_multi_channel_sale.account_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_account_mappings" />
+            <field name="name">Update Account Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.account.mappings</field>
+        </record>
+        <record model="ir.values" id="odoo_multi_channel_sale.account_journal_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_account_journal_mappings" />
+            <field name="name">Update Account Journal Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.account.journal.mappings</field>
+        </record>
+         <record model="ir.values" id="odoo_multi_channel_sale.shipping_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_shipping_mappings" />
+            <field name="name">Update Shipping  Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.shipping.mappings</field>
+        </record>
+         <record model="ir.values" id="odoo_multi_channel_sale.pricelist_mappings_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_channel_pricelist_mappings" />
+            <field name="name">Update Pricelist  Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,'+str(ref('odoo_multi_channel_sale.action_update_mapping'))" />
+            <field name="key">action</field>
+            <field name="model">channel.pricelist.mappings</field>
+        </record>
+</data>
+	</openerp>

@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+		<record id="account_analytic_account_partner_form" model="ir.ui.view">
+			<field name="name">account.analytic.account.partner.form</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+			<field name="arch" type="xml">
+				<!--esto primero es para quitar el onchange por defecto del core-->
+				<xpath expr="//field[@name='partner_id']" position="replace">
+					<field name="partner_id"/>
+					<field name="contact_partner_id"
+						domain="['&amp;',('type','in',['delivery','contact']),'|',('parent_id','=',partner_id),('id','=',partner_id)]"
+						context="{'default_parent_id': partner_id, 'default_is_company': False, 'default_is_customer': False, 'default_is_supplier': False, 'default_type': 'contact'}" />
+				</xpath>
+
+				<xpath expr="//group[@name='main']" position="before">
+					<separator string="Detalles de suscripción" name="details"/>
+					<group name="Contract Details">
+						<group>
+							<!--field name="gratuito" attrs="{'readonly': [('medio_id','!=',False)]}"/-->
+							<field name="gratuito"/>
+							<field name="medio_id"/>
+							<field name="ed_inicial" domain="[('medio_id','=',medio_id)]"/>
+							<field name="ed_final" domain="[('medio_id','=',medio_id)]"/>
+							
+						</group>
+						<group>
+							<field name="gratis_motiv" attrs="{'invisible': [('gratuito','=',False)], 'required':[('gratuito','=',True)]}"/>
+							<field name="procedencia" />
+							<field name="num_ejemplares" />
+							<field name="plazo_preaviso" />
+						</group>
+					</group>
+
+				</xpath>
+
+				<xpath expr="//notebook/page/group/field[@name='date_start']" position="after">
+					<field name="date_renove"/>
+				</xpath>
+
+				<xpath expr="//field[@name='description']" position="after">
+					<separator string="Notas internas" name="internal_note"/>
+					<field name="internal_description" />
+				</xpath>
+
+			</field>
+		</record>
+
+
+		<!--Inherited Analytic Account list for contracts -->
+		<record id="edjust_account_analytic_account_partner_tree"
+			model="ir.ui.view">
+			<field name="name">EdJust account.analytic.account.partner.list</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="account.view_account_analytic_account_list" />
+			<field name="arch" type="xml">
+				<field name="code" position="replace"/>
+				<field name="partner_id" position="before">
+					<field name="contact_partner_id" />
+					<field name="medio_id" />
+				</field>
+			</field>
+		</record>
+
+
+		<record id="edjust_account_analytic_account_partner_tree_2"
+			model="ir.ui.view">
+			<field name="name">EdJust account.analytic.account.partner.list.2</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_tree_c2c_3" />
+			<field name="arch" type="xml">
+				<field name="remaining_hours" position="replace"/>
+				<field name="toinvoice_total" position="replace">
+					<field name="total_toinvoice" />
+				</field>
+			</field>
+		</record>
+
+
+
+		<!--cambios en el formulario de busquedas de Analytic Account-->
+	     <record model="ir.ui.view" id="edjust_account_analytic_account_search">
+	       <field name="name">EdJust account.analytic.account.search</field>
+	       <field name="model">account.analytic.account</field>
+	       <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search"/>
+	       <field name="arch" type="xml">
+
+	         <xpath expr="//search/field[@name='partner_id']" position="after">
+	           <field name="medio_id" string="Publicación" help="Buscar por Publicación"/> 
+	         </xpath>
+
+	         <xpath expr="//search/filter[@string='Expiring soon']" position="replace">
+	           <filter string="Expiring soon" domain="[('date_renove', '!=', False), ('date_renove', '&lt;=', (context_today() + datetime.timedelta(30)).strftime('%Y-%m-%d') )]" help="End date is in the next month"/>
+	         </xpath>
+
+	         <xpath expr="//search/group/filter[@string='End Month']" position="replace">
+	           <filter string="End Month" domain="[]" context="{'group_by' : 'date_renove'}"/>
+	         </xpath>
+
+	         <xpath expr="//group/filter[@string='Partner']" position="after">
+	           <filter string="Publicación" domain="[]" context="{'group_by':'medio_id'}"/>
+	         </xpath>
+
+	       </field>
+
+	     </record>
+
+		<!-- Ocultar datos de facturación de trabajos -->
+		<record id="view_edjust_account_analytic_account_form"
+			model="ir.ui.view">
+			<field name="name">edjust.account.analytic.account.form</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//table[@class='oe_form_analytic_account']" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+
+				<label for="quantity_max" position="replace"/>
+				<field name="quantity_max" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				<field name="quantity_max" position="after">
+					<field name="code" invisible="1"/>
+				</field>
+				
+				<separator name="toinvoice" position="replace"/>
+				
+				<!--xpath expr="//field[@name='recurring_invoice_line_ids']/tree/field[@name='product_id']" position="replace">
+					<field name="product_id" on_change="edjust_product_id_change(product_id, uom_id, quantity, False, parent.partner_id, False, parent.pricelist_id, parent.company_id, parent.code)"/>
+				</xpath-->
+
+			</field>
+		</record>
+		
+
+		<!--accion para renovar varios contratos a la vez-->
+<!-- Esto de momento detenido hasta confirmar que es necesario hacerlo, las renovaciones son automáticas
+		<record id="view_contract_multirenove_wizard" model="ir.ui.view">
+	        <field name="name">Renueva un conjunto de contratos</field>
+	        <field name="model">contract.renove.multi.wizard</field>
+	        <field name="context">{'default_medio': context.get('medio_id', False)}
+	        </field>
+	      	<field name="arch" type="xml">
+
+	      	  <form string="Renueva los contratos seleccionados">
+	      	     <group string="Indicar hasta qué edición se renueva">
+	      	     	<field name="medio" />
+	                <field name="ed_final"  domain="[('medio_id','=',medio)]"/>
+	              </group>
+
+	      	    
+	      	    <p class="oe_grey">
+	      	      Se renovarán los contratos seleccionados.<br/>
+	      	      La fecha y edición final serán los indicados.<br/>
+	      	      Con este proceso se continuarán emitiendo las facturas
+	      	      asociadas a cada contrato.
+	      	      No se modifica ningún otro dato del contrato anterior.
+	      	    </p>
+
+	                  <footer>
+	                    <button type="object" name="do_renove_contract"
+	                            string="Renovar" class="oe_highlight" />
+	                    <button special="cancel" string="Cancelar"/>
+	                  </footer>  
+	                </form>
+
+	      	</field>
+	    </record>
+
+       	<act_window name="Renovar los contratos seleccionados"
+            res_model="contract.renove.multi.wizard"
+            src_model="account.analytic.account"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_contract_renove_multi_wizard" />
+
+-->
+
+	
+	
+
+
+	</data>
+</openerp>

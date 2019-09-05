@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>        
+<!--========================================= ===============================================================================-->	
+        <record id="grupo_style_aristos_product_form" model="ir.ui.view">
+            <field name="name">product.style_aristos.form.inh</field>
+            <field name="model">product.template</field> 
+            <field name="type">form</field> 
+	        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='sale_ok']" position="before">            								
+						<field name="short_name" placeholder="Short name for label..." />
+                        <field name="abv_name" placeholder="Abbrevaiture for label..." />
+				</xpath>
+            	<xpath expr="//field[@name='type']" position="after">            		
+						<field name="type_of_material_id"  />
+                        <field name="gender"  />
+						<field name="collection_id"  />
+				</xpath>                   	
+			</field> 
+        </record>        
+
+        <!--aumentar de 4 a 6 columnas para poder agregar nuevo grupo de detalle de productos-->
+        <record id="style_aristos_base_product_form" model="ir.ui.view">
+            <field name="name">product.base.style_aristos.form.inh</field>
+            <field name="model">product.template</field> 
+            <field name="type">form</field> 
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string='Information']" position="replace">                                           
+                    
+                    <page string="Information">
+                        <group colspan="4" col="6">
+                            <group colspan="2">
+                                <field name="type" on_change="onchange_type(type)"/>
+                                <field name="uom_id" on_change="onchange_uom(uom_id,uom_po_id)" groups="product.group_uom"/>
+                                <field name="list_price"/>
+                            </group>
+                            <group colspan="2">
+                                <field name="novedad"/>
+                                <field name="shaka"/>
+                                <field name="outlet"/>
+                                <field name="muestrario"/>
+                            </group>
+
+                            <group colspan="2">
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <group colspan="4">
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                        </group>
+                        <field name="description" placeholder="describe the product characteristics..."/>
+                    </page>
+
+                </xpath>
+                  
+            </field> 
+        </record>
+
+
+        
+
+
+
+  <!--========================================= ===============================================================================-->  
+     	<record id="grupo_style_aristos_product_tmp_search" model="ir.ui.view">
+	        <field name="name">product.tmp.style_aristos_search.inherit</field>
+	        <field name="model">product.template</field>
+	        <field name="inherit_id" ref="product.product_template_search_view"/>
+	        <field name="arch" type="xml"> 	        
+	          	<!--filter name="consumable" position="before">
+	          		<filter name="stock_tolerancia_count" string="Stock Tolerance" domain="[('stock_tolerancia_count','&lt;',0)]"/>
+                </filter-->
+	         	 <xpath expr="//group[@string='Group by...']" position="inside">
+    		 		<filter string="Material" context="{'group_by':'type_of_material_id'}"/>
+    		 		<filter string="Collection" context="{'group_by':'collection_id'}"/>
+            	 </xpath>                                                
+	        </field>
+    	</record> 
+
+
+        <!--record id="grupo_style_aristos_product_product_search" model="ir.ui.view">
+            <field name="name">product.product.style_aristos_search.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_search_form_view"/>
+            <field name="arch" type="xml">          
+                <field name="product_tmpl_id" position="before">
+                    <filter name="stock_tolerancia_count" string="Stock Tolerance" domain="[('stock_tolerancia','=',True)]"/>
+                </field>
+                                             
+            </field>
+        </record--> 
+
+        
+
+    </data>
+</openerp> 

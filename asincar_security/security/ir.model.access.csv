@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asincar_tipo_entidad,access_asincar_tipo_entidad,model_asincar_tipo_entidad,base.group_sale_manager,1,1,1,1
+access_asincar_tipo_asociado,access_asincar_tipo_asociado,model_asincar_tipo_asociado,base.group_sale_manager,1,1,1,1
+access_asincar_sector,access_asincar_sector,model_asincar_sector,base.group_sale_manager,1,1,1,1

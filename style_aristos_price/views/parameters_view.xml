@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	<!--=========================================================================== Vista form ======================================================================================= -->
+	 	<record model="ir.ui.view" id="style_aristos_price_parameters_form_view">
+            <field name="name">parameters.form_price</field>
+            <field name="model">st.parameters</field>
+            <field name="inherit_id" ref="style_aristos.style_aristos_parameters_form_view"/>
+            <field name="type">form</field>        
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='stock_tolerancia']" position="after"> 
+            	<newline/>
+                    <separator string="Parameters Prices"/>   
+                 <newline/>                								
+						<field name="line_price_ids" nolabel='1'/>	
+				      			<!-- <tree  editable ='boton' >
+				      				<field name="line_price_id" invisible="1"/>	
+				      				<field name="price_to"/>	
+				      				<field name="factor"/>
+				      			</tree>	  -->
+				</xpath>
+            </field>
+        </record>
+<!--=========================================================================== Vista tree ======================================================================================= -->
+		<record model="ir.ui.view" id="style_aristos_price_parameters_tree_view">
+            <field name="name">parameters_price.lista</field>
+            <field name="model">st.parameters_line_price</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree  string="Parameters_price" editable ='boton' >
+                	 <field name="line_price_id" invisible="1"/>	
+				     <field name="price_to"/>	
+				     <field name="factor"/>
+                </tree>
+            </field>
+        </record>  
+	</data>
+</openerp>

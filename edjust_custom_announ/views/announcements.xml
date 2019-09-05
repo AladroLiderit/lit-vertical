@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+<!-- contracts to ren form -->
+		<record id="edjust_contract_to_renove_form_view" model="ir.ui.view">
+    		<field name="name">edjust.contract.to.renove.form.view</field>
+    		<field name="model">edjust.contracts.to.renove</field>
+    		<field name="arch" type="xml">
+        		<form string="Contracts to renew">
+	    			<group>
+
+    					<field name="contract_id"/>
+            		</group>
+        		</form>
+    		</field>
+		</record>
+ 
+		<!-- tree (list) view -->
+		<record id="edjust_contract_to_renove_tree_view" model="ir.ui.view">
+    		<field name="name">edjust.contract.to.renove.tree.view</field>
+    		<field name="model">edjust.contracts.to.renove</field>
+    		<field name="arch" type="xml">
+    			   			
+        		<tree string="Contracts to renew">
+	    			<field name="contract_id"/>
+        		</tree>
+    		</field>
+		</record>
+		<!--action contracts to renew-->
+      <record model="ir.actions.act_window" id="act_open_contracts_to_renove_view">
+        <field name="name">Contracts to renove</field>
+        <field name="res_model">edjust.contracts.to.renove</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+      </record>
+
+
+      <!--menu contracts to renew-->
+      <menuitem id="menu_contracts_to_renove" name="Contracts to Renew" parent="base.menu_base_config"
+      sequence="30" action="act_open_contracts_to_renove_view"/>
+
+      <!-- Notifications sales-->
+
+      <record id="edjust_advert_notify_form_view" model="ir.ui.view">
+            <field name="name">edjust.advert.notify.form.view</field>
+            <field name="model">edjust.advert.notify</field>
+            <field name="arch" type="xml">
+                <form string="Sales Notifications">
+                    <group>
+                        <field name="sent_date"/>
+                        <field name="sent_email"/>
+                        <field name="date_edition"/>
+                        <field name="sale_order_line_id"/>
+
+                    </group>
+                </form>
+            </field>
+        </record>
+ 
+        <!-- tree (list) view -->
+        <record id="edjust_advert_notify_tree_view" model="ir.ui.view">
+            <field name="name">edjust.advert.notify.tree.view</field>
+            <field name="model">edjust.advert.notify</field>
+            <field name="arch" type="xml">
+                            
+                <tree string="Sale Notifications">
+                    <field name="sent_date"/>
+                    <field name="sent_email"/>
+                    <field name="sale_order_line_id"/>
+                    <field name="date_edition"/>   
+                </tree>
+            </field>
+        </record>
+        <!--action contracts to renew-->
+      <record model="ir.actions.act_window" id="act_open_advert_notify_view">
+        <field name="name">Sale Notifications</field>
+        <field name="res_model">edjust.advert.notify</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+      </record>
+
+
+      <!--menu contracts to renew-->
+      <menuitem id="menu_advert_notify" name="Sale Notifications" parent="base.menu_base_config"
+      sequence="40" action="act_open_advert_notify_view"/>
+
+<!-- commitments sales-->
+
+      <record id="edjust_commitment_notify_form_view" model="ir.ui.view">
+            <field name="name">edjust.commitment.notify.form.view</field>
+            <field name="model">edjust.commitment.notify</field>
+            <field name="arch" type="xml">
+                <form string="Commitment Notifications">
+                    <group>
+                        <field name="sent_date"/>
+                        <field name="sent_email"/>
+                        <field name="date_edition"/>
+                        <field name="commitment_id"/>
+                        
+
+                    </group>
+                </form>
+            </field>
+        </record>
+ 
+        <!-- tree (list) view -->
+        <record id="edjust_commitment_notify_tree_view" model="ir.ui.view">
+            <field name="name">edjust.commitment.notify.tree.view</field>
+            <field name="model">edjust.commitment.notify</field>
+            <field name="arch" type="xml">
+                            
+                <tree string="Commitment Notifications">
+                    <field name="sent_date"/>
+                    <field name="sent_email"/>
+                    <field name="commitment_id"/>
+                    <field name="date_edition"/>
+                </tree>
+            </field>
+        </record>
+        <!--action contracts to renew-->
+      <record model="ir.actions.act_window" id="act_open_commitment_notify_view">
+        <field name="name">Sale Notifications</field>
+        <field name="res_model">edjust.commitment.notify</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+      </record>
+
+
+      <!--menu contracts to renew-->
+      <menuitem id="menu_commitment_notify" name="Commitment Notifications" parent="base.menu_base_config"
+      sequence="50" action="act_open_commitment_notify_view"/>
+
+
+    </data>
+</openerp>
+

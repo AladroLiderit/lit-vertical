@@ -1,0 +1,281 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* edjust_custom_partner
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-13 10:26+0000\n"
+"PO-Revision-Date: 2018-06-13 12:33+0200\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#. module: edjust_custom_partner
+#: model:ir.actions.act_window,name:edjust_custom_partner.act_open_activities_view
+#: model:ir.ui.menu,name:edjust_custom_partner.menu_activities_sub
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+msgid "Actividades"
+msgstr "Actividades"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:71
+#: view:edjust.partner.activities:edjust_custom_partner.view_edjust_activities_tree
+#: field:res.partner,cust_activities:0
+#, python-format
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: edjust_custom_partner
+#: model:res.groups,name:edjust_custom_partner.group_edjust_admin
+msgid "Administrador"
+msgstr "Administrador"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:62
+#: selection:res.partner,cust_tipo:0
+#, python-format
+msgid "Avertiser"
+msgstr "Anunciante"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:65
+#: field:res.partner,cust_tipo:0
+#, python-format
+msgid "Client type"
+msgstr "Tipo de Cliente"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,create_uid:0
+#: field:edjust.partner.origin,create_uid:0
+#: field:edjust.partner.position,create_uid:0
+#: field:edjust.partner.relation,create_uid:0 field:edjust.sector,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,create_date:0
+#: field:edjust.partner.origin,create_date:0
+#: field:edjust.partner.position,create_date:0
+#: field:edjust.partner.relation,create_date:0
+#: field:edjust.sector,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,display_name:0
+#: field:edjust.partner.origin,display_name:0
+#: field:edjust.partner.position,display_name:0
+#: field:edjust.partner.relation,display_name:0
+#: field:edjust.sector,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: edjust_custom_partner
+#: model:ir.module.category,name:edjust_custom_partner.category_grupo_edjust
+msgid "Ediciones Just"
+msgstr "Ediciones Just"
+
+#. module: edjust_custom_partner
+#: view:res.partner:edjust_custom_partner.res_partner_edjust_form_view
+msgid "General"
+msgstr "General"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:32
+#: field:edjust.partner.relation,name:0
+#, python-format
+msgid "Group criterion"
+msgstr "Criterio de Agrupación"
+
+#. module: edjust_custom_partner
+#: model:ir.actions.act_window,name:edjust_custom_partner.act_open_relation_view
+msgid "Grupos de Clientes"
+msgstr "Grupos de Clientes"
+
+#. module: edjust_custom_partner
+#: model:ir.ui.menu,name:edjust_custom_partner.menu_relation_sub
+msgid "Grupos de clientes"
+msgstr "Grupos de clientes"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,id:0 field:edjust.partner.origin,id:0
+#: field:edjust.partner.position,id:0 field:edjust.partner.relation,id:0
+#: field:edjust.sector,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,__last_update:0
+#: field:edjust.partner.origin,__last_update:0
+#: field:edjust.partner.position,__last_update:0
+#: field:edjust.partner.relation,__last_update:0
+#: field:edjust.sector,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,write_uid:0
+#: field:edjust.partner.origin,write_uid:0
+#: field:edjust.partner.position,write_uid:0
+#: field:edjust.partner.relation,write_uid:0 field:edjust.sector,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: edjust_custom_partner
+#: field:edjust.partner.activities,write_date:0
+#: field:edjust.partner.origin,write_date:0
+#: field:edjust.partner.position,write_date:0
+#: field:edjust.partner.relation,write_date:0 field:edjust.sector,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: edjust_custom_partner
+#: model:ir.ui.menu,name:edjust_custom_partner.menu_mant_clientes
+msgid "Mantenimiento de Clientes"
+msgstr "Mantenimiento de Clientes"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:18
+#: field:edjust.partner.activities,name:0
+#, python-format
+msgid "Name of Activity"
+msgstr "Nombre de Actividad"
+
+#. module: edjust_custom_partner
+#: model:ir.actions.act_window,name:edjust_custom_partner.act_open_origenes_view
+msgid "Origenes Relación"
+msgstr "Origenes Relación"
+
+#. module: edjust_custom_partner
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+msgid "Origin"
+msgstr "Origen"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:85
+#: field:res.partner,cust_origin_name:0
+#, python-format
+msgid "Origin Name"
+msgstr "Nombre de Origen"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:13
+#: code:addons/edjust_custom_partner/res_parnter.py:59
+#: field:edjust.partner.origin,name:0 field:res.partner,cust_origin:0
+#, python-format
+msgid "Origin of the business relationship"
+msgstr "Origen de relación comercial"
+
+#. module: edjust_custom_partner
+#: view:edjust.partner.origin:edjust_custom_partner.view_edjust_origenes_tree
+msgid "Origins of the business relationship"
+msgstr "Origenes de relación comercial"
+
+#. module: edjust_custom_partner
+#: model:ir.ui.menu,name:edjust_custom_partner.menu_origenes_sub
+msgid "Orígenes"
+msgstr "Orígenes"
+
+#. module: edjust_custom_partner
+#: model:ir.model,name:edjust_custom_partner.model_res_partner
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: edjust_custom_partner
+#: view:edjust.partner.relation:edjust_custom_partner.view_edjust_relation_tree
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+msgid "Partner Groups"
+msgstr "Grupos de cliente"
+
+#. module: edjust_custom_partner
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+msgid "Partner Type"
+msgstr "Tipo de clientes"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:82
+#, python-format
+msgid "Partners Group"
+msgstr "Grupo de Clientes"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:37
+#: code:addons/edjust_custom_partner/res_parnter.py:87
+#: field:edjust.partner.position,name:0
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+#, python-format
+msgid "Position"
+msgstr "Puesto"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:64
+#: selection:res.partner,cust_tipo:0
+#, python-format
+msgid "Potential client"
+msgstr "Cliente Potencial"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:25
+#: code:addons/edjust_custom_partner/res_parnter.py:73
+#: field:edjust.partner.activities,sector_id:0 field:edjust.sector,name:0
+#: field:res.partner,cust_sector:0
+#, python-format
+msgid "Sector"
+msgstr "Sector"
+
+#. module: edjust_custom_partner
+#: view:edjust.sector:edjust_custom_partner.view_edjust_sectores_tree
+#: model:ir.actions.act_window,name:edjust_custom_partner.act_open_sectores_view
+#: model:ir.ui.menu,name:edjust_custom_partner.menu_sectores_sub
+msgid "Sectores"
+msgstr "Sectores"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:61
+#: selection:res.partner,cust_tipo:0
+#, python-format
+msgid "Subscriber"
+msgstr "Suscriptor"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:63
+#: selection:res.partner,cust_tipo:0
+#, python-format
+msgid "Subscriber and advertiser"
+msgstr "Suscriptor y anunciante"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:84
+#: field:res.partner,write_user_name:0
+#, python-format
+msgid "User Modify"
+msgstr "Usuario Modifica"
+
+#. module: edjust_custom_partner
+#: model:res.groups,name:edjust_custom_partner.group_edjust_user
+msgid "Usuario"
+msgstr "Usuario"
+
+#. module: edjust_custom_partner
+#: view:res.partner:edjust_custom_partner.view_respartner_edjust_search
+msgid "not consigned shipments"
+msgstr "Envios no confirmados"
+
+#. module: edjust_custom_partner
+#: view:res.partner:edjust_custom_partner.res_filter_edjust
+msgid "not withheld"
+msgstr "No retenido"
+
+#. module: edjust_custom_partner
+#: code:addons/edjust_custom_partner/res_parnter.py:83
+#: field:res.partner,cust_reten:0
+#, python-format
+msgid "retain shipments"
+msgstr "Retener Envios"

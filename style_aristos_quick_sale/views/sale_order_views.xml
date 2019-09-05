@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_ace" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="cancel" position="after">
+                    <button type="action" name="%(style_aristos_quick_sale.sale_order_form_action_open_quick_sale)d" string="Quick Sale"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                </button>
+                <!--notebook>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                </notebook-->
+                <field name="origin" position="after">
+                    <field name="barcode"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

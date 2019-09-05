@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>        
+<!--========================================= ===============================================================================-->	
+        <record id="style_aristos_invoice_form" model="ir.ui.view">
+            <field name="name">invoice.style_aristos.form.inh</field>
+            <field name="model">account.invoice</field> 
+            <field name="type">form</field> 
+	        <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='date_due']" position="replace"/>            							
+                <xpath expr="//field[@name='payment_term']" position="after"> 
+					<field name="date_due" />
+				</xpath>
+                <xpath expr="//field[@name='invoice_line']/tree//field[@name='price_subtotal']" position="after">
+                    <field name="line_delivered" />
+                </xpath>
+                  	
+			</field> 
+        </record> 
+
+
+        <record id="style_aristos_journal_form" model="ir.ui.view">
+            <field name="name">journal.style_aristos.form.inh</field>
+            <field name="model">account.journal</field> 
+            <field name="type">form</field> 
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">                                      
+                <xpath expr="//field[@name='type']" position="after"> 
+                    <field name="taxes" />
+                </xpath> 
+            </field> 
+        </record>     
+
+
+        <!--colores en facturas condicionales-->
+        <record id="invoice_view_colored_tree" model="ir.ui.view">
+            <field name="name">invoice.view.colored.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="taxes_updated" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree[@string='Invoice']" position="attributes">
+                    <attribute name="colors">hotpink:taxes_updated;blue:state == 'draft';black:state in ('proforma','proforma2','open');gray:state == 'cancel'</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--colores en efectos de diarios condicionales-->
+        <record id="account_move_view_colored_tree" model="ir.ui.view">
+            <field name="name">account.move.view.colored.tree</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account_due_list.view_payments_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="taxes_updated" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree[@string='Payments']" position="attributes">
+                    <attribute name="colors">hotpink:taxes_updated;grey:reconcile_id!=False;red:date_maturity&lt;current_date</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <!--buscar facturas por el campo agente-->
+
+        <record id="grupo_style_aristos_invoice_search" model="ir.ui.view">
+            <field name="name">invoice_style_aristos_search.inherit</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_id" position="before">
+                    <field name="agents" string="Agente"/>
+                </field> 
+
+            </field>
+        </record>
+
+
+
+        
+
+
+
+    </data>
+</openerp> 

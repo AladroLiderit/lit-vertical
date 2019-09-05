@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<record id="sale_line_type_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.type.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale.view_order_form"/>
+		    <field name="arch" type="xml">
+		    	<xpath expr="//field[@name='order_line']" position="attributes">
+                	<attribute name="attrs">{'invisible': [('name', '=', '/')]}</attribute>
+                </xpath>
+
+		    	<xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="after">
+                    <field name="line_type"/>
+                </xpath>
+                <!--oculta el campo de peso y direccion de entrega del core que no se usa-->
+                <xpath expr="//field[@name='order_line']/form//field[@name='address_allotment_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='th_weight']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="after">
+                	<field name="warehouse_id"/>
+                	<label for ="line_type">Entrega</label>
+                	<div>
+	                	<field name="line_type" widget="many2many_checkboxes"/>
+	                </div>
+	                 
+                </xpath>
+
+		    </field>
+		</record>
+
+
+		<record id="sale_line_nodelay_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.nodelay.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+		    <field name="arch" type="xml">
+
+		    	<!--oculta el campo tiempo de entrega que pone el módulo sale_stock-->
+		    	<xpath expr="//field[@name='delay']/parent::div" position="replace"/>
+
+                <xpath expr="//field[@name='order_line']/form//label[@for='delay']" position="replace"/>
+
+
+            </field>
+        </record>
+
+        <!-- oculta el campo wharehouse actual para cambiarlo de sitio-->
+        <record id="sale_line_nowh_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.nowh.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_sourced_by_line.view_order_form_form"/>
+		    <field name="arch" type="xml">
+               
+                <xpath expr="//field[@name='order_line']/form//field[@name='warehouse_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+    </data>
+</openerp>

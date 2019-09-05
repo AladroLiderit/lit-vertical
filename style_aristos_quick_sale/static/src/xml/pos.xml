@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <div t-name="QuickSaleAction" class="oe_quick_sale_view">
+        <t t-call="HeaderPanel"/>
+        <t t-call="BodyPanel"/>
+        <t t-call="Sidebar-Panel"/>
+        <div class="popup-view"/>
+    </div>
+
+    <t t-name="HeaderPanel">
+        <div class="header-panel">
+            <div class="header-details">
+                <div class="header-left-panel">
+                    <div>
+                        <div class="form-group customer-name">
+                            <label for="customer-name">Customer Name:</label>
+                            <input type="text" class="form-control" id="customer-name"/>
+                        </div>
+                        <div class="form-group order-date">
+                            <label for="date">Order Date:</label>
+                            <input type="text" class="form-control" id="datetime" style="width: 50%;" readonly="readonly"/>
+                            <span class="add-on"><i class="icon-th"></i></span>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group note">
+                        <!--label for="notes">Notes:</label-->
+                        <label for="note">Notes:</label>
+                        <!--textarea class="form-control" rows="2" id="notes"/-->
+                        <textarea class="form-control" rows="4" id="note"/>
+                    </div>
+                </div>
+                <div class="header-middle-panel">
+                    <table class="table">
+                        <tr>
+                            <!--td><label for="customer-credit">Credit:</label></td>
+                            <td>
+                                <input type="text" class="form-control to-left" id="customer-credit" readonly="readonly"/>
+                            </td-->
+                            <!--td>
+                                <input type="text" class="form-control" id="sale_order_search" placeholder="Search Sale Order..."/>
+                            </td-->
+                            <td><label for="payment-type">Type:</label></td>
+                            <td>
+                                <select class="form-control" id="sel-payment-type">
+                                    <option value="1">1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="payment-term">Payment Term:</label></td>
+                            <td>
+                                <!--input type="text" class="form-control" id="payment-term" readonly="readonly"/-->
+                                <select class="form-control" id="sel-payment-term">
+                                    <option value="1">1</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="payment-mode">Payment Mode:</label></td>
+                            <td>
+                                <!--input type="text" class="form-control" id="payment-mode" readonly="readonly"/-->
+                                <select class="form-control" id="sel-payment-mode">
+                                    <option value="1">1</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="header-right-panel">
+                    <table class="table">
+                        <tr>
+                            <td><label for="customer-credit">Credit:</label></td>
+                            <td>
+                                <!--input type="text" class="form-control to-left" id="customer-credit" readonly="readonly"/-->
+                                <input type="text" class="in-form-control" id="customer-credit" readonly="readonly"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 60%;"><label for="global-discount">% Discount:</label></td>
+                            <td>
+                                <input type="text" class="in-form-control" id="in-global-discount"/>
+                            </td>
+
+                        </tr>
+                        <!--se oculta por peticion Noelia el 29-11-18-->
+                        <!--se vuelve a mostrar por peticion Noelia el 14-01-19-->
+                        <tr>
+                            <td align="center">
+                                <button class="btn form-control new_sale_order">
+                                    <i class="fa fa-plus"></i> New Sale Order
+                                </button>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <!--<div class="order-total">
+                        <label for="order-total">Order Total:</label>
+                        <label class="value"/>
+                    </div>-->
+                    <!--div class="form-group" style="width: 75%;position: relative;float: right;">
+                        <input type="text" class="form-control" id="sale_order_search" placeholder="Search Sale Order..."/>
+                    </div>
+                    <br/-->
+                    <!-- <div class="form-group">
+                        <label for="payment-mode">Payment Mode:</label>
+                        <select class="form-control" id="payment-mode">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="mercedes">Mercedes</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                    </div-->
+
+                    <!--div class="form-group">
+                        <button class="btn form-control new_sale_order">
+                            <i class="fa fa-plus"></i> New Sale Order
+                        </button>
+                    </div-->
+
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="BodyPanel">
+        <div class="body-panel">
+            <div class="body-details">
+                <div class="product-search-area">
+                    <input type="text" class="form-control" id="product-search" placeholder="Search product with barcode."/>
+                    <!--input type="text" class="form-control" id="product-code-search" placeholder="Search product by name or code."/-->
+                </div>
+                <div class="cart-details">
+                    <t t-call="CartItems"/>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="CartItems">
+        <table class="table cart-items">
+            <tr>
+                <th style="width:5%;">
+                    Image
+                </th>
+                <!--th style="width:10%;">
+                    Product Name
+                </th-->
+                <th style="width:37%;">
+                    Description
+                </th>
+                <th style="width:6%; text-align:center;">
+                    Qty.
+                </th>
+                <th style="width:8%; text-align:center;">
+                    Price Unit
+                </th>
+                <th style="width:10%; text-align:center;">
+                    Subtotal
+                </th>
+                <th style="width:8%; text-align:center;">
+                    Forecasted Qty.
+                </th>
+                <th style="width:5%; text-align:center;">
+                    Entregado
+                </th>
+                <th style="width:5%; text-align:center;">
+                    Abono
+                </th>
+                <th style="width:5%; text-align:center;">
+                    Cambio
+                </th>
+                <th style="width:5%; text-align:center;">
+                    Sin Cargo
+                </th>
+                <th style="width:6%;">
+                    Delete
+                </th>
+            </tr>
+            <tbody class="product-lines"/>
+        </table>
+    </t>
+
+    <t t-name="CardLine">
+        <tr class="cart-row-item" t-att-data-line-id="line.cid" t-att-id="line.cid">
+            <td class="product-image" t-att-data-product-id="line.product.id">
+                <img t-att-src='image_url' style="max-height: 25px;max-width: 25px;"/>
+            </td>
+            <!--td>
+                <t t-esc="line.product.name"/>
+            </td-->
+            <td class="product-description">
+                <!--textarea rows="1" class="form-control description"><t t-esc="line.description || line.product.display_name"/></textarea-->
+                <t t-esc="line.description || line.product.display_name" />
+            </td>
+            <td class="product-qty">
+                <input type="text" class="form-control qty to-left" t-att-value="line.quantity || 0"/>
+            </td>
+            <td class="product-price">
+                <input type="text" id="line-price" class="form-control price_unit to-left" t-att-value="line.price_unit || 0" readonly="readonly"/>
+            </td>
+            <td class="subtotal" style="line-height: 30px; text-align:right">
+                <t t-esc="widget.format_currency(line.display_price || 0)"/>
+            </td>
+            <td class="forecasted-qty" style="line-height: 30px; text-align:right">
+                <t t-esc="line.product.virtual_available || '0'" />
+            </td>
+            <td class="entregado" style="line-height: 30px;  text-align:center">
+                <input type="checkbox" class="form-control entregado" t-att-checked="line.entregado || False"/>
+            </td>
+            <td class="abono" style="line-height: 30px; text-align:center">
+                <input type="checkbox" class="form-control abono" t-att-checked="line.abono || False"/>
+            </td>
+            <td class="cambio" style="line-height: 30px; text-align:center">
+                <input type="checkbox" class="form-control cambio" t-att-checked="line.cambio || False"/>
+            </td>
+            <td class="sin-cargo" style="line-height: 30px; text-align:center">
+                <input type="checkbox" class="form-control sin-cargo" t-att-checked="line.sin_cargo || False"/>
+            </td>
+            <td class="delete-cart-line">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </td>
+        </tr>
+    </t>
+
+    <t t-name="VariantModal">
+        <div class="modal fade" id="variant_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel"> <t t-esc="product.name"/> Variants</h4>
+                        <button type="button" class="close model-close close_quicksale_button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="position: absolute;top: 0px;right: 10px;">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                         <div class="product-variants">
+                             <table class="table" style="font-size: 12px;margin-bottom: 0px;">
+                                 <tr>
+                                     <th style="width:80%;vertical-align: middle;">
+                                         Product Name
+                                     </th>
+                                     <th style="width:5%;vertical-align: middle;">
+                                         Quantity
+                                     </th>
+                                     <th style="width:15%;vertical-align: middle;">
+                                         Forecasted Quantity
+                                     </th>
+                                 </tr>
+                                 <tr t-foreach="variant_products" t-as="p_variant" t-att-data-id="p_variant.id">
+                                     <td>
+                                        <!--t t-esc="p_variant.display_name"/-->
+                                        <t t-esc="p_variant.description_sale"/>
+                                     </td>
+                                     <td>
+                                         <input type="text" class="p_variant_qty" style="width: 100px;" autofocus="autofocus"/>
+                                     </td>
+                                     <td>
+                                        <t t-esc="p_variant.virtual_available"/>
+                                     </td>
+                                 </tr>
+                             </table>
+                         </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--button type="button" class="custom_btn btn-secondary" data-dismiss="modal">Close</button-->
+                        <button type="button" class="btn btn-primary add-variants">Add Products</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="Sidebar-Panel">
+        <div class="slider-btn">
+            <div id="mysidebar">
+                <div id="wrapper" class="toggled">
+                    <div id="sidebar-wrapper">
+                        <ul class="sidebar-nav">
+                            <li class='header'>
+                                <span>Order Details</span>
+                            </li>
+                            <li class="order-info">
+                                <table class="table table-bordered table-hover order-details-sidebar">
+                                    <!--tr>
+                                        <td> Comercial </td>
+                                        <td class="order-comercial"> <span class="value"/> </td>
+                                    </tr-->
+                                    <tr>
+                                        <td> Total Quantity </td>
+                                        <td class="order-total-qty"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Total Products </td>
+                                        <td class="order-total-products"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Total Abonos </td>
+                                        <td class="order-total-abono"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Total No Charge </td>
+                                        <td class="order-total-nocharge"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Total Discount </td>
+                                        <td class="order-total-discount"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr style="font-weight: bold;">
+                                        <td> Net Total </td>
+                                        <td class="order-total-net"> <span class="value"/> </td>
+                                    </tr>
+                                    <!--tr>
+                                        <td> Total Taxes </td>
+                                        <td class="order-total-taxes"> <span class="value"/> </td>
+                                    </tr>
+                                    <tr style="font-weight: bold;">
+                                        <td> Total Amount </td>
+                                        <td class="order-total"> <span class="value"/> </td>
+                                    </tr-->
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="slidemenubtn">
+                        <a id="menu-toggle" align="center">
+                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

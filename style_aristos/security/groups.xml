@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+ 	<record model="ir.module.category" id="category_grupo_style_aristos">
+            <field name="name">Grupo Style Aristos </field>
+            <field name="sequence">1</field>
+    </record> 
+    <record id="group_style_aristos_direccion" model="res.groups">
+        <field name="name">Direccion</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>   
+	<record id="group_style_aristos_admin" model="res.groups">
+        <field name="name">Administracion</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+	<record id="group_style_aristos_finanzas" model="res.groups">
+        <field name="name">Finanzas</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+	<record id="group_style_aristos_produccion" model="res.groups">
+        <field name="name">Produccion</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+	<record id="group_style_aristos_almacen" model="res.groups">
+        <field name="name">Almacen</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+	<record id="group_style_aristos_compras" model="res.groups">
+        <field name="name">Compras</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+    <record id="group_style_aristos_comercial" model="res.groups">
+        <field name="name">Comercial</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+    <record id="group_style_aristos_comission" model="res.groups">
+        <field name="name">Comisiones</field>
+        <field name="category_id" ref="category_grupo_style_aristos"/>
+    </record>
+</data>
+</openerp>

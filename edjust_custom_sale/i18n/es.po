@@ -1,0 +1,1261 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* edjust_custom_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-23 09:19+0000\n"
+"PO-Revision-Date: 2018-07-23 11:24+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_ES\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Abril"
+msgstr "Abril"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:203
+#: field:edjust.compromiso,realizado:0
+#, python-format
+msgid "Accomplished"
+msgstr "Completado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:263
+#: code:addons/edjust_custom_sale/sale_order.py:740
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,activities_ids:0
+#: field:edjust.difusion.list.wizard,activities_ids:0
+#, python-format
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1031
+#: field:edjust.difusion.activities,activity_id:0
+#, python-format
+msgid "Activity"
+msgstr "Actividad"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+msgid "Add Guests"
+msgstr "Añadir Invitados"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.list.wizard:edjust_custom_sale.view_filter_difusion_list_wizard
+msgid "Add partners to diffusion list"
+msgstr "Añadir clientes a la lista de distribución"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:637
+#, python-format
+msgid "Add partners to list"
+msgstr "Añadir clientes a la lista"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.list.wizard:edjust_custom_sale.view_filter_difusion_list_wizard
+msgid "Add to list"
+msgstr "Añadir a lista"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:725
+#: selection:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Advertiser"
+msgstr "Anunciante"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:256
+#: field:edjust.difusion,num_anunci:0
+#, python-format
+msgid "Advertiser Copies"
+msgstr "Copias de Anunciante"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:196
+#: field:edjust.compromiso,sale_id:0
+#, python-format
+msgid "Advertising Request"
+msgstr "Solicitud de publicidad"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Agosto"
+msgstr "Agosto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:202
+#: field:edjust.compromiso,notes_red:0
+#, python-format
+msgid "Annotations Writing"
+msgstr "Anotaciones de edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:41
+#: field:edjust.sale.medio,pub_interval:0
+#, python-format
+msgid "Billed each"
+msgstr "Facturado Cada"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.list.wizard:edjust_custom_sale.view_filter_difusion_list_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: edjust_custom_sale
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1086
+#: field:sale.order.line,categ_id:0
+#, python-format
+msgid "Category"
+msgstr "Categoria"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "City"
+msgstr "Ciudad"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Cliente"
+msgstr "Cliente"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+#: view:res.partner:edjust_custom_sale.partner_view_button_compromiso_count
+msgid "Commitments"
+msgstr "Compromisos"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:233
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+#: model:ir.actions.act_window,name:edjust_custom_sale.act_open_compromiso_view
+#, python-format
+msgid "Commitments Drafting"
+msgstr "Compromisos de Redacción"
+
+#. module: edjust_custom_sale
+#: field:res.partner,comunicaciones_count:0
+msgid "Comunicaciones"
+msgstr "Comunicaciones"
+
+#. module: edjust_custom_sale
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Confirmed"
+msgstr "Confirmado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:41
+#: field:difusion.line.label,city:0
+#, python-format
+msgid "Contact City"
+msgstr "Ciudad de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:43
+#: field:difusion.line.label,country:0
+#, python-format
+msgid "Contact Country"
+msgstr "Pais de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:42
+#: field:difusion.line.label,provincia:0
+#, python-format
+msgid "Contact Country State"
+msgstr "Provincia de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:38
+#: field:difusion.line.label,name:0
+#, python-format
+msgid "Contact Name"
+msgstr "Nombre de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:44
+#: field:difusion.line.label,ref:0
+#, python-format
+msgid "Contact Ref"
+msgstr "Referencia de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:39
+#: field:difusion.line.label,street:0
+#, python-format
+msgid "Contact Street"
+msgstr "Calle de contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:40
+#: field:difusion.line.label,zip:0
+#, python-format
+msgid "Contact Zip Code"
+msgstr "CP de Contacto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:748
+#: field:edjust.difusion.list.wizard,cont_inv:0
+#, python-format
+msgid "Copies Guest"
+msgstr "Copias de Invitados"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:268
+#: code:addons/edjust_custom_sale/sale_order.py:1060
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,country_ids:0
+#: field:edjust.difusion.country,country_id:0
+#, python-format
+msgid "Country"
+msgstr "Pais"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:744
+#: field:edjust.difusion.list.wizard,country_ids:0
+#, python-format
+msgid "Countries"
+msgstr "Paises"
+
+#. module: edjust_custom_sale
+#: field:edjust.compromiso,create_uid:0 field:edjust.difusion,create_uid:0
+#: field:edjust.difusion.activities,create_uid:0
+#: field:edjust.difusion.country,create_uid:0
+#: field:edjust.difusion.groups,create_uid:0
+#: field:edjust.difusion.lines,create_uid:0
+#: field:edjust.difusion.list.wizard,create_uid:0
+#: field:edjust.difusion.positions,create_uid:0
+#: field:edjust.difusion.sectors,create_uid:0
+#: field:edjust.difusion.states,create_uid:0
+#: field:edjust.edition.date.filter,create_uid:0
+#: field:edjust.sale.edicion,create_uid:0 field:edjust.sale.medio,create_uid:0
+#: field:edjust.tipo.compromiso,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: edjust_custom_sale
+#: field:edjust.compromiso,create_date:0 field:edjust.difusion,create_date:0
+#: field:edjust.difusion.activities,create_date:0
+#: field:edjust.difusion.country,create_date:0
+#: field:edjust.difusion.groups,create_date:0
+#: field:edjust.difusion.lines,create_date:0
+#: field:edjust.difusion.list.wizard,create_date:0
+#: field:edjust.difusion.positions,create_date:0
+#: field:edjust.difusion.sectors,create_date:0
+#: field:edjust.difusion.states,create_date:0
+#: field:edjust.edition.date.filter,create_date:0
+#: field:edjust.sale.edicion,create_date:0
+#: field:edjust.sale.medio,create_date:0
+#: field:edjust.tipo.compromiso,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+msgid "Crete List"
+msgstr "Crear Lista"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "Customer Company"
+msgstr "Empresa de cliente"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+msgid "Date"
+msgstr "Fecha"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1077
+#: field:edjust.edition.date.filter,date_from:0
+#, python-format
+msgid "Date From"
+msgstr "Fecha desde"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1078
+#: field:edjust.edition.date.filter,date_to:0
+#, python-format
+msgid "Date To"
+msgstr "Fecha hasta"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:198
+#: field:edjust.compromiso,date:0
+#, python-format
+msgid "Date annotation"
+msgstr "Fecha de Notificación"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:43
+#: selection:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "Day(s)"
+msgstr "Dia(s)"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Descripción"
+msgstr "Descripción"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Diciembre"
+msgstr "Diciembre"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:720
+#: code:addons/edjust_custom_sale/sale_order.py:736
+#: code:addons/edjust_custom_sale/sale_order.py:1029
+#: code:addons/edjust_custom_sale/sale_order.py:1037
+#: code:addons/edjust_custom_sale/sale_order.py:1044
+#: code:addons/edjust_custom_sale/sale_order.py:1051
+#: code:addons/edjust_custom_sale/sale_order.py:1058
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion.activities,difusion_id:0
+#: field:edjust.difusion.country,difusion_id:0
+#: field:edjust.difusion.groups,difusion_id:0
+#: field:edjust.difusion.lines,difusion_id:0
+#: field:edjust.difusion.list.wizard,difusion_id:0
+#: field:edjust.difusion.positions,difusion_id:0
+#: field:edjust.difusion.sectors,difusion_id:0
+#: model:ir.actions.act_window,name:edjust_custom_sale.act_open_difusion
+#, python-format
+msgid "Diffusion"
+msgstr "Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:253
+#: field:edjust.difusion,difusion_date:0
+#, python-format
+msgid "Diffusion Date"
+msgstr "Fecha de Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:258
+#: field:edjust.difusion,difusion_line_ids:0
+#, python-format
+msgid "Diffusion Lines"
+msgstr "Lineas de Difusión"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+msgid "Diffusion List"
+msgstr "Lista de Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:77
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+#: field:edjust.sale.edicion,difusion_ids:0
+#, python-format
+msgid "Diffusion list"
+msgstr "Lista de Difusión"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "Difusion"
+msgstr "Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:34
+#: field:difusion.line.label,difusion_id:0
+#, python-format
+msgid "Difusion ID"
+msgstr "ID de Difusión"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_form1
+msgid "Difusion Line"
+msgstr "Linea de Difusión"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_tree1
+msgid "Difusion Lines"
+msgstr "Lineas de Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:35
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+#: field:difusion.line.label,difusion_name:0
+#, python-format
+msgid "Difusion Name"
+msgstr "Nombre de Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:36
+#: field:difusion.line.label,difusion_type:0
+#, python-format
+msgid "Difusion Type"
+msgstr "Tipo de Difusión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1065
+#: field:edjust.difusion.states,difusion_id:0
+#, python-format
+msgid "Difussion"
+msgstr "Difusión"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Difussion Lines"
+msgstr "Difussion Lines"
+
+#. module: edjust_custom_sale
+#: field:difusion.line.label,display_name:0
+#: field:edjust.compromiso,display_name:0 field:edjust.difusion,display_name:0
+#: field:edjust.difusion.activities,display_name:0
+#: field:edjust.difusion.country,display_name:0
+#: field:edjust.difusion.groups,display_name:0
+#: field:edjust.difusion.lines,display_name:0
+#: field:edjust.difusion.list.wizard,display_name:0
+#: field:edjust.difusion.positions,display_name:0
+#: field:edjust.difusion.sectors,display_name:0
+#: field:edjust.difusion.states,display_name:0
+#: field:edjust.edition.date.filter,display_name:0
+#: field:edjust.sale.edicion,display_name:0
+#: field:edjust.sale.medio,display_name:0
+#: field:edjust.tipo.compromiso,display_name:0
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: edjust_custom_sale
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_difusion
+msgid "Distribution"
+msgstr "Distirbución"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1015
+#, python-format
+msgid "Distribution list"
+msgstr "Lista de Distribución"
+
+#. module: edjust_custom_sale
+#: model:ir.actions.act_window,name:edjust_custom_sale.act_open_edicion_view
+msgid "Ediciones"
+msgstr "Ediciones"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:66
+#: code:addons/edjust_custom_sale/sale_order.py:251
+#: code:addons/edjust_custom_sale/sale_order.py:751
+#: code:addons/edjust_custom_sale/sale_order.py:1076
+#: code:addons/edjust_custom_sale/sale_order.py:1087
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+#: field:edjust.difusion,edicion_id:0
+#: field:edjust.difusion.list.wizard,edicion_id:0
+#: field:edjust.edition.date.filter,edition_id:0
+#: view:edjust.sale.edicion:edjust_custom_sale.view_ediciones_search
+#: field:edjust.sale.edicion,name:0
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+#: field:sale.order.line,edicion_id:0
+#, python-format
+msgid "Edition"
+msgstr "Edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1074
+#: field:edjust.edition.date.filter,name:0
+#, python-format
+msgid "Edition Name"
+msgstr "Nombre de Edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:167
+#: code:addons/edjust_custom_sale/sale_order.py:193
+#: field:edjust.compromiso,sale_edicion:0 field:sale.order,sale_edicion:0
+#, python-format
+msgid "Edition of the publication"
+msgstr "Edición de la publicación"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:40
+#: view:edjust.sale.edicion:edjust_custom_sale.view_edjust_ediciones_tree
+#: field:edjust.sale.medio,ediciones_count:0
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_ediciones_sub
+#, python-format
+msgid "Editions"
+msgstr "Ediciones"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_edjust_compromiso_form
+msgid "Editorial commitment"
+msgstr "Compromiso de redacción"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:76
+#: view:edjust.compromiso:edjust_custom_sale.view_edjust_compromiso_tree
+#: field:edjust.sale.edicion,compromiso_ids:0
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_compromiso
+#, python-format
+msgid "Editorial commitments"
+msgstr "Compromisos de redacción"
+
+#. module: edjust_custom_sale
+#: field:product.product,edjust_medio_ids:0
+msgid "Edjust medio ids"
+msgstr "Edjust medio ids"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:260
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+#: field:edjust.difusion,enabled:0
+#, python-format
+msgid "Enabled"
+msgstr "Habilitado"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Enero"
+msgstr "Enero"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:261
+#: code:addons/edjust_custom_sale/sale_order.py:749
+#: field:edjust.difusion,edit_exclude_from:0
+#: field:edjust.difusion.list.wizard,date_exclude_from:0
+#, python-format
+msgid "Exclude from"
+msgstr "Excluir desde"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:262
+#: code:addons/edjust_custom_sale/sale_order.py:750
+#: field:edjust.difusion,edit_exclude_to:0
+#: field:edjust.difusion.list.wizard,date_exclude_to:0
+#, python-format
+msgid "Exclude to"
+msgstr "Excluir hasta"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:199
+#: field:edjust.compromiso,extension:0
+#, python-format
+msgid "Extension"
+msgstr "Extensión"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Febrero"
+msgstr "Febrero"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:47
+#: field:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "Frecuency"
+msgstr "Frecuencia"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:724
+#: selection:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Free"
+msgstr "Gratis"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:255
+#: field:edjust.difusion,num_gratis:0
+#, python-format
+msgid "Free Contract Copies"
+msgstr "Copias de contratos gratis"
+
+#. module: edjust_custom_sale
+#: field:product.product,commission_free:0
+msgid "Free of commission"
+msgstr "Sin comisión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:71
+#: field:edjust.sale.edicion,mes_desde:0
+#, python-format
+msgid "From mounth"
+msgstr "Mes desde"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:165
+#: field:sale.order,sale_gen_categ:0
+#, python-format
+msgid "General Category"
+msgstr "Categoria general"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1046
+#: field:edjust.difusion.groups,group_id:0
+#, python-format
+msgid "Group"
+msgstr "Agrupación"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+#: view:edjust.sale.edicion:edjust_custom_sale.view_ediciones_search
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "Group by..."
+msgstr "Agrupar por..."
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:265
+#: code:addons/edjust_custom_sale/sale_order.py:742
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,groups_ids:0
+#: field:edjust.difusion.list.wizard,groups_ids:0
+#, python-format
+msgid "Groups"
+msgstr "Grupos"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:726
+#: selection:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Guest"
+msgstr "Invitado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:257
+#: field:edjust.difusion,num_invitado:0
+#, python-format
+msgid "Guest Copies"
+msgstr "Copias de Invitado"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+msgid "Guests"
+msgstr "Invitados"
+
+#. module: edjust_custom_sale
+#: field:difusion.line.label,id:0 field:edjust.compromiso,id:0
+#: field:edjust.difusion,id:0 field:edjust.difusion.activities,id:0
+#: field:edjust.difusion.country,id:0 field:edjust.difusion.groups,id:0
+#: field:edjust.difusion.lines,id:0 field:edjust.difusion.list.wizard,id:0
+#: field:edjust.difusion.positions,id:0 field:edjust.difusion.sectors,id:0
+#: field:edjust.difusion.states,id:0 field:edjust.edition.date.filter,id:0
+#: field:edjust.sale.edicion,id:0 field:edjust.sale.medio,id:0
+#: field:edjust.tipo.compromiso,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:738
+#: field:edjust.difusion.list.wizard,inc_duplicados:0
+#, python-format
+msgid "Increase in duplicates"
+msgstr "Aumentar en duplicados"
+
+#. module: edjust_custom_sale
+#: view:sale.order:edjust_custom_sale.sale_order_pub_form_view
+msgid "Internal note DOES NOT GO OUT ON INVOICE..."
+msgstr "Nota interna, NO SALE EN FACTURA..."
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:163
+#: field:sale.order,internal_note:0
+#, python-format
+msgid "Internal observations"
+msgstr "Observaciones Internas"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:41
+#: help:edjust.sale.medio,pub_interval:0
+#, python-format
+msgid "It is billed each X (days, weeks...."
+msgstr "se factura cada X (dias, semanas...."
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:47
+#: help:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "It is billed with this frecuency"
+msgstr "se factura con esta frecuencia"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Julio"
+msgstr "Julio"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Junio"
+msgstr "Junio"
+
+#. module: edjust_custom_sale
+#: field:difusion.line.label,__last_update:0
+#: field:edjust.compromiso,__last_update:0
+#: field:edjust.difusion,__last_update:0
+#: field:edjust.difusion.activities,__last_update:0
+#: field:edjust.difusion.country,__last_update:0
+#: field:edjust.difusion.groups,__last_update:0
+#: field:edjust.difusion.lines,__last_update:0
+#: field:edjust.difusion.list.wizard,__last_update:0
+#: field:edjust.difusion.positions,__last_update:0
+#: field:edjust.difusion.sectors,__last_update:0
+#: field:edjust.difusion.states,__last_update:0
+#: field:edjust.edition.date.filter,__last_update:0
+#: field:edjust.sale.edicion,__last_update:0
+#: field:edjust.sale.medio,__last_update:0
+#: field:edjust.tipo.compromiso,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: edjust_custom_sale
+#: field:edjust.compromiso,write_uid:0 field:edjust.difusion,write_uid:0
+#: field:edjust.difusion.activities,write_uid:0
+#: field:edjust.difusion.country,write_uid:0
+#: field:edjust.difusion.groups,write_uid:0
+#: field:edjust.difusion.lines,write_uid:0
+#: field:edjust.difusion.list.wizard,write_uid:0
+#: field:edjust.difusion.positions,write_uid:0
+#: field:edjust.difusion.sectors,write_uid:0
+#: field:edjust.difusion.states,write_uid:0
+#: field:edjust.edition.date.filter,write_uid:0
+#: field:edjust.sale.edicion,write_uid:0 field:edjust.sale.medio,write_uid:0
+#: field:edjust.tipo.compromiso,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: edjust_custom_sale
+#: field:edjust.compromiso,write_date:0 field:edjust.difusion,write_date:0
+#: field:edjust.difusion.activities,write_date:0
+#: field:edjust.difusion.country,write_date:0
+#: field:edjust.difusion.groups,write_date:0
+#: field:edjust.difusion.lines,write_date:0
+#: field:edjust.difusion.list.wizard,write_date:0
+#: field:edjust.difusion.positions,write_date:0
+#: field:edjust.difusion.sectors,write_date:0
+#: field:edjust.difusion.states,write_date:0
+#: field:edjust.edition.date.filter,write_date:0
+#: field:edjust.sale.edicion,write_date:0 field:edjust.sale.medio,write_date:0
+#: field:edjust.tipo.compromiso,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:33
+#, python-format
+msgid "Line ID"
+msgstr "Line ID"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Lista de distribución"
+msgstr "Lista de distribución"
+
+#. module: edjust_custom_sale
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_mant_publicaciones
+msgid "Maintenance of Publications"
+msgstr "Mantenimiento de Publicaciones"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Marzo"
+msgstr "Marzo"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Mayo"
+msgstr "Mayo"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+msgid "Media Editions"
+msgstr "Ediciones del Medio"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1075
+#: code:addons/edjust_custom_sale/sale_order.py:1085
+#: field:edjust.edition.date.filter,medio_id:0
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+#: field:sale.order.line,medio_id:0
+#, python-format
+msgid "Medium"
+msgstr "Medio"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+#: view:sale.order:edjust_custom_sale.view_saleorder_edjust_search
+msgid "Medium / Edition"
+msgstr "Medio / Edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:168
+#: code:addons/edjust_custom_sale/sale_order.py:194
+#: field:edjust.compromiso,sale_med_edicion:0
+#: view:sale.order:edjust_custom_sale.view_saleorder_edjust_search
+#: field:sale.order,sale_med_edicion:0
+#, python-format
+msgid "Medium and Edition"
+msgstr "Medio y Edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:45
+#: selection:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "Mounth(s)"
+msgstr "Mes(es)"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+msgid "My communications"
+msgstr "Mis Comunicaciones"
+
+#. module: edjust_custom_sale
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Not Done"
+msgstr "Pendiente"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+msgid "Not finished"
+msgstr "No Finalizado"
+
+#. module: edjust_custom_sale
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Not invoiced"
+msgstr "No Facturado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:170
+#: code:addons/edjust_custom_sale/sale_order.py:205
+#: field:edjust.compromiso,contacto_aviso:0 field:sale.order,contacto_aviso:0
+#, python-format
+msgid "Notify contact"
+msgstr "Contacto para Notificaciones"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Noviembre"
+msgstr "Noviembre"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:728
+#: code:addons/edjust_custom_sale/sale_order.py:737
+#: field:edjust.difusion.lines,num_ejemplares:0
+#: field:edjust.difusion.list.wizard,num_ejemplares:0
+#, python-format
+msgid "Num of Copies"
+msgstr "Nº copias"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Nª de ejemplares"
+msgstr "Nº de ejemplares"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:201
+#: view:edjust.compromiso:edjust_custom_sale.view_edjust_compromiso_form
+#: field:edjust.compromiso,notes:0
+#, python-format
+msgid "Observations"
+msgstr "Observaciones"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Octubre"
+msgstr "Octubre"
+
+#. module: edjust_custom_sale
+#: model:ir.actions.act_window,name:edjust_custom_sale.act_open_sale_order_line_view
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_order_lines
+msgid "Order Lines"
+msgstr "Lineas de Pedido"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:200
+#: field:edjust.compromiso,num_pagina:0
+#, python-format
+msgid "Page No."
+msgstr "Nº página"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:195
+#: code:addons/edjust_custom_sale/sale_order.py:721
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+#: field:edjust.compromiso,partner_id:0
+#: field:edjust.difusion.lines,partner_id:0
+#: model:ir.model,name:edjust_custom_sale.model_res_partner
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+#, python-format
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/difusion_label.py:37
+#: field:difusion.line.label,parent_name:0
+#, python-format
+msgid "Partner Parent Name"
+msgstr "Nombre de relacionado"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:719
+#: field:edjust.difusion.lines,name:0
+#, python-format
+msgid "Partner name, Subscription or Concept"
+msgstr "Nombre de cliente, susbscripción o concepto"
+
+#. module: edjust_custom_sale
+#: field:edjust.difusion.list.wizard,partners_ids:0
+msgid "Partners"
+msgstr "Clientes"
+
+#. module: edjust_custom_sale
+#: field:res.partner,cust_relation2:0
+msgid "Partners Group"
+msgstr "Grupo de clientes"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1053
+#: field:edjust.difusion.positions,position_id:0
+#: field:res.partner,cust_position:0
+#, python-format
+msgid "Position"
+msgstr "Puesto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:266
+#: code:addons/edjust_custom_sale/sale_order.py:743
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,positions_ids:0
+#: field:edjust.difusion.list.wizard,positions_ids:0
+#, python-format
+msgid "Positions"
+msgstr "Puestos"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+msgid "Print list"
+msgstr "Imprimir lista"
+
+#. module: edjust_custom_sale
+#: model:ir.model,name:edjust_custom_sale.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:166
+#: field:sale.order,sale_subcateg:0
+#, python-format
+msgid "Product type"
+msgstr "Tipo de producto"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:37
+#: code:addons/edjust_custom_sale/sale_order.py:252
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+#: field:edjust.difusion,medio_id:0
+#: view:edjust.sale.edicion:edjust_custom_sale.view_ediciones_search
+#: field:edjust.sale.medio,name:0
+#, python-format
+msgid "Publication"
+msgstr "Publicación"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:75
+#: code:addons/edjust_custom_sale/sale_order.py:164
+#: code:addons/edjust_custom_sale/sale_order.py:192
+#: field:edjust.compromiso,sale_pub:0 field:edjust.sale.edicion,medio_id:0
+#: field:sale.order,sale_pub:0
+#, python-format
+msgid "Publication medium"
+msgstr "Medio de Publicaión"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:250
+#: field:edjust.difusion,name:0
+#, python-format
+msgid "Publication, Edition"
+msgstr "Publicación, edición"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.medio:edjust_custom_sale.view_edjust_publicaciones_tree
+#: model:ir.actions.act_window,name:edjust_custom_sale.act_open_publicaciones_view
+#: model:ir.ui.menu,name:edjust_custom_sale.menu_origenes_sub
+msgid "Publications"
+msgstr "Publicaciones"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1030
+#: code:addons/edjust_custom_sale/sale_order.py:1038
+#: code:addons/edjust_custom_sale/sale_order.py:1045
+#: code:addons/edjust_custom_sale/sale_order.py:1052
+#: code:addons/edjust_custom_sale/sale_order.py:1059
+#: code:addons/edjust_custom_sale/sale_order.py:1066
+#: field:edjust.difusion.activities,quantity:0
+#: field:edjust.difusion.country,quantity:0
+#: field:edjust.difusion.groups,quantity:0
+#: field:edjust.difusion.positions,quantity:0
+#: field:edjust.difusion.sectors,quantity:0
+#: field:edjust.difusion.states,quantity:0
+#, python-format
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:727
+#: help:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Reason why it is included in the diffusion"
+msgstr "Razon por la que se incluye en la difusión"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:38
+#: field:edjust.sale.medio,categ_id:0
+#, python-format
+msgid "Related category"
+msgstr "Categoria relacionada"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:39
+#: field:edjust.sale.medio,product_id:0
+#, python-format
+msgid "Related product"
+msgstr "Producto relacionado"
+
+#. module: edjust_custom_sale
+#: model:ir.model,name:edjust_custom_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: edjust_custom_sale
+#: model:ir.model,name:edjust_custom_sale.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: edjust_custom_sale
+#: view:sale.order.line:edjust_custom_sale.eview_sale_order_line_search
+msgid "Seach Sale Order Line"
+msgstr "Buscar de lineas de pedido"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+msgid "Seach communications"
+msgstr "Buscar Comunacaciones"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_search_view
+msgid "Search diffusion list"
+msgstr "Buscar lista de difusión"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.edicion:edjust_custom_sale.view_ediciones_search
+msgid "Search editions"
+msgstr "Buscar ediciones"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1039
+#: field:edjust.difusion.sectors,sector_id:0
+#, python-format
+msgid "Sector"
+msgstr "Sector"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:264
+#: code:addons/edjust_custom_sale/sale_order.py:741
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,sectors_ids:0
+#: field:edjust.difusion.list.wizard,sectors_ids:0
+#, python-format
+msgid "Sectors"
+msgstr "Sectores"
+
+#. module: edjust_custom_sale
+#: selection:edjust.sale.edicion,mes_desde:0
+#: selection:edjust.sale.edicion,mes_hasta:0
+msgid "Septiembre"
+msgstr "Septiembre"
+
+#. module: edjust_custom_sale
+#: view:res.partner:edjust_custom_sale.partner_view_button_compromiso_count
+msgid "Show compromises for this partner"
+msgstr "Mostrar compromisos de este cliente"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1067
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+#: field:edjust.difusion.states,state_id:0
+#, python-format
+msgid "State"
+msgstr "Provincia"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:267
+#: code:addons/edjust_custom_sale/sale_order.py:745
+#: view:edjust.difusion:edjust_custom_sale.edjust_difusion_form_view
+#: field:edjust.difusion,states_ids:0
+#: field:edjust.difusion.list.wizard,states_ids:0
+#, python-format
+msgid "States"
+msgstr "Provincias"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:723
+#: selection:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Subscriber"
+msgstr "Suscriptor"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:747
+#: field:edjust.difusion.list.wizard,total_lista:0
+#, python-format
+msgid "Subscriber & Advertisers Copies"
+msgstr "Copias de Suscriptores y Anunciantes"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:727
+#: field:edjust.difusion.lines,difusion_type:0
+#, python-format
+msgid "Subscriber Type"
+msgstr "Tipo de suscriptor"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:254
+#: field:edjust.difusion,num_subscriber:0
+#, python-format
+msgid "Subscribers Copies"
+msgstr "Copias de Suscriptor"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:191
+#: field:edjust.compromiso,name:0
+#, python-format
+msgid "Summary commitment"
+msgstr "Resumen de compromiso"
+
+#. module: edjust_custom_sale
+#: view:edjust.difusion.lines:edjust_custom_sale.edjust_difusion_list_tree_form
+msgid "Tipo de Suscripción"
+msgstr "Tipo de Suscripción"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:74
+#: field:edjust.sale.edicion,mes_hasta:0
+#, python-format
+msgid "To mounth"
+msgstr "Mes hasta"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:259
+#: field:edjust.difusion,total_difusion:0
+#, python-format
+msgid "Total Copies"
+msgstr "Copias Totales"
+
+#. module: edjust_custom_sale
+#: view:difusion.line.label:edjust_custom_sale.view_edjust_difusion_line_search
+#: view:sale.order:edjust_custom_sale.view_saleorder_edjust_search
+msgid "Type"
+msgstr "Tipo"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1092
+#: field:sale.order.line,usable_product_ids:0
+#, python-format
+msgid "Usable products"
+msgstr "Productos utilizables"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:1089
+#: field:sale.order.line,usable_tmpl_ids:0
+#, python-format
+msgid "Usable templates"
+msgstr "Plantillas utilizables"
+
+#. module: edjust_custom_sale
+#: view:edjust.compromiso:edjust_custom_sale.view_edjust_compromiso_form
+msgid "Writing Notes"
+msgstr "Notas de Edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:67
+#: field:edjust.sale.edicion,year:0
+#, python-format
+msgid "Year of Edition"
+msgstr "Año de edición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:46
+#: selection:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "Year(s)"
+msgstr "Año(s)"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:184
+#: code:addons/edjust_custom_sale/sale_order.py:197
+#: view:edjust.compromiso:edjust_custom_sale.view_comunicaciones_search
+#: field:edjust.compromiso,tipo_id:0 field:edjust.tipo.compromiso,name:0
+#, python-format
+msgid "communication type"
+msgstr "Tipo de comunicación"
+
+#. module: edjust_custom_sale
+#: view:edjust.sale.edicion:edjust_custom_sale.edjust_edicion_form_view
+msgid "diffusion list"
+msgstr "Lista de Difusión"
+
+#. module: edjust_custom_sale
+#: field:edjust.difusion,inicio:0
+msgid "inicio"
+msgstr "inicio"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:169
+#: code:addons/edjust_custom_sale/sale_order.py:204
+#: field:edjust.compromiso,no_avisar:0 field:sale.order,no_avisar:0
+#, python-format
+msgid "not notify partner"
+msgstr "No es necesario notificar"
+
+#. module: edjust_custom_sale
+#: field:edjust.difusion,page:0
+msgid "position"
+msgstr "Posición"
+
+#. module: edjust_custom_sale
+#: code:addons/edjust_custom_sale/sale_order.py:44
+#: selection:edjust.sale.medio,pub_rule_type:0
+#, python-format
+msgid "week(s)"
+msgstr "Semana(s)"

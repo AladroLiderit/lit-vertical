@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="liderit_syg_report_print"
+            string="Etiquetas Alumnos"
+            model="res.partner"
+            report_type="qweb-pdf"
+            name="Liderit_syg_report.liderit_syg_aladro_report"
+        />
+
+      <record id="liderit_syg_report_print" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="Liderit_syg_report.paperformat_liderit_syg_report_print"/>
+        </record>
+
+
+    
+       
+
+    </data>
+</openerp>

@@ -1,0 +1,265 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+<!--cambios en el formulario de eventos-->
+     <record model="ir.ui.view" id="view_event_asb_advanced_form">
+       <field name="name">Events</field>
+       <field name="model">event.event</field>
+       <field name="inherit_id" ref="event.view_event_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='address_id']" position="replace">
+          </xpath>
+
+          <xpath expr="//field[@name='organizer_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='date_tz']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+
+          <xpath expr="//field[@name='user_id']" position="after">
+            <field name="gabinete_id"/>
+            <field name="protesist_id" domain="[('is_protesist','=',True)]"/>
+            
+          </xpath>
+
+          <xpath expr="//group[@name='main_field_group']" position="after">
+            <group>
+              <field name="color_state_id" domain="[('is_protesist','=',True)]"/>
+            </group>
+          </xpath>
+
+          <xpath expr="//field[@name='date_end']" position="after">
+            <field name="not_asisted"/>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Registrations']/group" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Event Details']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//header/button[@name='button_confirm']" position="before">
+            <button string="A Documentar" type="object" name="button_documentar" class="oe_highlight" attrs="{'invisible': ['|',('state','=','propolsal'),'|',('state','=','cancel'),('state','=','end')]}"/>
+          </xpath>
+
+          <xpath expr="//header/button[@name='button_confirm']" position="replace">
+            <button string="Presupuestado" type="object" name="button_presupuesto" class="oe_highlight" states="draft,propolsal"/>
+            <button string="Completa" type="object" name="button_completa" class="oe_highlight" states="draft,propolsal"/>
+          </xpath>
+
+          <xpath expr="//header/button[@name='button_cancel']" position="replace">
+            <button string="Cancel Event" name="button_cancel" states="draft,confirm,propolsal,end" type="object"/>
+          </xpath>
+
+       </field>
+     </record>
+
+<!--
+     <record model="ir.ui.view" id="view_event_sale_asb_advanced_form">
+       <field name="name">Events</field>
+       <field name="model">event.event</field>
+       <field name="inherit_id" ref="event_sale.view_event_form"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//notebook/page[@string='Badge']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//notebook/page[@string='Ticket Types']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+       </field>
+     </record>
+-->
+
+<!--cambios en el formulario de busquedas de eventos-->
+     <record model="ir.ui.view" id="view_event_asb_advanced_search">
+       <field name="name">Events</field>
+       <field name="model">event.event</field>
+       <field name="inherit_id" ref="event.view_event_search"/>
+       <field name="arch" type="xml">
+         <xpath expr="//search[@string='Events']" position="inside">
+          <field name="gabinete_id" string="gabinete" domain="[('address_id.name','ilike',self)]"/>
+          <field name="registration_ids" string="paciente" domain="[('registration_ids.partner_id.name','ilike',self)]"/>    
+         </xpath>
+
+         <xpath expr="//search/filter[@name='draft']" position="after">
+           <filter string="Por documentar" domain="[('state','=','propolsal')]" help="Citas sin documentar"/>    
+         </xpath>
+
+         <xpath expr="//search/filter[@string='Confirmed']" position="after">
+           <filter string="Contratados" domain="[('state','=','done')]" help="Contrato conseguido"/>    
+         </xpath>
+
+         <xpath expr="//search/filter[@name='message_unread']" position="replace">
+           <filter string="Fallos" domain="[('not_asisted','=','True')]" help="No asistieron a la cita concertada"/>  
+           <filter name ="not_cancel" string="No Cancelados" domain="[('state','!=','cancel')]" help="Citas  no canceladas"/>  
+         </xpath>
+
+         <xpath expr="//group[@string='Group By']" position="inside">
+           <filter string="Empresa" context="{'group_by':'registration_ids.partner_id.name'}"/>
+           <filter string="Actividad" context="{'group_by':'actividad_event'}"/>
+           <!--filter string="Comercial" context="{'group_by':'comercial_event'}"/-->
+         </xpath>
+         
+       </field>
+
+     </record>
+
+<!--cambios en el formulario de inscripciones-->
+    <record model="ir.ui.view" id="view_registration_asb_advanced_tree">
+       <field name="name">Event Reg Tree</field>
+       <field name="model">event.registration</field>
+       <field name="inherit_id" ref="event.view_event_registration_tree"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='create_date']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='user_id']" position="attributes">
+            <attribute name="invisible">0</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='nb_register']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='origin']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+       </field>
+     </record>
+
+
+<!--
+    <record model="ir.ui.view" id="view_registration_sale_asb_advanced_tree">
+       <field name="name">Event Reg Sale Tree</field>
+       <field name="model">event.registration</field>
+       <field name="inherit_id" ref="event_sale.view_event_registration_ticket_tree"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='event_ticket_id']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+
+
+       </field>
+     </record>
+-->
+
+
+<!--cambios en el formulario de calendario-->    
+
+    <record model="ir.ui.view" id="view_event_asb_advanced_calendar">
+       <field name="name">Event View ASB Calendar</field>
+       <field name="model">event.event</field>
+       <field name="inherit_id" ref="event.view_event_calendar"/>
+       <field name="arch" type="xml">
+
+          <xpath expr="//calendar" position="attributes">
+            <attribute name="color">protesist_id</attribute>
+            <attribute name="quick_add">False</attribute>
+            <attribute name="mode">week</attribute>
+          </xpath>
+
+          <xpath expr="//field[@name='type']" position="replace">
+            <field name="protesist_id"/>
+            <field name="hex_value"/>
+          </xpath>
+
+       </field>
+     </record>
+
+
+<!--form view de partner para gestionar gabinetes-->
+    <record id="view_res_gabinete_form" model="ir.ui.view">
+        <field name="name">res.gabinete.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']" position="after">
+            <field name="is_box"/>
+          </xpath>
+          <xpath expr="//page[@name='internal_notes']/field[@name='comment']" position="before">
+            <group>
+              <field name="contacto"/>
+            </group>
+          </xpath>
+          <xpath expr="//field[@name='active']" position="after">
+            <field name="fallecido"/>
+          </xpath>
+        </field>
+    </record>
+
+<!--form view de partner para gestionar usuarios audioprotesista-->
+    <record id="view_res_protesist_form" model="ir.ui.view">
+        <field name="name">res.protesist.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_simple_form" />
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='fax']" position="after">
+            <field name="is_protesist"/>
+            <field name="color" widget="color"/>
+          </xpath>
+        </field>
+    </record>
+
+
+
+<!--form view de event type para gestionar duracion de los tipos-->
+    <record id="event_type_duracion_form" model="ir.ui.view">
+        <field name="name">event.type.duracion.form</field>
+        <field name="model">event.type</field>
+        <field name="inherit_id" ref="event.view_event_type_form" />
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='default_reply_to']" position="replace">
+            <field name="duracion_min"/>
+          </xpath>
+          <xpath expr="//field[@name='default_registration_min']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//field[@name='default_email_event']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//field[@name='default_registration_max']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+          <xpath expr="//field[@name='default_email_registration']" position="attributes">
+            <attribute name="invisible">1</attribute>
+          </xpath>
+        </field>
+    </record>
+
+
+<!--form de gestion de gabinetes-->
+      <record model="ir.ui.view" id="view_asb_gabinete_tree">
+            <field name="name">Gabinetes</field>
+            <field name="model">asb.gabinete</field>
+            <field name="arch" type="xml">
+                <tree string="Gabinetes">
+                    <field name="name"/>
+                    <field name="protesist_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_asb_gabinete">
+            <field name="name">Gabinetes</field>
+            <field name="res_model">asb.gabinete</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem name="Gabinetes" id="menu_asb_gabinete" action="action_asb_gabinete" parent="event.event_configuration" groups="base.group_no_one"/>
+
+
+    </data>
+</openerp>

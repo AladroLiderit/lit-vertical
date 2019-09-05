@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>        
+<!--========================================= ===============================================================================-->	
+        <record id="style_aristos_payment_term_form" model="ir.ui.view">
+            <field name="name">payment.term.style_aristos.form.inh</field>
+            <field name="model">account.payment.term</field> 
+            <field name="type">form</field> 
+	        <field name="inherit_id" ref="account.view_payment_term_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='active']" position="after">            								
+					<field name="discount" help="Descuento en ventas si se aplica este plazo" />
+				</xpath>
+                  	
+			</field> 
+        </record>   
+
+    
+
+<!--cambio en la vista de albaran para pasar el tipo de movimiento a cabecera-->
+    <record id="aristos_view_picking_form" model="ir.ui.view">
+        <field name="name">aristos.view.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@string='Additional Info']/group/group/field[@name='picking_type_id']" position="replace"/>
+                                         
+                <field name="backorder_id" position="after">
+                    <field name="picking_type_id" />
+                </field>
+
+        </field>
+    </record>
+
+    <!--la vista tree de moves en el picking editable bottom-->
+
+    
+    <record id="aristos_view_move_picking_form" model="ir.ui.view">
+        <field name="name">aristos.view.move.picking.form</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//tree[@string='Stock Moves']" position="attributes">
+                <attribute name="editable">top</attribute>
+            </xpath>
+            <!--tenemos que registrar el onchange en product como en el picking form-->
+            <xpath expr="//field[@name='product_id']" position="replace">
+                <field name="product_id" on_change="onchange_product_id(product_id,location_id,location_dest_id, parent.partner_id)"/>
+                <field name="name"/>
+            </xpath>
+
+        </field>
+    </record>
+
+
+
+
+
+
+    </data>
+</openerp> 

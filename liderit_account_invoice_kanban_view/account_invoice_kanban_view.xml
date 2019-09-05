@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="account_invoice_kanban_view">
+        <field name="name">account.invoice.kanban.view</field>
+        <field name="model">account.invoice</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="partner_id"/>
+                <field name="number"/>
+                <field name="date_due"/>
+                <field name="date_invoice"/>
+                <field name="origin"/>
+                <field name="amount_total"/>
+                <field name="residual"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Factura: </b><field name="number"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Origen: </b><field name="origin"/></li>
+                                    <li><b>Fecha: </b><field name="date_invoice"/></li>
+                                    <li><b>Vencimiento: </b><field name="date_due"/></li>
+                                    <li><b>Total: </b><field name="amount_total"/></li>
+                                    <li><b>Saldo: </b><field name="residual"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+    <record model="ir.ui.view" id="account_voucher_kanban_view">
+        <field name="name">account.voucher.kanban.view</field>
+        <field name="model">account.voucher</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="partner_id"/>
+                <field name="number"/>
+                <field name="date"/>
+                <field name="journal_id"/>
+                <field name="reference"/>
+                <field name="amount"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Numero: </b><field name="number"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Ref: </b><field name="reference"/></li>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Diario: </b><field name="journal_id"/></li>
+                                    <li><b>Total: </b><field name="amount"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="account_return_kanban_view">
+        <field name="name">account.return.kanban.view</field>
+        <field name="model">payment.return</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="journal_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Referencia: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Diario: </b><field name="journal_id"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="account_statement_kanban_view">
+        <field name="name">account.statement.kanban.view</field>
+        <field name="model">account.bank.statement</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="journal_id"/>
+                <field name="balance_start"/>
+                <field name="balance_end"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Referencia: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Diario: </b><field name="journal_id"/></li>
+                                    <li><b>Saldo inicial: </b><field name="balance_start"/></li>
+                                    <li><b>Saldo final: </b><field name="balance_end"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="account_move_kanban_view">
+        <field name="name">account.move.kanban.view</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="ref"/>
+                <field name="journal_id"/>
+                <field name="partner_id"/>
+                <field name="amount"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Numero: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Ref.: </b><field name="ref"/></li>
+                                    <li><b>Diario: </b><field name="journal_id"/></li>
+                                    <li><b>Empresa: </b><field name="partner_id"/></li>
+                                    <li><b>Total: </b><field name="amount"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="account_move_line_kanban_view">
+        <field name="name">account.move.line.kanban.view</field>
+        <field name="model">account.move.line</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="date_maturity"/>
+                <field name="ref"/>
+                <field name="journal_id"/>
+                <field name="partner_id"/>
+                <field name="amount_residual"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Numero: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Ref.: </b><field name="ref"/></li>
+                                    <li><b>Diario: </b><field name="journal_id"/></li>
+                                    <li><b>Empresa: </b><field name="partner_id"/></li>
+                                    <li><b>Saldo: </b><field name="amount_residual"/></li>
+                                    <li><b>Vencimiento: </b><field name="date_maturity"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="payment_order_kanban_view">
+        <field name="name">payment.order.kanban.view</field>
+        <field name="model">payment.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="reference"/>
+                <field name="date_created"/>
+                <field name="mode"/>
+                <field name="bank_line_count"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Numero: </b><field name="reference"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date_created"/></li>
+                                    <li><b>Modo de pago: </b><field name="mode"/></li>
+                                    <li><b>Num. Lineas: </b><field name="bank_line_count"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="banking_mandate_kanban_view">
+        <field name="name">banking.mandate.kanban.view</field>
+        <field name="model">account.banking.mandate</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="unique_mandate_reference"/>
+                <field name="signature_date"/>
+                <field name="type"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Numero: </b><field name="unique_mandate_reference"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="signature_date"/></li>
+                                    <li><b>Empresa: </b><field name="partner_id"/></li>
+                                    <li><b>Tipo: </b><field name="type"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+  </data>
+</openerp>

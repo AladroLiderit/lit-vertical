@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_product_desactivate" model="ir.ui.view">
+            <field name="name">Product Desactivate</field>
+            <field name="model">product.desactivate</field>
+            <field name="arch" type="xml">
+                <form string="Product desactivation">
+                    <group>
+                        <separator
+                            string="Are you sure you want to desactivate these products ?"
+                            colspan="4" />
+                        <p>
+Please note that:<br/><br/>
+* Products will no longer be available for sale<br/>
+* The information will still be in the system<br/>
+* The way to get it back would be one at a time.<br/><br/>
+                            </p>
+                    </group>
+                    
+                    <footer>
+                        <button name="p_desactivar" string="Deactivate Products"
+                            type="object" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link"
+                            special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window name="Product Desactivate" res_model="product.desactivate"
+            src_model="product.template" view_mode="form" target="new"
+            multi="True" key2="client_action_multi" id="action_p_desactivar" />
+
+    </data>
+</openerp>
+

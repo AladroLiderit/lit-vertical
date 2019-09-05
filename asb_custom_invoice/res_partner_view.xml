@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openerp>
+    <data>
+         <record id="view_partner_form_asb_invoice" model="ir.ui.view">
+            <field name="name">res.partner.form_asb_invoice</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@ name='sales_purchases']/group/group/field[@ name='user_id']" position="after">
+                    <field name="n_proveedor" context="{'default_groups_ref': ['base.group_partner_manager']}"/>
+                </xpath>
+            </field>
+         </record>
+
+    </data>
+</openerp>

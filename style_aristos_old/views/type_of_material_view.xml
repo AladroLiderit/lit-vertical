@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>    
+    <record model="ir.ui.view" id="style_aristos_type_of_material_form_view">
+        <field name="name">style_aristos_type_of_material_form</field>
+        <field name="model">st.type_material</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Type of Material">
+             <group colspan="12" col="2">	
+                <field name="descripcion" select="1"/>
+             </group> 
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="style_aristos_type_of_material_tree_view">
+        <field name="name">style_aristos_type_of_material_tree</field>
+        <field name="model">st.type_material</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="Type of Material">
+                <field name="descripcion"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_type_of_material">
+        <field name="name">Type of Material</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">st.type_material</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="style_aristos_type_of_material_tree_view"/>
+    </record>
+	</data>
+</openerp>

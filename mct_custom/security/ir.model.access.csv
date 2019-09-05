@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mct_finca,access_mct_finca,mct_custom.model_mct_finca,purchase.group_purchase_user,1,1,1,1
+access_mct_campaign,access_mct_campaign,mct_custom.model_mct_campaign,purchase.group_purchase_user,1,1,1,1
+access_mct_categoria,access_mct_categoria,mct_custom.model_mct_categoria,base.group_sale_salesman,1,1,1,1
+access_mct_calibre,access_mct_calibre,mct_custom.model_mct_calibre,base.group_sale_salesman,1,1,1,1
+access_mct_confeccion,access_mct_confeccion,mct_custom.model_mct_confeccion,base.group_sale_salesman,1,1,1,1
+access_mct_marca,access_mct_marca,mct_custom.model_mct_marca,base.group_sale_salesman,1,1,1,1

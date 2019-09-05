@@ -1,0 +1,423 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* asb_mrp_repair_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-09-12 14:23+0000\n"
+"PO-Revision-Date: 2018-09-12 16:26+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "\"True\""
+msgstr "\"True\""
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "\"[('parent_id','=',False),('type_tax_use','<>','purchase')]\""
+msgstr "\"[('parent_id','=',False),('type_tax_use','<>','purchase')]\""
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.repair,att:0
+msgid "ATT."
+msgstr "ATT."
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.production:asb_mrp_repair_custom.view_mrp_production_asb_form
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Accs"
+msgstr "Accesorios"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Add internal notes..."
+msgstr "Añadir notas internas..."
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Add quotation notes..."
+msgstr "Añadir notas de presupuesto..."
+
+#. module: asb_mrp_repair_custom
+#: field:asb.lineas.historico,historico_id:0
+msgid "Albaran"
+msgstr "Albarán"
+
+#. module: asb_mrp_repair_custom
+#: view:asb.albaran.historico:asb_mrp_repair_custom.view_asb_albhistoricos_form
+msgid "Albarán histórico"
+msgstr "Albarán histórico"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.config.settings,repair_location_dest_id:0
+msgid "Almacén Reparaciones"
+msgstr "Almacén Reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: help:mrp.config.settings,repair_location_dest_id:0
+msgid "Almacén para destino de reparaciones"
+msgstr "Almacén para destino de reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: view:stock.move:asb_mrp_repair_custom.view_stock_move_asb_search
+msgid "Buscar por cliente"
+msgstr "Buscar por cliente"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_search
+msgid "Buscar por número de serie"
+msgstr "Buscar por número de serie"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_search
+msgid "Buscar por referencia"
+msgstr "Buscar por referencia"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Cancel Repair"
+msgstr "Cancelar reparación"
+
+#. module: asb_mrp_repair_custom
+#: view:stock.move:asb_mrp_repair_custom.view_stock_move_asb_search
+msgid "Cliente"
+msgstr "Cliente"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,cliente_de:0
+msgid "Cliente de"
+msgstr "Cliente de"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Confirm Repair"
+msgstr "Confirmar reparación"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,create_uid:0
+#: field:asb.lineas.historico,create_uid:0
+#: field:mrp.production.accs,create_uid:0 field:mrp.repair.accs,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,create_date:0
+#: field:asb.lineas.historico,create_date:0
+#: field:mrp.production.accs,create_date:0 field:mrp.repair.accs,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,cod_cliente:0
+msgid "Código de Cliente"
+msgstr "Código de Cliente"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.lineas.historico,cod_producto:0
+msgid "Código de Producto"
+msgstr "Código de Producto"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Datos pedido"
+msgstr "Datos pedido"
+
+#. module: asb_mrp_repair_custom
+#: code:addons/asb_mrp_repair_custom/mrp_repair.py:127
+#: code:addons/asb_mrp_repair_custom/mrp_repair.py:189
+#, python-format
+msgid ""
+"Debe asociar un almacén de destino para reparaciones en la configuración de "
+"producción"
+msgstr ""
+"Debe asociar un almacén de destino para reparaciones en la configuración de "
+"producción"
+
+#. module: asb_mrp_repair_custom
+#: code:addons/asb_mrp_repair_custom/mrp_repair.py:185
+#, python-format
+msgid ""
+"Debe asociar un diario de reparaciones en la configuración de producción"
+msgstr ""
+"Debe asociar un diario de reparaciones en la configuración de producción"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.repair,depart:0
+msgid "Depart."
+msgstr "Depart."
+
+#. module: asb_mrp_repair_custom
+#: field:asb.lineas.historico,descripcion:0
+msgid "Descripción"
+msgstr "Descripción"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production.accs,name:0 field:mrp.repair.accs,name:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: asb_mrp_repair_custom
+#: field:account.invoice,stock_loc_dest_id:0 field:mrp.repair,destino:0
+msgid "Destino"
+msgstr "Destino"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.config.settings,repair_journal_id:0
+msgid "Diario Reparaciones"
+msgstr "Diario Reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: help:mrp.config.settings,repair_journal_id:0
+msgid "Diario para factura de reparaciones"
+msgstr "Diario para factura de reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,display_name:0
+#: field:asb.lineas.historico,display_name:0
+#: field:mrp.production.accs,display_name:0
+#: field:mrp.repair.accs,display_name:0
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,date:0
+msgid "Fecha Salida"
+msgstr "Fecha Salida"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,gabinete:0
+msgid "Gabinete"
+msgstr "Gabinete"
+
+#. module: asb_mrp_repair_custom
+#: view:stock.move:asb_mrp_repair_custom.view_stock_historico_asb_form
+msgid "Historico Reparaciones"
+msgstr "Histórico Reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: field:stock.move,alb_historico:0
+msgid "Histórico"
+msgstr "Histórico"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,id:0 field:asb.lineas.historico,id:0
+#: field:mrp.production.accs,id:0 field:mrp.repair.accs,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: asb_mrp_repair_custom
+#: model:ir.model,name:asb_mrp_repair_custom.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,__last_update:0
+#: field:asb.lineas.historico,__last_update:0
+#: field:mrp.production.accs,__last_update:0
+#: field:mrp.repair.accs,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,write_uid:0
+#: field:asb.lineas.historico,write_uid:0
+#: field:mrp.production.accs,write_uid:0 field:mrp.repair.accs,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,write_date:0
+#: field:asb.lineas.historico,write_date:0
+#: field:mrp.production.accs,write_date:0 field:mrp.repair.accs,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: asb_mrp_repair_custom
+#: view:asb.albaran.historico:asb_mrp_repair_custom.view_asb_albhistoricos_form
+msgid "Lineas albaran"
+msgstr "Líneas albaran"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.production:asb_mrp_repair_custom.view_mrp_production_asb_form
+msgid "List of Accesories"
+msgstr "Lista de Accesorios"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,lineas_albaran:0
+msgid "Líneas"
+msgstr "Líneas"
+
+#. module: asb_mrp_repair_custom
+#: model:ir.model,name:asb_mrp_repair_custom.model_mrp_production
+msgid "Manufacturing Order"
+msgstr "Orden fabricación"
+
+#. module: asb_mrp_repair_custom
+#: selection:asb.albaran.historico,tipo:0
+msgid "Moldes"
+msgstr "Moldes"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Notes"
+msgstr "Notas"
+
+#. module: asb_mrp_repair_custom
+#: selection:asb.albaran.historico,tipo:0
+msgid "Nuevo"
+msgstr "Nuevo"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,num_albaran:0
+msgid "Num Albaran"
+msgstr "Num Albaran"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,name:0
+msgid "Num Parte"
+msgstr "Num Parte"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_search
+msgid "Número de serie"
+msgstr "Número de serie"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,observaciones_impresion:0
+msgid "Observaciones de impresion"
+msgstr "Observaciones de impresion"
+
+#. module: asb_mrp_repair_custom
+#: field:account.invoice,stock_loc_src_id:0
+msgid "Origen"
+msgstr "Origen"
+
+#. module: asb_mrp_repair_custom
+#: help:mrp.production,gabinete:0
+msgid "Para agrupar los clientes por tipos"
+msgstr "Para agrupar los clientes por tipos"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.repair,num_pedido:0
+msgid "Pedido Nº"
+msgstr "Pedido Nº"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Presupuesto enviado"
+msgstr "Presupuesto enviado"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production.accs,product_id:0 field:mrp.repair.accs,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production.accs,production_id:0
+msgid "Production Order Reference"
+msgstr "Referencia Orden de Producción"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.repair,fecha_esperar:0
+msgid "Puesto en espera"
+msgstr "Puesto en espera"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production.accs,product_uom_qty:0
+#: field:mrp.repair.accs,product_uom_qty:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,nom_cliente:0
+msgid "Razón social"
+msgstr "Razón social"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_search
+#: field:mrp.repair,referencia:0
+msgid "Referencia"
+msgstr "Referencia"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Repair Line"
+msgstr "Línea reparación"
+
+#. module: asb_mrp_repair_custom
+#: model:ir.model,name:asb_mrp_repair_custom.model_mrp_repair
+msgid "Repair Order"
+msgstr "Orden de reparación"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.repair.accs,repair_id:0
+msgid "Repair Order Reference"
+msgstr "Referencia de la Reparación"
+
+#. module: asb_mrp_repair_custom
+#: field:account.invoice,repair_id:0
+msgid "Reparacion"
+msgstr "Reparación"
+
+#. module: asb_mrp_repair_custom
+#: view:account.invoice:asb_mrp_repair_custom.view_invoice_repair_asb_form
+#: view:mrp.config.settings:asb_mrp_repair_custom.view_mrp_config_journal
+msgid "Reparaciones"
+msgstr "Reparaciones"
+
+#. module: asb_mrp_repair_custom
+#: selection:asb.albaran.historico,tipo:0
+#: view:stock.move:asb_mrp_repair_custom.view_stock_historico_asb_form
+msgid "Reparación"
+msgstr "Reparación"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,sale_line_id:0
+msgid "Sale Line"
+msgstr "Línea de pedido de venta"
+
+#. module: asb_mrp_repair_custom
+#: model:ir.model,name:asb_mrp_repair_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: asb_mrp_repair_custom
+#: field:asb.albaran.historico,tipo:0
+msgid "Tipo"
+msgstr "Tipo"
+
+#. module: asb_mrp_repair_custom
+#: view:mrp.repair:asb_mrp_repair_custom.view_mrp_repair_asb_form
+msgid "Total Reparación"
+msgstr "Total Reparación"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,venting:0
+msgid "Venting"
+msgstr "Venting"
+
+#. module: asb_mrp_repair_custom
+#: view:stock.move:asb_mrp_repair_custom.view_asb_historico_stock_move
+#: view:stock.move:asb_mrp_repair_custom.view_asb_historico_stock_tree
+msgid "Ver detalle histórico"
+msgstr "Ver detalle histórico"
+
+#. module: asb_mrp_repair_custom
+#: view:stock.move:asb_mrp_repair_custom.view_stock_move_asb_search
+msgid "Visualiza el detalle del albarán histórico"
+msgstr "Visualiza el detalle del albarán histórico"
+
+#. module: asb_mrp_repair_custom
+#: field:mrp.production,accs:0 field:mrp.repair,accs:0
+msgid "accs Lines"
+msgstr "Líneas de Accesorios"

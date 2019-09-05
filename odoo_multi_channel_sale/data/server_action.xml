@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  	<data noupdate="1" >
+      <!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+      <!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+		<record id="ir_export_odoo_product_template" model="ir.values">
+			<field eval="'client_action_multi'" name="key2"/>
+			<field eval="'product.template'" name="model" />
+			<field name="name">Export/Update Templates</field>
+			<field name="value" eval="'ir.actions.act_window,' + str(ref('action_id_export_odoo_templates'))" />
+		</record>
+		<record id="ir_export_odoo_product_product" model="ir.values">
+			<field eval="'client_action_multi'" name="key2"/>
+			<field eval="'product.product'" name="model" />
+			<field name="name">Export/Update Products</field>
+			<field name="value" eval="'ir.actions.act_window,' + str(ref('action_id_export_odoo_products'))" />
+		</record>
+	    <record id="ir_export_odoo_product_category" model="ir.values">
+	      <field eval="'client_action_multi'" name="key2"/>
+	      <field eval="'product.category'" name="model" />
+	      <field name="name">Export/Update Category</field>
+	      <field name="value" eval="'ir.actions.act_window,' + str(ref('action_id_export_odoo_categories'))" />
+	    </record>
+    	<record id="ir_export_odoo_partner" model="ir.values">
+	      <field eval="'client_action_multi'" name="key2"/>
+	      <field eval="'res.partner'" name="model" />
+	      <field name="name">Export Partners</field>
+	      <field name="value" eval="'ir.actions.act_window,' + str(ref('action_id_export_odoo_partners'))" />
+	    </record>
+
+	</data>
+</openerp>

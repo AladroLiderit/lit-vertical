@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+        <record id="view_import_pricelist_search" model="ir.ui.view">
+            <field name="name">import.pricelist.search</field>
+            <field name="model">product.pricelist.import</field>
+            <field name="arch" type="xml">
+                <search string="Importar tarifas">
+                    <field name="product_name" string="Producto"/>
+                    <!--field name="template_defcode" string="Ref. interna"/-->
+                    <filter string="A importar" name="to_import" domain="[('cargado', '!=', True)]"/>
+                    <group expand='1' string='Group by...'>
+                       <filter string='Proveedor' name='proveedor' icon="terp-stock_symbol-selection" 
+                            domain="[]" context="{'group_by' : 'prov_name'}" />
+                       <filter string='Producto' name='producto' icon="terp-stock_symbol-selection" domain="[]" 
+                            context="{'group_by' : 'product_name'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_import_pricelist_tree1" model="ir.ui.view">
+            <field name="name">view.import.pricelist.tree1</field>
+            <field name="model">product.pricelist.import</field>
+            <field name="priority">90</field>
+            <field name="arch" type="xml">
+                <tree string="Exportar Datos" editable="top">
+                    <field name="prov_name"/>
+                    <field name="product_name"/>
+                    <field name="version"/>
+                    <!--field name="template_defcode"/-->
+                    <!--field name="product_defcode_unique"/-->
+                    <field name="product_defcode_attribute"/>
+                    <field name="product_ean"/>
+                    <field name="product_attribute_talla"/>
+                    <field name="product_attribute_numero"/>
+                    <field name="product_attribute_color"/>
+                    <field name="purchase_price"/>
+                    <field name="purchase_discount"/>
+                    <field name="list_price"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_import_pricelist_form1" model="ir.ui.view">
+            <field name="name">view.import.pricelist.form1</field>
+            <field name="model">product.pricelist.import</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="prov_name"/>
+                        <field name="product_name"/>
+                        <!--field name="template_defcode"/-->
+                    </group>
+                    <group>
+                        <!--field name="product_defcode_unique"/-->
+                        <field name="product_ean"/>
+                        <field name="product_attribute_talla"/>
+                        <field name="product_attribute_numero"/>
+                        <field name="product_attribute_color"/>
+                    </group>
+                    <group>
+                        <field name="purchase_price"/>
+                        <field name="purchase_discount"/>
+                        <field name="list_price"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_pricelist_import_action" model="ir.actions.act_window">
+            <field name="name">Importar Tarifas de Productos</field>
+            <field name="res_model">product.pricelist.import</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_import_pricelist_tree1"/>
+            <field name="search_view_id" ref="view_import_pricelist_search"/>
+            <field name="context">{'search_default_to_import': 1}</field>
+        </record>
+
+
+        <menuitem action="product_pricelist_import_action"
+            id="menu_product_pricelist_import"
+            parent="base.menu_product" name="Importar Tarifas"
+            sequence="10" />
+
+
+    <!--opcion en menu de datos cargados para importar los datos-->
+
+  
+      <record id="action_import_pricelist" model="ir.actions.server">
+            <field name="name">Importar precios</field>
+            <field name="model_id" ref="model_product_pricelist_import"/>
+            <field name="state">code</field>
+            <field name="code">
+                if context.get('active_model') == 'product.pricelist.import' and context.get('active_ids'):
+                    self._pricelist_import(cr, uid, context['active_ids'], context=context)
+            </field>
+      </record>
+
+      <record id="ir_reg_as_done" model="ir.values">
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="'product.pricelist.import'" name="model"/>
+            <field name="name">Importar precios</field>
+            <field eval="'ir.actions.server,%d'%action_import_pricelist" name="value"/>
+      </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,448 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_gift_voucher
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-04 15:52+0000\n"
+"PO-Revision-Date: 2017-07-04 18:02+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:129
+#, python-format
+msgid "% discount"
+msgstr "% descuento"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:15
+#, python-format
+msgid "Add"
+msgstr "Agregar"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,amount:0
+msgid "Amount"
+msgstr "Importe"
+
+#. module: pos_gift_voucher
+#: selection:gift.voucher,state:0
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:44
+#, python-format
+msgid "Available Balance"
+msgstr "Cantidad disponible"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:64
+#, python-format
+msgid "Barcodes"
+msgstr "Códigos de barras"
+
+#. module: pos_gift_voucher
+#: field:pos.order,batch_qty_values:0
+msgid "Batch No."
+msgstr "Nº de lote"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:17
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:218
+#, python-format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: pos_gift_voucher
+#: selection:gift.voucher,state:0
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:39
+#, python-format
+msgid "Card Number"
+msgstr "Nº de Tarjeta"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:192
+#, python-format
+msgid "Change:"
+msgstr "Cambio:"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:80
+#: field:product.template,coupon:0
+#, python-format
+msgid "Coupon"
+msgstr "Vale"
+
+#. module: pos_gift_voucher
+#: field:product.template,validity:0
+msgid "Coupon Validity(days)"
+msgstr "Duración del vale (en días)"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,coupon_value:0
+msgid "Coupon Value"
+msgstr "Importe del Vale"
+
+#. module: pos_gift_voucher
+#: help:product.template,validity:0
+msgid "Coupon validity in days from the date of sale"
+msgstr "Duración del vale en días desde el día de la venta"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,create_date:0
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,date:0
+msgid "Creation Date"
+msgstr "Fecha de creación"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Current Month"
+msgstr "Mes actual"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:98
+#, python-format
+msgid "Customer:"
+msgstr "Cliente:"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:167
+#, python-format
+msgid "Discount:"
+msgstr "Descuento:"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,display_name:0
+msgid "Display Name"
+msgstr "Nombre Mostrado"
+
+#. module: pos_gift_voucher
+#: selection:gift.voucher,state:0
+msgid "Done"
+msgstr "Hecho"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:209
+#, python-format
+msgid "Enter Lotyalty Card Number"
+msgstr "Introduzca el número de la tarjeta de cliente"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,last_date:0
+msgid "Expiry Date"
+msgstr "Fecha de Vencimiento"
+
+#. module: pos_gift_voucher
+#: field:account.journal,for_gift_coupens:0
+msgid "For Gift Coupons"
+msgstr "Para Vales"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view
+msgid "Gift Coupon"
+msgstr "Vale"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Gift Coupon Code"
+msgstr "Código del Vale"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+#: field:gift.voucher,voucher_name:0
+msgid "Gift Coupon Name"
+msgstr "Nombre del Vale"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,voucher_serial_no:0
+msgid "Gift Coupon Serial no."
+msgstr "Nº de serie del Vale"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Gift Coupon expired"
+msgstr "Vale caducado"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Gift Coupon sold but not redeemed"
+msgstr "Vale vendido no utilizado"
+
+#. module: pos_gift_voucher
+#: model:ir.ui.menu,name:pos_gift_voucher.menu_action_loyalty_form
+msgid "Gift Voucher"
+msgstr "Vale"
+
+#. module: pos_gift_voucher
+#: model:ir.actions.act_window,name:pos_gift_voucher.action_loyalty_gift_coupon_form1
+#: model:ir.ui.menu,name:pos_gift_voucher.menu_pos_scheme_submenu3
+msgid "Gift Voucher Analysis"
+msgstr "Análisis de Vales"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:8
+#, python-format
+msgid "Gift Voucher Code"
+msgstr "Código del Vale"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Gift coupon redeemed"
+msgstr "Vale utilizado"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Group By..."
+msgstr "Agrupar por..."
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,in:0
+msgid "IN"
+msgstr "IN"
+
+#. module: pos_gift_voucher
+#: field:product.template,is_prepaid_card:0
+msgid "Is Prepaid Card"
+msgstr "Tarjeta Prepago"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:112
+#, python-format
+msgid "Item/Price"
+msgstr "Item/Precio"
+
+#. module: pos_gift_voucher
+#: model:ir.model,name:pos_gift_voucher.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,__last_update:0
+msgid "Last Modified on"
+msgstr "Modificado el"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,write_uid:0
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,write_date:0
+msgid "Last Updated on"
+msgstr "Actualizado el"
+
+#. module: pos_gift_voucher
+#: model:ir.model,name:pos_gift_voucher.model_gift_voucher
+msgid "Loyalty Gift Voucher Master"
+msgstr "Gestor de Tarjetas de Cliente"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,out:0
+msgid "OUT"
+msgstr "OUT"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:217
+#, python-format
+msgid "Ok"
+msgstr "Ok"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Order Date"
+msgstr "Fecha del Pedido"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "POS Reference"
+msgstr "Referencia del TPV"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:94
+#, python-format
+msgid "Phone:"
+msgstr "Tel.:"
+
+#. module: pos_gift_voucher
+#: model:ir.model,name:pos_gift_voucher.model_pos_order
+msgid "Point of Sale"
+msgstr "Terminal Punto de Venta"
+
+#. module: pos_gift_voucher
+#: model:ir.model,name:pos_gift_voucher.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de producto"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,uom:0
+msgid "Product Unit of Measure"
+msgstr "Unidad de medida del producto"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,qty:0
+msgid "Product qty"
+msgstr "Cantidad Producto"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:113
+#, python-format
+msgid "Qty."
+msgstr "Ctd."
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Records"
+msgstr "Registros"
+
+#. module: pos_gift_voucher
+#: selection:gift.voucher,state:0
+msgid "Request"
+msgstr "Solicitud"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Search Voucher Entries"
+msgstr "Buscar registro de Vales"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,shop_id:0
+msgid "Shop"
+msgstr "Tienda"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:96
+#, python-format
+msgid "Shop:"
+msgstr "Tienda:"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,source:0
+msgid "Source"
+msgstr "Origen"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,state:0
+msgid "Status"
+msgstr "Estado"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:153
+#, python-format
+msgid "Subtotal:"
+msgstr "Subtotal:"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view_filter1
+msgid "Today"
+msgstr "Hoy"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:114
+#, python-format
+msgid "Total"
+msgstr "Total"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view
+msgid "Total Amount"
+msgstr "Importe Total"
+
+#. module: pos_gift_voucher
+#: view:gift.voucher:pos_gift_voucher.loyalty_gift_coupon_tree_view
+msgid "Total Qty"
+msgstr "Cantidad Total"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:173
+#, python-format
+msgid "Total:"
+msgstr "Total:"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:95
+#, python-format
+msgid "User:"
+msgstr "Usuario:"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/js/screens.js:232
+#, python-format
+msgid "Validate"
+msgstr "Validar"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,voucher_validity:0
+msgid "Validity"
+msgstr "Validación"
+
+#. module: pos_gift_voucher
+#. openerp-web
+#: code:addons/pos_gift_voucher/static/src/xml/pos.xml:128
+#, python-format
+msgid "With a"
+msgstr "Con un"
+
+#. module: pos_gift_voucher
+#: view:product.template:pos_gift_voucher.loyalty_management_coupen_form
+msgid "coupon"
+msgstr "vale"
+
+#. module: pos_gift_voucher
+#: field:gift.voucher,product_id:0
+msgid "unknown"
+msgstr "desconocido"

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- vistas para gestionar las fincas-->
+        <record model="ir.ui.view" id="view_mct_fincas_tree">
+            <field name="name">mct.fincas.mode.tree</field>
+            <field name="model">mct.finca</field>
+            <field name="arch" type="xml">
+                <tree string="Fincas" editable="top">
+                    <field name="name"/>
+                    <field name="lot_code"/>
+                </tree>
+            </field>
+        </record>
+        <!--action-->
+        <record model="ir.actions.act_window" id="act_open_fincas_view">
+          <field name="name">Fincas</field>
+          <field name="res_model">mct.finca</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree</field>
+        </record>
+        <!--sub menu-->
+        <menuitem id="menu_fincas_sub" name="Fincas" parent="purchase.menu_procurement_management"
+      sequence="40" action="act_open_fincas_view"/>
+
+
+
+
+        <!--modifica la vista de facturas de compra para registrar la finca, la campaña, el albaran de campo en cabecera-->
+       
+        <record id="mct_view_custom_invoice" model="ir.ui.view">
+            <field name="name">mct.custom.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group" position="inside">
+                    <group>
+                        <field name="mct_finca_id"/>
+                        <field name="campaing_id"/>
+                        <field name="cogida_picking"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--modifica la vista de lineas de facturas de compra para visualizar el lote del producto-->
+        <record model="ir.ui.view" id="view_invoice_line_mct_prod_lots">
+            <field name="name">account.invoice.line.cmt.prod_lots</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page/field/tree/field[@name='name']" position="after">
+                    <field name="prod_lot_ids"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--modifica la vista de partner para poder asociar una secuencia-->
+        
+        <record id="mct_view_custom_partner" model="ir.ui.view">
+            <field name="name">mct.custom.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="after">
+                    <group>
+                        <field name="voucher_seq"/>
+                        <field name="invoice_to_stock"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--modifica la vista de product product para poder asociar un codigo de lote-->
+        
+        <record id="mct_view_custom_product_product" model="ir.ui.view">
+            <field name="name">mct.custom.product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="after">
+                    <field name="lot_code"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!--modifica la vista de recepciones para registrar la finca, la campaña, el albaran de campo en cabecera-->
+        
+        <record id="mct_view_custom_picking" model="ir.ui.view">
+            <field name="name">mct.custom.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='picking_type_id']" position="replace"/>
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                        <field name="mct_finca_id"/>
+                        <field name="campaing_id"/>
+                        <field name="cogida_picking"/>
+                        <field name="picking_type_id"/>
+                </xpath>
+                <!--xpath expr="//field[@name='origin']" position="after">
+                    <field name="product_ul_id"/>
+                </xpath-->
+
+            </field>
+        </record>
+
+        <!-- para mostrar el numero de cajas en los albaranes-->
+
+        <record model="ir.ui.view" id="mct_stock_view_move_packaging_form_view">
+            <field name="name">mct.stock.view.move.packaging.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="packages_number" />
+                    <field name="palet_number" />
+                </field>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="mct_stock_move_packaging_tree_view">
+            <field name="name">mct.stock.move.packaging.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock_packaging_info.stock_move_packaging_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="packages_number" position="after">
+                    <field name="palet_number" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mct_stock_move_packaging_tree_view2">
+            <field name="name">mct.stock.move.packaging.tree2</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock_packaging_info.stock_move_packaging_tree_view2"/>
+            <field name="arch" type="xml">
+                <field name="packages_number" position="after">
+                    <field name="palet_number" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mct_stock_move_receipt_packaging_tree_view">
+            <field name="name">mct.stock.move.receipt.packaging.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock_packaging_info.stock_move_receipt_packaging_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="packages_number" position="after">
+                    <field name="palet_number" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mct_stock_move_receipt_board_packaging_tree_view">
+            <field name="name">mct.stock.move.receipt.board.packaging.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock_packaging_info.stock_move_receipt_board_packaging_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="packages_number" position="after">
+                    <field name="palet_number" />
+                </field>
+            </field>
+        </record>
+
+
+<!-- vistas de sale order line para poner las propiedades del producto-->
+
+    <record model="ir.ui.view" id="sale_order_mct_form_view">
+            <field name="name">sale.order.mct.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <!--xpath expr="//field[@name='order_line']/form//field[@name='product_packaging']" position="replace">
+                </xpath-->
+
+                <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="after">
+                        <field name="categoria_id"/>
+                        <field name="calibre_id"/>
+                        <field name="confeccion_id"/>
+                        <field name="marca_id"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='address_allotment_id']" position="after">
+                        <field name="pri_pack_qty_manual"/>
+                        <field name="sec_pack_qty_manual"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_line_mct_form_view">
+            <field name="name">sale.order.line.mct.form</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale.view_order_line_form2" />
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='name']" position="before">
+                        <field name="categoria_id"/>
+                        <field name="calibre_id"/>
+                        <field name="confeccion_id"/>
+                        <field name="marca_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_line_mct_tree_view">
+            <field name="name">sale.order.line.mct.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="inherit_id" ref="sale_packaging_info.sale_order_line_packaging_tree_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pri_pack_qty']" position="replace">
+                        <field name="pri_pack_qty_manual"/>
+                </xpath>
+                <xpath expr="//field[@name='sec_pack_qty']" position="replace">
+                        <field name="sec_pack_qty_manual" sum="# Pkg 2" />
+                </xpath>
+                <xpath expr="//field[@name='pri_pack']" position="replace"/>
+
+
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_packaging_mct_form_view">
+            <field name="name">sale.order.packaging.mct.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_packaging_info.sale_order_packaging_form_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_ul']" position="replace"/>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='pri_pack_qty']" position="replace">
+                        <field name="pri_pack_qty_manual" groups="product.group_stock_packaging"
+                           sum="# Pkg 1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='sec_pack_qty']" position="replace">
+                        <field name="sec_pack_qty_manual" groups="product.group_stock_packaging"
+                           sum="# Pkg 1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='pri_pack']" position="replace"/>
+
+            </field>
+        </record>
+
+<!--amplia las busquedas en la vista de recepciones para el albaran de campo-->
+
+        <record model="ir.ui.view" id="picking_internal_search_cogida_view">
+            <field name="name">picking.internal.search.cogida</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='picking_type_id']" position="after">
+                    <field name="cogida_picking"/>
+                </xpath>
+
+            </field>
+        </record>
+
+<!-- no limita los origenes y destinos al transferir-->
+
+        <record model="ir.ui.view" id="stock_transfer_detail_locations_view">
+            <field name="name">stock.transfer.detail.locations.view</field>
+            <field name="model">stock.transfer_details</field>
+            <field name="inherit_id" ref="stock.view_stock_enter_transfer_details" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sourceloc_id']" position="replace">
+                    <field name="sourceloc_id"/>
+                </xpath>
+                <xpath expr="//field[@name='destinationloc_id']" position="replace">
+                    <field name="destinationloc_id"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+    </data>
+</openerp>

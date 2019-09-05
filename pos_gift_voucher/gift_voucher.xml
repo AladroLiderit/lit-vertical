@@ -1,0 +1,136 @@
+<openerp>
+<data>
+	<menuitem id="menu_action_loyalty_form" name="Gift Voucher" parent="point_of_sale.menu_point_root" groups="point_of_sale.group_pos_manager"></menuitem>
+
+        <record id="loyalty_management_coupen_form" model="ir.ui.view">
+            <field name="name">loyalty.management.coupen.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <label for="sale_ok" position="after">
+               		<newline/>
+                    <field name="coupon" string="coupon" on_change="on_click_of_coupon(coupon,name)" />
+                    <label for="coupon"/>
+                </label>
+                <field name="active" position="after">
+                     <field name="validity" attrs="{'invisible':[('coupon','=',False)]}" />
+                </field> 
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="crm_claim_kanban_view">
+            <field name="name">loyalty.management.kanban.view</field>
+            <field name="model">gift.voucher</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="voucher_serial_no"/>
+                    <field name="voucher_name"/>
+                    <field name="source"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="date"/>
+                    <field name="last_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_vignette oe_semantic_html_override">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open">
+                                            <b>Vale Num: </b><field name="voucher_serial_no"/>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li><b>Nombre: </b><field name="voucher_name"/></li>
+                                        <li><b>Origen: </b><field name="source"/></li>
+                                        <li><b>Importe: </b><field name="amount" sum="Total Amount"/></li>
+                                        <li><b>Emitido: </b><field name="date"/></li>
+                                        <li><b>Caduca: </b><field name="last_date"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t> 
+                    </templates>
+                </kanban>
+            </field> 
+        </record>
+        
+
+        <record id="loyalty_gift_coupon_tree_view" model="ir.ui.view">
+            <field name="name">loyalty_gift_coupon_tree_view</field>
+            <field name="model">gift.voucher</field>
+            <field name="arch" type="xml">
+                
+                     <tree string="Gift Coupon">
+                        <field name="source"/>
+                        <field name="shop_id"/>
+                        <field name="company_id"/>
+                        <field name="voucher_name"/>
+                        <field name="voucher_validity"/>
+                        <field name="date"/>
+                        <field name="last_date"/>
+                        <field name="qty" sum="Total Qty"/>
+                        <field name="uom" />
+                        <field name="amount" sum="Total Amount"/>
+                        <field name="voucher_serial_no" />
+                        <field name="in"/>
+                        <field name="out" />
+                    </tree>
+                   
+            </field>
+        </record>
+        
+        <record id="loyalty_gift_coupon_tree_view_filter1" model="ir.ui.view">
+            <field name="name">loyalty_gift_coupon_filter1</field>
+            <field name="model">gift.voucher</field>
+            <field name="arch" type="xml">
+                <search string="Search Voucher Entries">
+                     <field name="voucher_name" string="Records" filter_domain="['|','|',('voucher_name','ilike',self),('source','ilike',self),('voucher_serial_no','ilike',self)]"/>
+                    <group expand="0" string="Group By...">
+                       <filter string="POS Reference" icon="terp-personal" domain="[]" context="{'group_by':'source'}"/>
+                       <filter string="Gift Coupon Name" icon="terp-personal" domain="[]" context="{'group_by':'voucher_name'}"/>
+                       <filter string="Gift Coupon Code" icon="terp-personal" domain="[]" context="{'group_by':'voucher_serial_no'}"/>
+                       <filter string="Order Date" icon="terp-personal" domain="[]" context="{'group_by':'date'}"/>
+                    </group>
+                    <filter string="Today" domain="[('date','=',time.strftime('%%m/%%d/%%Y'))]"/>
+                    <separator/>
+                    <filter string="Gift coupon redeemed" domain="[('in','=',True)]"/>
+                    <separator/>
+                    <filter string="Gift Coupon sold but not redeemed" domain="[('in','=',False),('out','=',True)]"/>
+                    <separator/>
+                    <filter string="Gift Coupon expired" domain="[('last_date','&lt;',time.strftime('%%m/%%d/%%Y'))]"/>
+                    <separator/>
+                       <filter icon="terp-go-month" string="Current Month" name="month" domain="[('date','&lt;=',(context_today()+relativedelta(day=31)).strftime('%%Y-%%m-%%d')),('date','&gt;=',(context_today()-relativedelta(day=1)).strftime('%%Y-%%m-%%d'))]" help="Current Month" />
+               </search>
+            </field>
+        </record>
+      
+       <record id="action_loyalty_gift_coupon_form1" model="ir.actions.act_window">
+            <field name="name">Gift Voucher Analysis</field>
+            <field name="res_model">gift.voucher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="search_view_id" ref="loyalty_gift_coupon_tree_view_filter1"/>
+            
+        </record>
+
+
+        
+        <record id="loyalty_selection_form_view" model="ir.ui.view">
+            <field name="name">loyalty.selection.form_view</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                    <field name="type" position="after">
+                        <field name="for_gift_coupens"  />
+                    </field>    
+            </field>
+        </record>
+        
+      <menuitem
+             id="menu_pos_scheme_submenu3"
+            parent="menu_action_loyalty_form"
+            action="action_loyalty_gift_coupon_form1"
+         />
+		
+         	
+   </data>
+</openerp>

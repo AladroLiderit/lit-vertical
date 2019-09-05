@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_staristos_ean_generator,access_staristos_ean_generator,style_aristos_ean.model_ean_generator,base.group_sale_salesman,1,1,1,1

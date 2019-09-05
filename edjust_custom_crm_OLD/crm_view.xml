@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="edjust_marketing_crm__form_view" model="ir.ui.view">
+            <field name="name">CRM - MKT EdJust Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="marketing_crm.view_crm_opportunity_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Marketing']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+        <record id="edjust_crm__form_view" model="ir.ui.view">
+            <field name="name">CRM - EdJust Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="campaign_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="edjust_crm__tree_view" model="ir.ui.view">
+            <field name="name">CRM - EdJust Tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='campaign_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_staristos_st_parameters,access_staristos_st_parameters,style_aristos.model_st_parameters,base.group_user,1,1,1,1
+access_staristos_vencimientos,access_staristos_vencimientos,style_aristos.model_account_invoice_line_agent_vencimiento,base.group_user,1,1,1,1
+access_staristos_st_type_material,access_staristos_st_type_material,style_aristos.model_st_type_material,base.group_user,1,1,1,1
+access_staristos_st_collection,access_staristos_st_collection,style_aristos.model_st_collection,base.group_user,1,1,1,1
+access_staristos_st_line_type,access_staristos_st_line_type,style_aristos.model_st_line_type,base.group_user,1,1,1,1

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+
+       <template id="external_layout_header_inherit" inherit_id="report.external_layout_header">
+        
+        <xpath expr="//div[@class='row'][1]" position="replace">
+
+        </xpath>
+           <xpath expr="//div[@class='row']" position="replace">
+              <div class="header" style="font-size:11px !important;">
+                    <div class="col-xs-3 text-center" style="width:35%;float:left;">
+                       <img t-if="o.company_id.logo" t-att-src="'data:image/png;base64,%s' % o.company_id.logo" style="max-height: 45px;"/><br/>
+                      <span style="font-size:1.5em;" t-field="o.company_id.name"/><br/>
+                      <span t-field="o.company_id.street"/><br/>
+                      <span t-field="o.company_id.zip"/><span t-field="o.company_id.city"/><br/>
+                      <span>(<span t-field="o.company_id.state_id"/>)</span><br/>
+                      <span>Tfno: <span t-field="o.company_id.phone"/></span><br/>
+                      <span>Email: <span t-field="o.company_id.email"/></span><br/>
+                      <span t-field="o.company_id.website"/><br/>
+                      <span>C.I.F. : <span t-field="o.company_id.vat"/></span>
+                      <br/>
+                    </div>
+
+                    <div class="row" >
+            <div style="width:45%;float:right;border:1px solid black;border-radius:15px;padding:10px;margin-top:30px;">
+                          <span t-field="o.partner_id.name"/><br/>
+                          <span style="font-weight:bold;"  t-field="o.partner_id.street"/><br/>
+                          <span style="font-weight:bold;"  t-field="o.partner_id.zip"/><span style="font-weight:bold;margin-left:20px" t-field="o.partner_id.city"/><br/>
+                          <div><span style="font-weight:bold;" t-field="o.partner_id.state_id"/><span style="margin-left:20px;font-weight:bold;" t-field="o.partner_id.vat"/></div>
+                       </div>
+                
+                <div style="width:45%;margin-left:15px;"> 
+                  <table class="table table-bordered" >
+                          <thead class="text-uppercase" style="background-color:gray;border:1px solid black">
+                            <tr>
+                              <th>cliente</th>
+                              <th>fecha</th>
+                              <th>factura</th>
+                              <th>pág</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><span t-field="o.partner_id.ref"/></td>
+                              <td><span t-field="o.date_invoice"/></td>
+                              <td><span t-field="o.number"/></td>
+                              <td><span class="page"></span></td>
+                            </tr>
+                          </tbody>
+                    </table>  
+                </div>
+          </div>
+          </div>
+        </xpath>
+              
+
+    </template>
+
+    <template id="external_layout_footer_inherit" inherit_id="report.external_layout_footer">
+        
+        <xpath expr="//div[@class='footer']" position="replace">
+            <div class="footer" style="padding-top:10px;font-size:10px !important;">
+                
+                <div class="row" style="border-top: 1px solid black;">
+                    <p><span t-field="o.company_id.company_registry"/>,<span t-field="o.company_id.vat"/>. <span style="font-weight:bold;">Según lo dispuesto en la LOPD, le informamos que sus datos de caracter personal recogidos serán tratados con estricta confidencialidad y se almacenarán en un fichero de datos de caracter personal, legalmente registrado en la AEPD, y cuya finalidad es la gestión comercial entre los clientes y Hielos de Cantabria S.L.</span></p>
+                </div>
+             </div>
+
+        </xpath>
+
+    </template>
+		  <!-- QWeb Report -->
+        <template id="liderit_hielos_invoice_report_document">
+          <t t-call="report.external_layout">
+
+          <div class="page" style="padding-top:30px;">
+            <div class="oe_structure" style="font-size:11px !important;padding-top:115px;">
+                <table class="table table-condensed" >
+                    <thead class="text-uppercase" style="background-color:gray;border:1px solid black">
+                        <tr>
+                            <th>código</th>
+                            <th>descripción</th>
+                            <th></th>
+                            <th>caja</th>
+                            <th>unidades</th>
+                            <th>importe</th>
+                        </tr>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                       <tr t-foreach="o.invoice_line" t-as="l">
+                            <td><span t-field="l.product_id.default_code"/></td>
+                           <td>
+                                <span t-field="l.product_id.name"/>
+                            </td>
+                             <td>
+                             
+                            </td>
+                            <td>
+                            	<!-- <span t-field="l.product_id.caja"/> -->
+                            </td>
+                            <td>
+                                <span t-field="l.quantity"/>
+                            </td>
+                            <td><span t-field="l.price_subtotal"/></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="row " style="margin-top:100px;">
+                  <table class="table table-bordered" style="border 1px solid black">
+                    <thead class="text-uppercase" style="background-color:gray;border:1px solid black">
+                      <th>total imp</th>
+                      <th>%</th>
+                      <th>importe</th>
+                      <th>base</th>
+                      <th>%</th>
+                      <th>iva</th>
+                      <th>%</th>
+                      <th>rec</th>
+                      <th>total fra</th>
+                    </thead>
+                    <tbody class="text-left">
+
+                          <t t-set="i" t-value="1"/>
+                          <t t-foreach="o.tax_line" t-as="p" >
+                            <t t-set="i" t-value="i+1"/>
+                          </t>
+                       
+                      <t t-set="z" t-value="1"/>
+                      <tr t-foreach="o.tax_line" t-as="t">
+                        <t t-if="z == 1">
+                        <td  t-att-rowspan="i"><span t-field="o.amount_untaxed"/></td>
+                        </t>
+                        <td></td>
+                        <td></td>
+                        <td><span t-field="t.base"/></td>
+                        <td><span t-field="t.name"/></td>
+                        <td><span t-field="t.amount"/></td>
+                        <td></td>
+                        
+                          <td>
+                            <t t-if="o.fiscal_position.name == 'Recargo de Equivalencia '">
+                            <span t-field="o.fiscal_position.tax_ids.tax_dest_id.amount"/>
+                            </t>
+                          </td>
+                        
+                        
+                        <t t-if="z == 1">
+                        <td  t-att-rowspan="i"><span t-field="o.amount_total"/></td>
+                        </t>
+                        <t t-set="z" t-value="z+1"/>
+                    </tr>
+                    
+                    </tbody>
+                  </table>
+              </div>
+
+
+              <div class="row" style="margin-top:5px;">
+                  <div style="width:45%;float:left;border:1px solid black;border-radius:15px;padding:10px;">
+                    <p>Forma de Pago: <span style="font-weight:bold;" t-field="o.payment_mode_id"/></p>
+                    <p>Banco:
+                      <t t-if=" 'Manual' not in  o.payment_mode_id.type.name">
+                     <span style="font-weight:bold;" t-field="o.partner_id.bank_ids.acc_number"/>
+                    </t>
+
+                    <t t-if=" 'Manual' in  o.payment_mode_id.type.name">
+                     <span style="font-weight:bold;" t-field="o.partner_bank_id"/>
+                    </t>
+                   </p>
+                  </div>
+
+                  <div style="padding:10px;float:left; margin-left:20px;width:45%;border:1px solid black;border-radius:15px;">
+                    <p>Vencimientos:</p>
+                    <p t-foreach="o.payment_ids" t-as="x">
+                     <p> <span t-field="x.date"/><span style="font-weight:bold;margin-left:10px;" t-field="x.debit"/></p>
+                    </p>
+                  </div>
+              </div>
+
+              </div>
+           </div>
+      </t>
+            <!--end of report structure-->
+        </template>
+
+        <template id="liderit_hielos_invoice_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+
+                    <t t-call="liderit_hielos_invoice_report.liderit_hielos_invoice_report_document" t-lang="o.partner_id.lang"/>
+                </t>
+   
+            </t>
+        </template>
+    
+
+    </data>
+</openerp>
+
+
+

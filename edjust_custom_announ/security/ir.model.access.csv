@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_edjust_contracts_to_renove,edjust_contracts_to_renove,model_edjust_contracts_to_renove,edjust_custom_partner.group_edjust_user,1,1,1,1
+access_edjust_claim_notifications,edjust_edjust_claim_notifications,model_edjust_claim_notifications,edjust_custom_partner.group_edjust_user,1,1,1,1

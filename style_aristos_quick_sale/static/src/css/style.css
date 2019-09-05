@@ -1,0 +1,146 @@
+.oe_quick_sale_view{
+    width: 98%;
+    /*margin: 0 auto;*/
+    height: 100%;
+    font-size: 13px;
+    font-family: calibri;
+    padding: 8px 15px;
+    -webkit-transition: width .6s;
+}
+/*Header Panel CSS*/
+.oe_quick_sale_view .header-panel{
+    height: 162px;
+    border: 1px solid #c4c4c4;
+    border-radius: 7px;
+    padding: 9px 13px;
+    margin-bottom: 10px;
+    background: #e8e8e8;
+}
+.oe_quick_sale_view .header-left-panel{
+    width: 56%;
+    float: left;
+}
+.oe_quick_sale_view .header-middle-panel{
+    width: 26%;
+    float: left;
+    height: 147px;
+}
+.oe_quick_sale_view .header-middle-panel .payment-mode, .payment-term{
+    float: left;
+    width: 50%;
+}
+.oe_quick_sale_view .header-right-panel{
+    width: 18%;
+    float: left;
+    height: 147px;
+    line-height: 50px;
+}
+.oe_quick_sale_view .header-left-panel .customer-name{
+    float: left;
+    width: 72%;
+}
+.oe_quick_sale_view .header-left-panel .order-date{
+    float: left;
+    width: 28%;
+}
+.oe_quick_sale_view .header-left-panel .customer-name input#customer-name{
+    width: 95%;
+    height: 30px;
+    background: url('/aspl_quick_sale/static/src/img/customer.gif') no-repeat 97.25% 5px white;
+    background-size: 20px 17px;
+    padding-right: 25px;
+}
+.oe_quick_sale_view .header-left-panel .order-date input#date{
+    width: 95%;
+    height: 60px;
+    line-height: 25px;
+}
+.oe_quick_sale_view .header-left-panel .note textarea#note{
+    width: 90%;
+    height: 65px !important;
+    font-size: 18px;
+}
+.oe_quick_sale_view .header-right-panel select#payment-mode, select#payment-term{
+    float: left;
+    width: 200px !important;
+}
+.oe_quick_sale_view .header-right-panel .order-total{
+    height: 35px;
+    line-height: 45px;
+    font-size: 16px;
+    text-align: center;
+}
+/*Body Panel CSS*/
+.oe_quick_sale_view .body-panel{
+    /*height: 400px;*/
+    border: 1px solid #c4c4c4;
+    border-radius: 7px;
+    padding: 9px 13px;
+    margin-bottom: 10px;
+    background: #e8e8e8;
+}
+.oe_quick_sale_view .body-panel #product-search{
+    width: 25%;
+}
+.oe_quick_sale_view .body-panel #product-code-search{
+    width: 25%;
+}
+.oe_quick_sale_view .body-panel .cart-details{
+    max-height: calc(100vh - 290px);
+    overflow: auto;
+}
+.oe_quick_sale_view .cart-row-item .delete-cart-line{
+    text-align: center;
+    font-size: 20px;
+    cursor:pointer;
+}
+.oe_quick_sale_view .cart-row-item .product-image{
+    cursor:pointer;
+}
+.oe_quick_sale_view .form-group {
+    margin-bottom: 5px;
+}
+.oe_quick_sale_view input, .openerp textarea, .openerp select{
+    height: 25px !important;
+    font-size: 15px;
+}
+table.cart-items{
+    margin-bottom: 0;
+}
+cart-items.table > thead > tr > th, cart-items.table > tbody > tr > th, cart-items.table > tfoot > tr > th, cart-items.table > thead > tr > td, cart-items.table > tbody > tr > td, cart-items.table > tfoot > tr > td{
+    padding: 3px;
+}
+.close_quicksale_button{
+    padding: 12px !important;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+.new_sale_order{
+	width: 90%;
+	left: 15%;
+	position: relative;
+}
+.to-left{
+    text-align: right;
+}
+/*Color para entregas*/
+.forecasted_negative {
+  background-color: yellow;
+  color: #FFFFFF;
+}
+
+.in-form-control{
+    width: 6em;
+    float: right;
+}
+
+#customer-credit{
+    width: 6em;
+    float: left;
+    text-align: right;
+}
+
+#in-global-discount{
+    text-align: right;
+}

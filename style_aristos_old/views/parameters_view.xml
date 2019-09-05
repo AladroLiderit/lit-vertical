@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	<!--=========================================================================== Vista form ======================================================================================= -->
+	 	<record model="ir.ui.view" id="style_aristos_parameters_form_view">
+            <field name="name">parameters.form</field>
+            <field name="model">st.parameters</field>
+            <field name="priority">90</field>
+            <field name="type">form</field>        
+            <field name="arch" type="xml">
+                <form string="Parameters" >
+                	<newline/>
+                    <separator string="Parameters"/>     
+                 	<div class="oe_title">
+		                        <h1>		                      
+		                        	<field name="company_id" class="oe_inline" />
+		                            <field name="par_name" class="oe_inline" placeholder="pa00"  />		                     
+		                        </h1>
+                    </div>
+                    	<newline/>
+                     	<separator/>      
+                    	<newline/>
+	                    <separator string=" Productos por debajo del mínimo y cercanos a él con una tolerancia "/>  
+	                   	<group col="2" colspan="2">							
+							<field name="stock_tolerancia" />
+	                   	</group> 
+	            </form>
+            </field>
+        </record>
+		<!--=========================================================================== Vista tree ======================================================================================= -->
+		<record model="ir.ui.view" id="style_aristos_parameters_tree_view">
+            <field name="name">parameters.lista</field>
+            <field name="model">st.parameters</field>
+            <field name="priority">90</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree toolbar="1"  string="Parameters">
+                	 <field name="company_id" />
+		             <field name="par_name"  />
+					 <field name="stock_tolerancia" />
+                </tree>
+            </field>
+        </record>  
+		<!--=========================================================================== Acciones======================================================================================= -->
+        <record model="ir.actions.act_window" id="st_action_parameters">
+            <field name="name">Parameters</field>
+            <field name="res_model">st.parameters</field>
+            <field name="view_mode">tree,form</field>
+        </record>  
+	</data>
+</openerp>

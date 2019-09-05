@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+	<!-- Copyright (c) 2017-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+	<!-- See LICENSE URL <https://store.webkul.com/license.html/> for full copyright and licensing details. -->
+        <record id="odoo_multi_channel_sale.action_feed_sync"
+            model="ir.actions.server">
+            <field name="name">Evaluate Feed</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="odoo_multi_channel_sale.model_wk_feed" />
+          <field name="code">
+                env[env.context.get('active_model')].browse(env.context.get('active_ids')).import_items()
+          </field>
+          <field name="condition">True</field>
+        </record>
+
+        <record model="ir.values"
+            id="odoo_multi_channel_sale.sync_product_feed_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_product_feed" />
+            <field name="name">Evaluate Product Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,'+str(ref('odoo_multi_channel_sale.action_feed_sync'))" />
+            <field name="key">action</field>
+            <field name="model">product.feed</field>
+        </record>
+        <record model="ir.values"
+            id="odoo_multi_channel_sale.sync_category_feed_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_category_feed" />
+            <field name="name">Evaluate category Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,'+str(ref('odoo_multi_channel_sale.action_feed_sync'))" />
+            <field name="key">action</field>
+            <field name="model">category.feed</field>
+        </record>
+
+        <record model="ir.values"
+            id="odoo_multi_channel_sale.sync_order_feed_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_order_feed" />
+            <field name="name">Evaluate order Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,'+str(ref('odoo_multi_channel_sale.action_feed_sync'))" />
+            <field name="key">action</field>
+            <field name="model">order.feed</field>
+        </record>
+
+        <record model="ir.values"
+            id="odoo_multi_channel_sale.sync_partner_feed_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_partner_feed" />
+            <field name="name">Evaluate Partner Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,'+str(ref('odoo_multi_channel_sale.action_feed_sync'))" />
+            <field name="key">action</field>
+            <field name="model">partner.feed</field>
+        </record>
+         <record model="ir.values" id="odoo_multi_channel_sale.sync_shipping_feed_values">
+            <field name="model_id"
+                ref="odoo_multi_channel_sale.model_shipping_feed" />
+            <field name="name">Evaluate Shipping Mapping</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.server,'+str(ref('odoo_multi_channel_sale.action_feed_sync'))" />
+            <field name="key">action</field>
+            <field name="model">shipping.feed</field>
+        </record>
+</data>
+	</openerp>

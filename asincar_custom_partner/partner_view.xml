@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+        <record id="res_partner_asincar_form_view" model="ir.ui.view">
+            <field name="name">res.partner.asincar.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@string='Internal Notes']" position="after">
+                    <page string="Clasificación">
+						<group>
+                            <field name="cust_entidad"/>
+                            <field name="cust_relacion"/>
+                            <field name="cust_asociado" domain="[('relacion','=',cust_relacion)]"/>
+                            <field name="cust_sector" domain="[('parent_id','=',False)]"/>
+                            <field name="cust_subsector" domain="[('parent_id','=',cust_sector)]"/>
+						</group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+	</data>
+</openerp>

@@ -1,0 +1,834 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* style_aristos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-07 11:30+0000\n"
+"PO-Revision-Date: 2018-12-07 12:41+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: style_aristos
+#: sql_constraint:st.collection:0
+msgid " Name of collection already exists !"
+msgstr "Ya existe esa colección"
+
+#. module: style_aristos
+#: sql_constraint:st.type_material:0
+msgid " Type of material already exists !"
+msgstr "Ya existe ese tipo de material"
+
+#. module: style_aristos
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "* Files must have .jpg or .png extension"
+msgstr "*La imágenes tienen que tener extensión .jpg o .png"
+
+#. module: style_aristos
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "* Maximun size from images: width: 1500px, height: 1000px"
+msgstr "* Tamaño máximo para las imágenes: ancho: 1500px, alto: 1000px"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "* Products will no longer be available for sale"
+msgstr "* En adelante estos productos no estarán disponibles para la venta"
+
+#. module: style_aristos
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid ""
+"* Recomended size: 750 x 371.\n"
+"* If you deactivate the product their image will be deleted"
+msgstr ""
+"* Tamaño recomendado: 750 x 371.\n"
+"* Si se desactiva el producto se eliminará la imagen"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "* The information will still be in the system"
+msgstr "* La información se mantendrá en el sistema"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "* The way to get it back would be one at a time."
+msgstr "* Para devolverlo tendrá que ir de uno en uno."
+
+#. module: style_aristos
+#: selection:product.get.image,file_type:0
+msgid ".bmp"
+msgstr ".bmp"
+
+#. module: style_aristos
+#: selection:product.get.image,file_type:0
+msgid ".jpg"
+msgstr ".jpg"
+
+#. module: style_aristos
+#: selection:product.get.image,file_type:0
+msgid ".png"
+msgstr ".png"
+
+#. module: style_aristos
+#: view:product.template:style_aristos.grupo_style_aristos_product_form
+msgid "Abbrevaiture for label..."
+msgstr "Abreviatura para la etiqueta..."
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,payment_id:0
+msgid "Account Moviment"
+msgstr "Movimiento contable"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_admin
+msgid "Administracion"
+msgstr "Administracion"
+
+#. module: style_aristos
+#: view:res.partner:style_aristos.grupo_style_aristos_partner_search
+msgid "Agente"
+msgstr "Agente"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_almacen
+msgid "Almacen"
+msgstr "Almacen"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,amount:0
+#: field:sale.commission.settlement.line,amount:0
+msgid "Amount settled"
+msgstr "Importe Liquidado"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "Are you sure you want to desactivate these products ?"
+msgstr "Seguro que quiere desactivar estos productos ?"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard_desactivate/product_desactivate.py:48
+#, python-format
+msgid "At least one of the selected product is ready desactivate is %s!"
+msgstr "Al menos unos de los productos ya está desactivado: %s!"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:334
+#: selection:product.template,gender:0
+#, python-format
+msgid "Both"
+msgstr "Ambos"
+
+#. module: style_aristos
+#: selection:sale.commission,type_in_product:0
+msgid "By default"
+msgstr "Por defecto"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: style_aristos
+#: selection:sale.order.line,type_line:0
+msgid "Change"
+msgstr "Cambiar"
+
+#. module: style_aristos
+#: model:ir.ui.menu,name:style_aristos.menu_st_collection_action
+msgid "Colection"
+msgstr "Coleccion"
+
+#. module: style_aristos
+#: model:ir.actions.act_window,name:style_aristos.action_collection
+#: field:product.product,collection_id:0
+#: view:product.template:style_aristos.grupo_style_aristos_product_tmp_search
+#: field:product.template,collection_id:0
+#: view:st.collection:style_aristos.style_aristos_collection_form_view
+#: view:st.collection:style_aristos.style_aristos_collection_tree_view
+msgid "Collection"
+msgstr "Coleccion"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_comercial
+msgid "Comercial"
+msgstr "Comercial"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_comission
+msgid "Comisiones"
+msgstr "Comisiones"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,settled_commission:0
+msgid "Commission Settled"
+msgstr "Comision Liquidada"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_sale_commission
+msgid "Commission in sales"
+msgstr "Comisión en ventas"
+
+#. module: style_aristos
+#: field:st.parameters,company_id:0
+msgid "Company"
+msgstr "Compañía"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_compras
+msgid "Compras"
+msgstr "Compras"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard/wizard_settle.py:138
+#, python-format
+msgid "Created Settlements"
+msgstr "Creaccion Liquidaciones"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,create_uid:0
+#: field:product.desactivate,create_uid:0 field:product.get.image,create_uid:0
+#: field:st.collection,create_uid:0 field:st.line.type,create_uid:0
+#: field:st.parameters,create_uid:0 field:st.type_material,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,create_date:0
+#: field:product.desactivate,create_date:0
+#: field:product.get.image,create_date:0 field:st.collection,create_date:0
+#: field:st.line.type,create_date:0 field:st.parameters,create_date:0
+#: field:st.type_material,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "Deactivate Products"
+msgstr "Desactivar Productos"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:545
+#: selection:res.partner,portes:0
+#, python-format
+msgid "Debited"
+msgstr "Débito"
+
+#. module: style_aristos
+#: selection:sale.order.line,type_line:0
+msgid "Delivered"
+msgstr "Entregado"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_product_desactivate
+msgid "Desactivate products"
+msgstr "Desactivar productos"
+
+#. module: style_aristos
+#: field:product.product,eti_muestrario_description:0
+#: field:product.template,eti_muestrario_description:0
+msgid "Description for muestrario product label"
+msgstr "Descripción para la etiqueta de muestrario"
+
+#. module: style_aristos
+#: view:account.payment.term:style_aristos.style_aristos_payment_term_form
+msgid "Descuento en ventas si se aplica este plazo"
+msgstr "Descuento en ventas si se aplica este plazo"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_direccion
+msgid "Direccion"
+msgstr "Direccion"
+
+#. module: style_aristos
+#: field:product.get.image,directory:0
+msgid "Directory where images are load"
+msgstr "Directorio donde se guardan las imágenes"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,display_name:0
+#: field:product.desactivate,display_name:0
+#: field:product.get.image,display_name:0 field:st.collection,display_name:0
+#: field:st.line.type,display_name:0 field:st.parameters,display_name:0
+#: field:st.type_material,display_name:0
+msgid "Display Name"
+msgstr "Nombre en pantalla"
+
+#. module: style_aristos
+#: field:res.partner,distr_shaka:0
+msgid "Distribuidor Shaka"
+msgstr "Distribuidor Shaka"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "Asistente de redacción de correo electrónico."
+
+#. module: style_aristos
+#: view:sale.order:style_aristos.sale_line_type_form_view
+#: field:sale.order.line,line_type:0
+msgid "Entrega"
+msgstr "Entrega"
+
+#. module: style_aristos
+#: model:ir.ui.menu,name:style_aristos.menu_st_parameters
+msgid "Especial Parameters"
+msgstr "Parámetros Especiales"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent,vencimientos_ids:0
+msgid "Expiration"
+msgstr "Vencimiento"
+
+#. module: style_aristos
+#: field:product.get.image,file_type:0
+msgid "File type"
+msgstr "Tipo de fichero"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_finanzas
+msgid "Finanzas"
+msgstr "Finanzas"
+
+#. module: style_aristos
+#: field:product.product,gender:0 field:product.template,gender:0
+msgid "Gender"
+msgstr "Género"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:334
+#: selection:product.template,gender:0
+#, python-format
+msgid "Gentleman"
+msgstr "Caballero"
+
+#. module: style_aristos
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "Get Products Image"
+msgstr "Obtener imagen de los productos"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_product_get_image
+msgid "Get products image"
+msgstr "Obtener imagen de los productos"
+
+#. module: style_aristos
+#: field:account.payment.term,discount:0
+msgid "Global discount by term"
+msgstr "Descuento del plazo de pago"
+
+#. module: style_aristos
+#: model:ir.module.category,name:style_aristos.category_grupo_style_aristos
+msgid "Grupo Style Aristos "
+msgstr "Grupo Style Aristos "
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,id:0
+#: field:product.desactivate,id:0 field:product.get.image,id:0
+#: field:st.collection,id:0 field:st.line.type,id:0 field:st.parameters,id:0
+#: field:st.type_material,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: style_aristos
+#: model:ir.actions.server,name:style_aristos.action_sale_as_printed
+msgid "Imprimir para preparar"
+msgstr "Imprimir para preparar"
+
+#. module: style_aristos
+#: selection:sale.commission,type_in_product:0
+msgid "In promotions"
+msgstr "Promociones"
+
+#. module: style_aristos
+#: view:product.template:style_aristos.style_aristos_base_product_form
+msgid "Information"
+msgstr "Información"
+
+#. module: style_aristos
+#: field:account.invoice,due_date_beguin:0
+msgid "Initial Due Date"
+msgstr "Primer vencimiento"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Invoice exception"
+msgstr "Excepcion Factura"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: style_aristos
+#: field:product.desactivate,keep_references:0
+msgid "Keep references from original"
+msgstr "Mantener referencias al original"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:334
+#: selection:product.template,gender:0
+#, python-format
+msgid "Lady"
+msgstr "Señora"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,__last_update:0
+#: field:product.desactivate,__last_update:0
+#: field:product.get.image,__last_update:0 field:st.collection,__last_update:0
+#: field:st.line.type,__last_update:0 field:st.parameters,__last_update:0
+#: field:st.type_material,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,write_uid:0
+#: field:product.desactivate,write_uid:0 field:product.get.image,write_uid:0
+#: field:st.collection,write_uid:0 field:st.line.type,write_uid:0
+#: field:st.parameters,write_uid:0 field:st.type_material,write_uid:0
+msgid "Last Updated by"
+msgstr "Ultima Actualizacion por"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,write_date:0
+#: field:product.desactivate,write_date:0 field:product.get.image,write_date:0
+#: field:st.collection,write_date:0 field:st.line.type,write_date:0
+#: field:st.parameters,write_date:0 field:st.type_material,write_date:0
+msgid "Last Updated on"
+msgstr "Ultima Actualizacion en"
+
+#. module: style_aristos
+#: field:st.line.type,descripcion:0
+msgid "Letter for resume"
+msgstr "Abreviatura"
+
+#. module: style_aristos
+#: field:sale.order.line,line_abonado:0
+msgid "Line Abonado"
+msgstr "Línea de Abono"
+
+#. module: style_aristos
+#: field:sale.order.line,line_cambiado:0
+msgid "Line Cambiado"
+msgstr "Línea para Cambio"
+
+#. module: style_aristos
+#: field:sale.order.line,line_delivered:0
+msgid "Line Delivered"
+msgstr "Línea Entregada"
+
+#. module: style_aristos
+#: field:sale.order.line,line_nocharge:0
+msgid "Line No Charge"
+msgstr "Línea Sin Cargo"
+
+#. module: style_aristos
+#: view:res.partner:style_aristos.grupo_style_aristos_partner_form
+msgid "Marcar para NO ver en la Web"
+msgstr "Marcar para NO ver en la Web"
+
+#. module: style_aristos
+#: view:res.partner:style_aristos.grupo_style_aristos_partner_form
+msgid "Marcar si vende Shaka"
+msgstr "Marcar si está en Oferta"
+
+#. module: style_aristos
+#: view:product.template:style_aristos.grupo_style_aristos_product_tmp_search
+msgid "Material"
+msgstr "Material"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_stock_warehouse_orderpoint
+msgid "Minimum Inventory Rule"
+msgstr "Regla de inventario mínimo"
+
+#. module: style_aristos
+#: field:product.product,muestrario:0
+#: view:product.template:style_aristos.style_aristos_base_product_form
+#: field:product.template,muestrario:0
+msgid "Muestrario"
+msgstr "Muestrario"
+
+#. module: style_aristos
+#: selection:sale.order.line,type_line:0
+msgid "No Charge"
+msgstr "Sin Cargo"
+
+#. module: style_aristos
+#: selection:sale.commission,type_in_product:0
+msgid "No commission"
+msgstr "Sin comisión"
+
+#. module: style_aristos
+#: field:res.partner,no_visible_aristos:0
+msgid "No visibles en web"
+msgstr "No visibles en web"
+
+#. module: style_aristos
+#: field:product.product,shaka:0
+#: view:product.template:style_aristos.style_aristos_base_product_form
+#: field:product.template,shaka:0
+msgid "Oferta"
+msgstr "Oferta"
+
+#. module: style_aristos
+#: field:product.product,outlet:0
+#: view:product.template:style_aristos.style_aristos_base_product_form
+#: field:product.template,outlet:0
+msgid "Outlet"
+msgstr "Outlet"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:545
+#: selection:res.partner,portes:0
+#, python-format
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,vencimiento_id:0
+msgid "Paids"
+msgstr "Pagos"
+
+#. module: style_aristos
+#: field:st.parameters,par_name:0
+msgid "Paramener Name"
+msgstr "Nombre del parámetro"
+
+#. module: style_aristos
+#: model:ir.actions.act_window,name:style_aristos.st_action_parameters
+#: view:st.parameters:style_aristos.style_aristos_parameters_form_view
+#: view:st.parameters:style_aristos.style_aristos_parameters_tree_view
+msgid "Parameters"
+msgstr "Parámetros"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: style_aristos
+#: field:sale.commission.settlement.line,invoice_line_vencimiento:0
+msgid "Payment Due"
+msgstr "Vencimiento"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_account_payment_term
+msgid "Payment Term"
+msgstr "Plazo de pago"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "Please note that:"
+msgstr "Advierta que:"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard_desactivate/product_desactivate.py:40
+#, python-format
+msgid "Please select multiple products in the list view."
+msgstr "Seleccione varios productos de la lista"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,porcent:0
+#: field:sale.commission.settlement.line,porcent:0
+msgid "Porcent about total invoice"
+msgstr "Porcentaje sobre el total factura"
+
+#. module: style_aristos
+#: field:res.partner,portes:0
+msgid "Portes"
+msgstr "Portes"
+
+#. module: style_aristos
+#: field:account.invoice,maturity_postpone:0
+msgid "Postpone dues"
+msgstr "Aplazamiento de vencimientos"
+
+#. module: style_aristos
+#: field:product.product,pricelists:0
+msgid "Pricelists"
+msgstr "Listas de precios"
+
+#. module: style_aristos
+#: model:res.groups,name:style_aristos.group_style_aristos_produccion
+msgid "Produccion"
+msgstr "Produccion"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: style_aristos
+#: field:product.product,alert_time:0
+msgid "Product Alert Time"
+msgstr "Tiempo para alerta"
+
+#. module: style_aristos
+#: model:ir.actions.act_window,name:style_aristos.action_p_desactivar
+msgid "Product Desactivate"
+msgstr "Producto Desactivado"
+
+#. module: style_aristos
+#: model:ir.actions.act_window,name:style_aristos.action_p_get_images
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "Product Get Image"
+msgstr "Imagen del producto"
+
+#. module: style_aristos
+#: field:product.product,life_time:0
+msgid "Product Life Time"
+msgstr "Tiempo de vida"
+
+#. module: style_aristos
+#: field:product.product,removal_time:0
+msgid "Product Removal Time"
+msgstr "Tiempo para renovación"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_product_template
+msgid "Product Template"
+msgstr "Plantilla de Producto"
+
+#. module: style_aristos
+#: field:product.product,use_time:0
+msgid "Product Use Time"
+msgstr "Tiempo de uso"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+msgid "Product desactivation"
+msgstr "Desactivación de producto"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard_desactivate/product_desactivate.py:52
+#, python-format
+msgid "Product in stock  %s !"
+msgstr "Producto en stock  %s !"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard_desactivate/product_desactivate.py:57
+#, python-format
+msgid "Product with open quantities  %s !"
+msgstr "Producto con movimientos pendientes  %s !"
+
+#. module: style_aristos
+#: view:st.parameters:style_aristos.style_aristos_parameters_form_view
+msgid "Productos por debajo del mínimo y cercanos a él con una tolerancia"
+msgstr "Productos por debajo del mínimo y cercanos a él con una tolerancia"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea orden de compra"
+
+#. module: style_aristos
+#: help:account.invoice.line.agent.vencimiento,porcent:0
+#: help:sale.commission.settlement.line,porcent:0
+msgid "Represents the payment percentage over the total invoice amount."
+msgstr "Representa el porcentaje pagado sobre el total de factura."
+
+#. module: style_aristos
+#: field:sale.order,preparation_user:0
+msgid "Responsable de pedido"
+msgstr "Responsable de pedido"
+
+#. module: style_aristos
+#: selection:sale.order.line,type_line:0
+msgid "Returns"
+msgstr "Devolución"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Settled"
+msgstr "Liquidado"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_tree
+msgid "Settled total"
+msgstr "Total liquidado"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_form
+msgid "Settlement line"
+msgstr "Linea Liquidacion"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_form
+msgid "Settlement lines"
+msgstr "Líneas de liquidación"
+
+#. module: style_aristos
+#: view:res.partner:style_aristos.grupo_style_aristos_partner_search
+msgid "Shaka"
+msgstr "Oferta"
+
+#. module: style_aristos
+#: view:product.template:style_aristos.grupo_style_aristos_product_form
+msgid "Short name for label..."
+msgstr "Nombre etiqueta..."
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: style_aristos
+#: field:product.product,novedad:0
+#: view:product.template:style_aristos.style_aristos_base_product_form
+#: field:product.template,novedad:0
+msgid "Top Ventas"
+msgstr "Top Ventas"
+
+#. module: style_aristos
+#: field:sale.commission.settlement,total_due:0
+msgid "Total due"
+msgstr "Total parcial"
+
+#. module: style_aristos
+#: field:sale.commission,type_in_product:0
+msgid "Type in product"
+msgstr "Aplicable a productos"
+
+#. module: style_aristos
+#: model:ir.actions.act_window,name:style_aristos.action_type_of_material
+#: model:ir.ui.menu,name:style_aristos.menu_st_type_of_material_action
+#: field:product.product,type_of_material_id:0
+#: field:product.template,type_of_material_id:0
+#: view:st.type_material:style_aristos.style_aristos_type_of_material_form_view
+#: view:st.type_material:style_aristos.style_aristos_type_of_material_tree_view
+msgid "Type of Material"
+msgstr "Tipo de Material"
+
+#. module: style_aristos
+#: field:sale.order.line,type_line:0
+msgid "Type of Mov."
+msgstr "Tipo de Movimiento"
+
+#. module: style_aristos
+#: field:st.collection,descripcion:0 field:st.type_material,descripcion:0
+msgid "Type of material"
+msgstr "Tipo de Material"
+
+#. module: style_aristos
+#: field:st.line.type,name:0
+msgid "Type of sale order line"
+msgstr "Tipo de línea de venta"
+
+#. module: style_aristos
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "Type the complete route where images are load"
+msgstr "Introduzca la dirección completa donde se guardan las imágenes"
+
+#. module: style_aristos
+#: help:product.product,alert_time:0
+msgid ""
+"When a new a Serial Number is issued, this is the number of days before an "
+"alert should be notified."
+msgstr ""
+"When a new a Serial Number is issued, this is the number of days before an "
+"alert should be notified."
+
+#. module: style_aristos
+#: help:product.product,life_time:0
+msgid ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods may become dangerous and must not be consumed."
+msgstr ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods may become dangerous and must not be consumed."
+
+#. module: style_aristos
+#: help:product.product,removal_time:0
+msgid ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods should be removed from the stock."
+msgstr ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods should be removed from the stock."
+
+#. module: style_aristos
+#: help:product.product,use_time:0
+msgid ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods starts deteriorating, without being dangerous yet."
+msgstr ""
+"When a new a Serial Number is issued, this is the number of days before the "
+"goods starts deteriorating, without being dangerous yet."
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:43
+#, python-format
+msgid "You cannot delete an invoice which is not invoice or except invoice."
+msgstr "No se puede borrar una liquidadion que este facturada ."
+
+#. module: style_aristos
+#: field:product.product,abv_name:0 field:product.template,abv_name:0
+msgid "abbreviated name"
+msgstr "Nombre abreviado"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,paid_date:0
+#: field:sale.commission.settlement.line,paid_date:0
+msgid "date of paid"
+msgstr "Fecha de pago"
+
+#. module: style_aristos
+#: view:product.template:style_aristos.style_aristos_base_product_form
+msgid "describe the product characteristics..."
+msgstr "Describa aquí las características del producto..."
+
+#. module: style_aristos
+#: view:product.product:style_aristos.aristos_product_product_tree_view
+msgid "description_sale"
+msgstr "Descripción para ventas"
+
+#. module: style_aristos
+#: view:product.desactivate:style_aristos.view_product_desactivate
+#: view:product.get.image:style_aristos.view_product_get_image
+msgid "or"
+msgstr "o"
+
+#. module: style_aristos
+#: view:st.parameters:style_aristos.style_aristos_parameters_form_view
+msgid "pa00"
+msgstr "pa00"
+
+#. module: style_aristos
+#: field:product.product,short_name:0 field:product.template,short_name:0
+msgid "short name"
+msgstr "Nombre corto"
+
+#. module: style_aristos
+#: field:product.product,stock_tolerancia_count:0
+#: field:st.parameters,stock_tolerancia:0
+msgid "stock tolerance"
+msgstr "Tolerancia de stock"

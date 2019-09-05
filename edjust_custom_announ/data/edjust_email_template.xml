@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <openerp>
+    <data >
+    
+        <!--<data>-->
+        <!--Email template-->
+        <record id="email_edjust_subscription" model="email.template">
+            <field name="name">email_edjust_subscription</field>
+            <field name="email_from">Ediciones Just</field>
+            <field name="subject">Renovación de suscripción</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="model_id" ref="analytic.model_account_analytic_account"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.lang}</field>
+            <field name="body_html"><![CDATA[
+            Hola&nbsp;${object.partner_id.name}.
+            <div>
+              Su suscripción&nbsp;${object.name} caducará dentro de&nbsp;${object.plazo_preaviso} días.
+            </div>
+            <div>
+              Si desea cancelar su renovación le rogamos lo comunique .....
+            </div>
+            <div>
+              <br>
+                <div>
+                  <br>
+                </div>
+                  
+            </div>
+            ]]>
+            </field>
+        </record>
+
+        <record id="email_edjust_claim2" model="email.template">
+            <field name="name">email_edjust_claim2</field>
+            <field name="email_from">Ediciones Just</field>
+            <field name="subject">Reclamaciones sin Cerrar</field>
+            <field name="email_to">${object.email}</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.lang}</field>
+            <field name="body_html"><![CDATA[
+            Hola ${object.name}<div>
+
+
+                <p>Tiene siguientes reclamaciones pendientes con mas de 15 dias </p>
+                <table cellspacing="1" border="1" cellpadding="4" width="900px">
+                    <tbody><tr>
+                        <th width="300px">Claim</th>
+                        <th width="300px">Partner</th>
+                        <th width="300px">Date</th>
+        
+                        </tr></tbody></table>
+                % for claim in ctx["data"]:
+                <table cellspacing="1" border="1" cellpadding="4" width="900px">
+                <tbody><tr>
+                    <td width="300px">${claim.name}</td>
+                    <td width="300px">${claim.partner_id.name}</td>
+                    <td width="300px">${ctx["data"][claim]}</td>
+            
+                    </tr></tbody></table>
+                % endfor
+
+                </div><div>Gracias,<pre>-- 
+                    Correo electrónico automático de Odoo
+                </pre>
+                </div>
+            ]]>
+            </field>
+        </record>
+        <record id="email_edjust_advert_notify" model="email.template">
+            <field name="name">Advertising notification</field>
+            <field name="email_from">Ediciones Just</field>
+            <field name="subject">Material para publicidad Ediciones Just</field>
+            <field name="email_to">${object.sale_order_line_id.order_id.contacto_aviso.email}</field>
+            <field name="model_id" ref="edjust_custom_announ.model_edjust_advert_notify"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.lang}</field>
+            <field name="body_html"><![CDATA[
+            Hola&nbsp;${object.sale_order_line_id.order_id.contacto_aviso.name}. 
+            <div>
+              Le recordamos que debe enviar el material de publicidad para la edición ${object.sale_order_line_id.edicion_id.name} antes de la fecha ${object.date_edition}.
+            </div>
+            <div>
+              Si tenen cualquier duda puede contactar ....
+            </div>
+            <div>
+              <br>
+                <div>
+                  <br>
+                </div>
+                  
+            </div>
+            ]]>
+            </field>
+        </record>
+        <record id="email_edjust_commit_notify" model="email.template">
+            <field name="name">Commitment notification</field>
+            <field name="email_from">Ediciones Just</field>
+            <field name="subject">Material para compromiso de redacción Ediciones Just</field>
+            <field name="email_to">${object.commitment_id.contacto_aviso.email}</field>
+            <field name="model_id" ref="edjust_custom_announ.model_edjust_commitment_notify"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="lang">${object.lang}</field>
+            <field name="body_html"><![CDATA[
+            Hola&nbsp;${object.commitment_id.contacto_aviso.name}.
+            <div>
+              Le recordamos que debe enviar el material del compromiso de redacción para la edición ${object.commitment_id.sale_id.edicion_id.name} antes de la fecha ${object.date_edition}.
+            </div>
+            <div>
+              Si tenen cualquier duda puede contactar ....
+            </div>
+            <div>
+              <br>
+                <div>
+                  <br>
+                </div>
+                  
+            </div>
+            ]]>
+            </field>
+        </record>
+    </data>
+</openerp> 

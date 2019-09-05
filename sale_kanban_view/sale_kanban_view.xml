@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="sale_order_kanban_view">
+        <field name="name">sale.order.kanban.view</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" string="Order Number"/>
+                <field name="date_order"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="amount_total" sum="Total Tax Included"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Pedido Num: </b><field name="name" string="Order Number"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date_order"/></li>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Comercial: </b><field name="user_id"/></li>
+                                    <li><b>Total: </b><field name="amount_total" sum="Total Tax Included"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+    <record model="ir.ui.view" id="purchase_order_kanban_view">
+        <field name="name">purchase.order.kanban.view</field>
+        <field name="model">purchase.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" string="Order Number"/>
+                <field name="date_order"/>
+                <field name="partner_id"/>
+                <field name="amount_total" sum="Total Tax Included"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Pedido Num: </b><field name="name" string="Order Number"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date_order"/></li>
+                                    <li><b>Proveedor: </b><field name="partner_id"/></li>
+                                    <li><b>Total: </b><field name="amount_total" sum="Total Tax Included"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+  </data>
+</openerp>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="edjust_marketing_crm__form_view" model="ir.ui.view">
+            <field name="name">CRM - MKT EdJust Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="marketing_crm.view_crm_opportunity_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Marketing']" position="replace">
+                </xpath>
+            </field>
+        </record>
+
+        <record id="edjust_crm_form_view" model="ir.ui.view">
+            <field name="name">CRM - EdJust Form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="campaign_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="edjust_crm__tree_view" model="ir.ui.view">
+            <field name="name">CRM - EdJust Tree</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='campaign_id']" position="attributes">
+                    <attribute name="invisible">0</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="edjust_crm_action_form_view" model="ir.ui.view">
+            <field name="name">CRM Action - EdJust Form</field>
+            <field name="model">crm.action</field>
+            <field name="inherit_id" ref="liderit_crm_action.view_action_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='details']" position="after">
+                    <field name="action_note"/>
+                    <field name="reason_ids"
+                        attrs="{'invisible':[('state','=','draft')]}"
+                        string="Notas de cierre">
+                            <tree string="Razones de cierre" editable="bottom">
+                                <field name="date"/>
+                                <!--field name="tier_one_id" widget="selection" 
+                                    domain="['|', ('model_ids.model', '=', 'crm.action'), ('model_ids', '=', False)]"/-->
+                                <field name="details" string="Detalle........................................................."/>
+                            </tree>
+                        </field>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="edjust_medio_id" readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

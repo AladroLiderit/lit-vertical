@@ -1,0 +1,272 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mct_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-05 09:00+0000\n"
+"PO-Revision-Date: 2018-07-05 11:04+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#. module: mct_custom
+#: field:stock.move,packet_number:0
+msgid "# Bultos"
+msgstr "Nº Bultos"
+
+#. module: mct_custom
+#: field:stock.move,palet_number:0
+msgid "# Palets"
+msgstr "Nº Palets"
+
+#. module: mct_custom
+#: view:sale.order:mct_custom.sale_order_packaging_mct_form_view
+msgid "# Pkg 1"
+msgstr "Nº Bultos"
+
+#. module: mct_custom
+#: view:sale.order.line:mct_custom.sale_order_line_mct_tree_view
+msgid "# Pkg 2"
+msgstr "Nº Palets"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:277
+#: code:addons/mct_custom/models/mct_custom.py:297 field:mct.calibre,name:0
+#: field:sale.order.line,calibre_id:0
+#, python-format
+msgid "Calibre"
+msgstr "Calibre"
+
+#. module: mct_custom
+#: field:account.invoice,campaing_id:0
+#: code:addons/mct_custom/models/mct_custom.py:34
+#: code:addons/mct_custom/models/mct_custom.py:83
+#: code:addons/mct_custom/models/mct_custom.py:193 field:mct.campaign,name:0
+#: field:stock.picking,campaing_id:0
+#, python-format
+msgid "Campaign"
+msgstr "Campaña"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:270
+#: code:addons/mct_custom/models/mct_custom.py:296 field:mct.categoria,name:0
+#: field:sale.order.line,categoria_id:0
+#, python-format
+msgid "Categoria"
+msgstr "Categoría"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:271
+#: code:addons/mct_custom/models/mct_custom.py:278
+#: code:addons/mct_custom/models/mct_custom.py:284
+#: code:addons/mct_custom/models/mct_custom.py:290
+#, python-format
+msgid "Code"
+msgstr "Código"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:283
+#: code:addons/mct_custom/models/mct_custom.py:298 field:mct.confeccion,name:0
+#: field:sale.order.line,confeccion_id:0
+#, python-format
+msgid "Confeccion"
+msgstr "Confección"
+
+#. module: mct_custom
+#: field:mct.calibre,create_uid:0 field:mct.campaign,create_uid:0
+#: field:mct.categoria,create_uid:0 field:mct.confeccion,create_uid:0
+#: field:mct.finca,create_uid:0 field:mct.marca,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: mct_custom
+#: field:mct.calibre,create_date:0 field:mct.campaign,create_date:0
+#: field:mct.categoria,create_date:0 field:mct.confeccion,create_date:0
+#: field:mct.finca,create_date:0 field:mct.marca,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: mct_custom
+#: field:mct.calibre,code:0 field:mct.categoria,code:0
+#: field:mct.confeccion,code:0 field:mct.marca,code:0
+msgid "Código"
+msgstr "Código"
+
+#. module: mct_custom
+#: field:mct.calibre,display_name:0 field:mct.campaign,display_name:0
+#: field:mct.categoria,display_name:0 field:mct.confeccion,display_name:0
+#: field:mct.finca,display_name:0 field:mct.marca,display_name:0
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: mct_custom
+#: field:account.invoice,mct_finca_id:0
+#: code:addons/mct_custom/models/mct_custom.py:81
+#: code:addons/mct_custom/models/mct_custom.py:191
+#: field:stock.picking,mct_finca_id:0
+#, python-format
+msgid "Finca"
+msgstr "Finca"
+
+#. module: mct_custom
+#: model:ir.actions.act_window,name:mct_custom.act_open_fincas_view
+#: model:ir.ui.menu,name:mct_custom.menu_fincas_sub
+#: view:mct.finca:mct_custom.view_mct_fincas_tree
+msgid "Fincas"
+msgstr "Fincas"
+
+#. module: mct_custom
+#: field:mct.calibre,id:0 field:mct.campaign,id:0 field:mct.categoria,id:0
+#: field:mct.confeccion,id:0 field:mct.finca,id:0 field:mct.marca,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_account_invoice
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Línea de factura"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:110
+#: field:res.partner,invoice_to_stock:0
+#, python-format
+msgid "Invoice to Stock"
+msgstr "Facturas contra stock"
+
+#. module: mct_custom
+#: field:mct.calibre,__last_update:0 field:mct.campaign,__last_update:0
+#: field:mct.categoria,__last_update:0 field:mct.confeccion,__last_update:0
+#: field:mct.finca,__last_update:0 field:mct.marca,__last_update:0
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: mct_custom
+#: field:mct.calibre,write_uid:0 field:mct.campaign,write_uid:0
+#: field:mct.categoria,write_uid:0 field:mct.confeccion,write_uid:0
+#: field:mct.finca,write_uid:0 field:mct.marca,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: mct_custom
+#: field:mct.calibre,write_date:0 field:mct.campaign,write_date:0
+#: field:mct.categoria,write_date:0 field:mct.confeccion,write_date:0
+#: field:mct.finca,write_date:0 field:mct.marca,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:29
+#: code:addons/mct_custom/models/mct_custom.py:46 field:mct.finca,lot_code:0
+#: field:product.product,lot_code:0
+#, python-format
+msgid "Lot Number Code"
+msgstr "Nº Lote"
+
+#. module: mct_custom
+#: field:sale.order.line,pri_pack_qty_manual:0
+msgid "Manual Pkg 1 Qty."
+msgstr "Bultos definitivos"
+
+#. module: mct_custom
+#: field:sale.order.line,sec_pack_qty_manual:0
+msgid "Manual Pkg 2 Qty."
+msgstr "Palets definitivos"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:289
+#: code:addons/mct_custom/models/mct_custom.py:299 field:mct.marca,name:0
+#: field:sale.order.line,marca_id:0
+#, python-format
+msgid "Marca"
+msgstr "Marca"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:28 field:mct.finca,name:0
+#, python-format
+msgid "Nombre de la Finca"
+msgstr "Nombre de la Finca"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_stock_pack_operation
+msgid "Packing Operation"
+msgstr "Operación de empaquetado"
+
+#. module: mct_custom
+#: field:stock.move,palet_type:0
+msgid "Palet"
+msgstr "Palet"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_res_partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_stock_picking
+msgid "Picking List"
+msgstr "Albarán"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea pedido de venta"
+
+#. module: mct_custom
+#: model:ir.model,name:mct_custom.model_stock_move
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:197
+#: field:stock.picking,product_ul_id:0
+#, python-format
+msgid "Tipo Palet"
+msgstr "Tipo Palet"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:122
+#: field:stock.move,usable_product_ids:0
+#, python-format
+msgid "Usable products"
+msgstr "Productos utilizables"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:119
+#: field:stock.move,usable_tmpl_ids:0
+#, python-format
+msgid "Usable templates"
+msgstr "Plantillas utilizables"
+
+#. module: mct_custom
+#: code:addons/mct_custom/models/mct_custom.py:109
+#: field:res.partner,voucher_seq:0
+#, python-format
+msgid "Voucher sequence"
+msgstr "Secuencia de recibo"
+
+#. module: mct_custom
+#: field:account.invoice,cogida_picking:0
+#: code:addons/mct_custom/models/mct_custom.py:85
+#: code:addons/mct_custom/models/mct_custom.py:195
+#: field:stock.picking,cogida_picking:0
+#, python-format
+msgid "Working Note"
+msgstr "Albarán de Campo"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+ 	<record model="ir.module.category" id="category_grupo_edjust">
+            <field name="name">Ediciones Just</field>
+            <field name="sequence">1</field>
+    </record>
+   	<record id="group_edjust_user" model="res.groups">
+        <field name="name">Usuario</field>
+        <field name="category_id" ref="category_grupo_edjust"/>
+    </record>
+  	<record id="group_edjust_admin" model="res.groups">
+        <field name="name">Administrador</field>
+        <field name="category_id" ref="category_grupo_edjust"/>
+        <field name="implied_ids" eval="[(4, ref('edjust_custom_partner.group_edjust_user'))]"/>
+    </record>
+</data>
+</openerp>

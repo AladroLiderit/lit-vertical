@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+ <record model="ir.ui.view" id="view_res_country_ccaa_form">
+   <field name="name">res.country.ccaa.form</field>
+   <field name="model">res.country.state</field>
+   <field name="inherit_id" ref="base.view_country_state_form"/>
+   <field name="arch" type="xml">
+     <xpath expr="//field[@name='code']" position="after">
+			<field name="ccaa_id"/>
+	     </xpath>
+   </field>
+ </record>
+
+<!--modificacion de vista tree-->
+	<record model="ir.ui.view" id="view_res_country_ccaa_tree">
+	   <field name="name">res.country.ccaa.tree</field>
+	   <field name="model">res.country.state</field>
+	   <field name="inherit_id" ref="base.view_country_state_tree"/>
+	   <field name="arch" type="xml">
+
+	     <xpath expr="//field[@name='code']" position="after">
+			<field name="ccaa_id"/>
+	     </xpath>
+
+	   </field>
+	 </record>
+
+
+    </data>
+</openerp>
+

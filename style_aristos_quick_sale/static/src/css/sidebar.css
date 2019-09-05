@@ -1,0 +1,165 @@
+/* Sidebar Styles */
+
+#menu-toggle {
+   float: right;
+}
+#wrapper {
+   padding-right: 0;
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+}
+#wrapper.toggled {
+   padding-right: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute;
+    right: 250px;
+    width: 0;
+    top: 0 !important;
+    height: calc(100vh - 45px);
+    margin-right: -250px;
+    overflow-x: hidden;
+    -webkit-transition: all 0.5s ease;
+    -moz-t  ransition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    top:34px;
+    background: #f0eeee;
+    transition: all 0.5s ease;
+    border: 1px solid #c4c4c4;
+}
+#mysidebar #wrapper.toggled #sidebar-wrapper {
+   width: 250px;
+}
+
+#page-content-wrapper {
+   width: 100%;
+   position: absolute;
+   padding: 15px;
+}
+
+#mysidebar #wrapper.toggled #page-content-wrapper {
+   position: absolute;
+   margin-left: -250px;
+}
+
+.sidebar-nav {
+   position: absolute;
+   top: 0;
+   width: 275px;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.sidebar-nav li {
+   text-indent: 20px;
+   line-height: 28px;
+}
+
+.sidebar-nav li a {
+   display: block;
+   text-decoration: none;
+   font-weight: bold;
+   color: #333 !important;
+   font-size: 15px;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff !important;
+    background: #7C7BAD;
+}
+
+.sidebar-nav li a:active,.sidebar-nav li a:focus {
+   text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+   height: 65px;
+   font-size: 20px;
+   line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+   color: #FFF;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+.sidebar-nav li.header{
+	text-align: center;
+	font-size: 15px;
+	height: 45px;
+	line-height: 45px;
+	border-bottom: 1px solid #c4c4c4;
+}
+.sidebar-nav li a.item{
+	height:30px !important;
+	margin-top:10px;
+	font-size:14px;
+	border:none !important;
+	cursor: pointer;
+}
+#slidemenubtn{
+	position: fixed;
+	right: 0;
+	width: 35px;
+    height: 50px;
+	line-height: 38px;
+	color: #fff;
+	font-size: 20px;
+	background: grey;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+#slidemenubtn #menu-toggle {
+    color: #fff;
+}
+.slider-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: auto;
+    width: 40px;
+}
+@media(min-width:768px) {
+   #mysidebar #wrapper {
+       padding-right: 250px;
+   }
+
+   #mysidebar #wrapper.toggled {
+       padding-right: 0;
+   }
+
+   #sidebar-wrapper {
+       width: 275px;
+   }
+
+   #mysidebar #wrapper.toggled #sidebar-wrapper {
+       width: 0;
+   }
+
+   #mysidebar #wrapper.toggled #page-content-wrapper {
+       position: relative;
+       margin-left: 0;
+   }
+}
+
+@media(min-width:768px) and (max-width:1024px){
+	.numpad button{
+	    width: 54px;
+	}
+}

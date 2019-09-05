@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+		<!--Inherited Analytic Account list for contracts -->
+		<record id="edjust_account_analytic_account_partner_list_upgrade" model="ir.ui.view">
+			<field name="name">EdJust_account.analytic.account.partner.list.contact</field>
+			<field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="edjust_custom_contract.edjust_account_analytic_account_partner_tree" />
+			<field name="arch" type="xml">
+
+				
+
+				  <field name="contact_partner_id" position="after">
+                  	<field name="contact_name" readonly="0" /> 
+                   	<field name="gratuito" /> 
+                    <field name="ed_inicial"  /> 
+                    <field name="ed_final" /> 
+
+                  </field>
+                  <xpath expr="//field[@name='contact_partner_id']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='complete_name']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='manager_id']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='date_start']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='date']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='last_invoice_date']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			<xpath expr="//field[@name='total_toinvoice']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>	
+         			 <xpath expr="//field[@name='payment_mode_id']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+         			 <xpath expr="//field[@name='medio_id']" position="attributes">
+             				<attribute name="string">Publicación</attribute>
+         			</xpath>
+                    <xpath expr="//field[@name='gratuito']" position="attributes">
+                            <attribute name="string">Gratuito</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='ed_inicial']" position="attributes">
+                            <attribute name="string">Inicio suscripción</attribute>
+                    </xpath>
+                    <xpath expr="//field[@name='ed_final']" position="attributes">
+                            <attribute name="string">Fin suscripción</attribute>
+                    </xpath>
+         			 <xpath expr="//field[@name='invoice_partner_id']" position="attributes">
+             				<attribute name="invisible">1</attribute>
+         			</xpath>
+				 
+                   
+			</field>
+		</record>
+
+		
+
+		 <record id="account.action_open_partner_analytic_accounts" model="ir.actions.act_window">
+            <field name="context">{'search_default_partner_id': [active_id], 'default_partner_id': active_id}</field>
+            <field name="name">Contracts</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_id" ref="account.view_account_analytic_account_list"/>
+            <field name="search_view_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search"/>
+        </record>
+	
+
+
+
+	</data>
+</openerp>

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!--cambios en el formulario de busquedas de stock move-->
+     <record model="ir.ui.view" id="view_stock_move_asb_search">
+       <field name="name">Stock Move ASB Search</field>
+       <field name="model">stock.move</field>
+       <field name="inherit_id" ref="stock.view_move_search"/>
+       <field name="arch" type="xml">
+
+         <xpath expr="//search/field[@name='product_id']" position="after">
+           <field name="partner_id" string="Cliente" help="Buscar por cliente"/> 
+           <field name="alb_historico" help="Visualiza el detalle del albarán histórico"/>   
+         </xpath>
+
+       </field>
+
+     </record>
+
+<!--inlcuir historico en form y tree-->
+
+    <record model="ir.ui.view" id="view_asb_historico_stock_move">
+       <field name="name">Stock Move ASB Historico</field>
+       <field name="model">stock.move</field>
+       <field name="inherit_id" ref="stock.view_move_form"/>
+       <field name="arch" type="xml">
+
+        <xpath expr="//group[@name='origin_grp']/field[@name='picking_id']" position="replace"/>
+
+         <xpath expr="//field[@name='name']" position="after">
+           <field name="picking_id" domain="[('picking_type_id','=',picking_type_id)]"/>
+           <!-- este campo esta en el mrp_repair_view.xml-->
+           <!--field name="alb_historico" help="Ver detalle histórico"/--> 
+         </xpath>
+
+       </field>
+
+     </record>
+
+    <record model="ir.ui.view" id="view_asb_historico_stock_tree">
+       <field name="name">Stock Tree ASB Historico</field>
+       <field name="model">stock.move</field>
+       <field name="inherit_id" ref="stock.view_move_tree"/>
+       <field name="arch" type="xml">
+
+         <xpath expr="//field[@name='name']" position="after">
+           <field name="alb_historico" help="Ver detalle histórico"/> 
+         </xpath>
+
+       </field>
+
+     </record>
+
+
+    <!-- forms para el historico con sus lineas-->
+        <record model="ir.ui.view" id="view_asb_albhistoricos_form">
+            <field name="name">asb.albhistoricos.mode.form</field>
+            <field name="model">asb.albaran.historico</field>
+            <field name="arch" type="xml">
+              <form string="Albarán histórico">
+                <sheet>
+                  <group>
+                    <field name="name" readonly ="True"/>
+                    <field name="nom_cliente" readonly ="True"/>
+                    <field name="date" readonly ="True"/>
+                    <field name="tipo" readonly ="True"/>
+                    <field name="lineas_albaran" readonly ="True">
+                      <tree string="Lineas albaran">
+                          <field name="cod_producto"/>
+                          <field name="descripcion"/>
+                      </tree>
+                    </field>
+                  </group>
+                  
+                </sheet>
+              </form>
+            </field>
+        </record>
+
+
+<!-- ampliar tree de move para mostrar fecha y origen-->
+      <record id="view_move_picking_tree_asb_repair_custom" model="ir.ui.view">
+        <field name="name">view.move.picking.tree.asb.repair.custom</field>
+        <field name="model">stock.move</field>
+        <field name="inherit_id" ref="stock.view_move_picking_tree" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="before">
+                <field name="origin"/>
+                <field name="date"/>
+            </field>
+        </field>
+      </record>
+
+
+
+    </data>
+</openerp>

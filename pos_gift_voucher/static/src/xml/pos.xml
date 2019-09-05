@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+	<t t-extend="PaymentScreenWidget">
+		<t t-jquery=".payment-lines" t-operation="before">
+		 	<div id="gift_coupon_desc" style="display:none" class="pos-loyalty">
+		 	
+		 		<div id="gift-voucher-code" class="gift-voucher pos-loyality-title">
+                	Gift Voucher Code<br/>
+            		<input type="text" id="gift-coupon"/>
+	        	</div>
+	        
+	        	<div id="gift_button" class="loyalty-button-container">
+	        		<span>
+	        			<button class="add-coupon-button">Add </button>
+	        		</span><span>
+		 				<button class="cancel-coupon-button">Cancel </button>
+		 			</span> 
+		 		</div>
+		 		<br/>
+		 	</div>
+		</t>
+		<t t-jquery=".pos-payment-container .footer " t-operation="after">
+		 	<div>
+         	<label id="mylabel" style="font-weight: 900"></label>
+         	<label id="mylabel1" style="font-weight: 900"></label>
+         	</div>
+         	<div>
+         	<label id="mylabel_invisible" ></label>
+         	</div>
+		</t>
+		
+	</t>
+	
+	<t t-extend="PaymentScreenWidget">
+		<t t-jquery=".payment-lines" t-operation="before">
+		 	<div id="loyalty_card" style="display:none" class="pos-loyalty">
+		 	
+		 		<div id="loyalty-card-code" class="gift-voucher pos-loyality-title">
+                	Card Number<br/>
+            		<input type="text" id="loyalty-card"/>
+	        	</div>
+	        	
+	        	<div id="card-available-balance" class="gift-voucher pos-loyality-title">
+                	Available Balance<br/>
+            		<input type="text" id="card-balance" readonly='readonly'/>
+	        	</div>
+	        	
+		 		<br/>
+		 	</div>
+		</t>
+	</t>
+	
+	 <t t-extend="ScaleScreenWidget">
+	 	<t t-jquery=".product-price" t-operation="replace">
+	 		<div class='product-price'>
+            	<t t-esc="widget.format_currency(widget.get_product_price()) + '/lb(s)'" />
+            </div>
+	 	</t>
+	 </t>
+	 
+	  <t t-name="PosCoupon">
+    	<div class="pos-sale1-ticket">
+    			<label style="margin-top:100px;margin-left:100px;font-weight:80px">Barcodes</label>
+    		   <tr t-foreach="widget.currentOrderLines.toArray()" t-as="order">
+               <td t-foreach="order.get_serial_no()" t-as="o" >
+                    <div id="bar1" style="margin-left:70px"></div>
+                   
+                    <script type="text/javascript">
+               			OnLoadDiv('bar1',"<t t-esc="o" />");
+               		</script>
+               </td>
+			   </tr>
+			   
+        </div>
+    </t>
+
+<t t-name="CouponScreenWidget">
+<div id="coupon-screen" class="screen" >
+    <header><h2>Coupon</h2></header>
+    <div class="pos-step-container">
+        <div class="pos-coupon-container">
+        </div>
+    </div>
+</div>
+</t>
+
+<t t-extend="PosTicket">
+<t t-jquery=".pos-sale-ticket" t-operation="replace">
+<div class="pos-sale-ticket" style="overflow:auto;">
+<div class="pos-center-align"><t t-esc="new Date().toString(Date.CultureInfo.formatPatterns.shortDate + ' ' +
+                Date.CultureInfo.formatPatterns.longTime)"/> <t t-esc="order.get('name')"/></div>
+            <br />
+            <t t-esc="widget.pos.company.name"/><br />
+            Phone: <t t-esc="widget.pos.company.phone || ''"/><br />
+            User: <t t-esc="widget.pos.cashier ? widget.pos.cashier.name : widget.pos.user.name"/><br />
+            Shop: <t t-esc="widget.pos.shop.name"/><br />
+            <t t-if="order.get_client_name()">
+            Customer: <t t-esc="order.get_client_name()"/></t><br />
+            
+            <br />
+            <t t-if="widget.pos.config.receipt_header">
+                <div style='text-align:center'>
+                    <t t-esc="widget.pos.config.receipt_header" />
+                </div>
+                <br />
+            </t>
+            <br />
+            <table class="ticket-thead-table">
+                            
+                <tr style="font-size:12pt;font-weight:bold;border-bottom: 1px solid #000;word-spacing:2pt;">
+                    <td width="40%">Item/Price</td>
+                    <td width="30%">Qty.</td>
+                    <td width="30%">Total</td>
+                </tr>
+                <tr></tr>
+                <tr t-foreach="orderlines" t-as="orderline">
+                    <table style="font-size:10pt; margin-bottom:8px;" border="2">
+                    
+                        <tr>
+                            <td colspan="3"><t t-esc="orderline.get_product().display_name"/></td>
+                        </tr>
+                        
+                        <tr>
+                             <td width="40%">
+                                <t t-esc="widget.format_currency(orderline.get_unit_price())"/>
+                                    <t t-if="orderline.get_discount() > 0">
+                                        <div class="pos-disc-font">
+                                            With a <t t-esc="orderline.get_discount()"/>% discount
+                                        </div>
+                                    </t>
+                            </td>
+                            
+                            <td width="30%" style="padding-left:25px;">
+                                       x <t t-esc="orderline.get_quantity()"/>
+                            </td>
+                            
+                             <td width="30%" class="pos-right-align">
+                                <t t-esc="widget.format_currency(orderline.get_display_price())"/>
+                              </td>
+                        
+                        </tr>
+                        
+                    </table>
+                     </tr>
+            </table>
+            <div width="1" height="1" class="recipt-sperator"></div>
+			<div id="canv" width="1" height="1" style="border:1px solid #fff;visibility:hidden;"></div>
+			<div id="output" style="white-space:pre"></div>
+			<br />
+            <table>
+                <tr>
+                    <td>Subtotal:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getSubtotal())"/>
+                    </td>
+                </tr>
+                <t t-foreach="order.getTaxDetails()" t-as="taxdetail">
+                    <tr>
+                        <td><t t-esc="taxdetail.tax.name" /></td>
+                        <td class="pos-right-align">
+                            <t t-esc="widget.format_currency(taxdetail.amount)" />
+                        </td>
+                    </tr>
+                </t>
+                <tr>
+                    <td>Discount:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getDiscountTotal())"/>
+                    </td>
+                </tr>
+                <tr class="emph">
+                    <td>Total:</td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(order.getTotalTaxIncluded())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr t-foreach="paymentlines" t-as="line">
+                    <td>
+                        <t t-esc="line.name"/>
+                    </td>
+                    <td class="pos-right-align">
+                        <t t-esc="widget.format_currency(line.get_amount())"/>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <table>
+                <tr><td>Change:</td><td class="pos-right-align">
+                    <t t-esc="widget.format_currency(order.getChange())"/>
+                    </td></tr>
+            </table>
+            <t t-if="widget.pos.config.receipt_footer">
+                <br />
+                <div style='text-align:center'>
+                    <t t-esc="widget.pos.config.receipt_footer" />
+                </div>
+            </t>
+		</div>
+		</t>
+	</t>
+	
+	<t t-name="LoyaltyCardPopUpWidget">
+        <div class="modal-dialog">
+            <div class="popup msgBox" style="height:auto;">
+				<div class="msgBoxTitle" style="">Enter Lotyalty Card Number</div>
+                <div class="msgBoxContainer">
+                	<input type="password" class="loyalty-card-number" id="loyalty-card" maxlength="13"/>
+           		</div>
+           		<div class="message_box" style="">
+					<span class="message_box_text"></span>
+				</div>
+                <div class="msgBoxButtons" >
+                	<button class="" id="btnLoyaltyOk" type="button">Ok</button>
+					<button class="" id="btnCancel" type="button">Cancel</button>
+				</div>
+            </div>
+        </div>
+    </t>
+</templates>

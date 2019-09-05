@@ -1,0 +1,158 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* style_aristos
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20150909\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-23 14:46+0000\n"
+"PO-Revision-Date: 2018-04-23 14:46+0003\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 3.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,payment_id:0
+msgid "Account Moviment"
+msgstr "Movimiento contable"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,amount:0
+#: field:sale.commission.settlement.line,amount:0
+msgid "Amount settled"
+msgstr "Importe Liquidado"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,settled_commission:0
+msgid "Commission Settled"
+msgstr "Comision Liquidada"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_sale_commission
+msgid "Commission in sales"
+msgstr "Comisiones en Ventas"
+
+#. module: style_aristos
+#: code:addons/style_aristos/wizard/wizard_settle.py:138
+#, python-format
+msgid "Created Settlements"
+msgstr "Creaccion Liquidaciones"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent,vencimientos_ids:0
+msgid "Expiration"
+msgstr "Vencimiento"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Invoice exception"
+msgstr "Excepcion Factura"
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Invoiced"
+msgstr "Facturado"
+
+#. module: style_aristos
+#: model:ir.model,name:style_aristos.model_account_move_line
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,write_uid:0
+msgid "Last Updated by"
+msgstr "Ultima Actualizacion por"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,write_date:0
+msgid "Last Updated on"
+msgstr "Ultima Actualizacion en"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,vencimiento_id:0
+msgid "Paids"
+msgstr "Pagos"
+
+#. module: style_aristos
+#: field:sale.commission.settlement.line,invoice_line_vencimiento:0
+msgid "Payment Due"
+msgstr "Vencimiento"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,porcent:0
+#: field:sale.commission.settlement.line,porcent:0
+msgid "Porcent about total invoice"
+msgstr "Porcentaje sobre el total factura"
+
+#. module: style_aristos
+#: help:account.invoice.line.agent.vencimiento,porcent:0
+#: help:sale.commission.settlement.line,porcent:0
+msgid "Represents the payment percentage over the total invoice amount."
+msgstr "Representa el porcentaje pagado sobre el total de factura."
+
+#. module: style_aristos
+#: selection:account.invoice.line.agent.vencimiento,state:0
+msgid "Settled"
+msgstr "Liquidado"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_tree
+msgid "Settled total"
+msgstr "Total liquidado"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_form
+msgid "Settlement line"
+msgstr "Linea Liquidacion"
+
+#. module: style_aristos
+#: view:sale.commission.settlement:style_aristos.grupo_aristos_view_settlement_form
+msgid "Settlement lines"
+msgstr "Líneas de liquidación"
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,state:0
+msgid "State"
+msgstr "Estado"
+
+#. module: style_aristos
+#: field:sale.commission.settlement,total_due:0
+msgid "Total due"
+msgstr "Total parcial"
+
+#. module: style_aristos
+#: code:addons/style_aristos/models/models.py:38
+#, python-format
+msgid "You cannot delete an invoice which is not invoice or except invoice."
+msgstr "No se puede borrar una liquidadion que este facturada ."
+
+#. module: style_aristos
+#: field:account.invoice.line.agent.vencimiento,paid_date:0
+#: field:sale.commission.settlement.line,paid_date:0
+msgid "date of paid"
+msgstr "Fecha de pago"
+

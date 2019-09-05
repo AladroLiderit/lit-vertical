@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>        
+<!--========================================= ===============================================================================-->	
+        <record id="grupo_style_aristos_partner_form" model="ir.ui.view">
+            <field name="name">partner.style_aristos.form.inh</field>
+            <field name="model">res.partner</field> 
+            <field name="type">form</field> 
+	        <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='company_id']" position="after">            								
+					<field name="distr_shaka" help="Marcar si vende Shaka" />
+                    <field name="no_visible_aristos" help="Marcar para NO ver en la Web" />
+				</xpath>
+                  	
+			</field> 
+        </record>        
+  <!--========================================= ===============================================================================-->  
+     	<record id="grupo_style_aristos_partner_search" model="ir.ui.view">
+	        <field name="name">partner_style_aristos_search.inherit</field>
+	        <field name="model">res.partner</field>
+	        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+	        <field name="arch" type="xml"> 	  
+                <field name="name" position="after">
+                    <field name="ref"/>
+                </field>      
+	          	<filter name="supplier" position="after">
+                    <filter name="dist_shaka" string="Shaka" domain="[('distr_shaka','=',True)]"/>
+                </filter>                                               
+	        </field>
+    	</record> 
+
+
+    </data>
+</openerp> 

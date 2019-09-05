@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_pos_pos_form_ace" model="ir.ui.view" >
+            <field name="name">pos.order.form.ace</field>
+            <field name="model">pos.order</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+            <field name="arch" type="xml">
+               <xpath expr="//field[@name='lines']/tree/field[@name='product_id']" position="after">
+                   <field name="prodlot_id" domain="[('qty_remaining','>',0.00)]" readonly="True"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_production_lot_tree_ace" model="ir.ui.view">
+            <field name="name">stock.production.lot.tree.ace</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+            <field name="arch" type="xml">
+                <tree position="inside">
+                    <field name="qty_remaining"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+#filtros para permitir buscar registros en eventos entre fechas previstas segun nuevos campos funcion
+        <record id="event_registration_fromtodate_filter" model="ir.ui.view">
+            <field name="name">event.registration.fromtodate.search</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event.view_registration_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="due_date_to" string="Hasta Dia Previsto" filter_domain="[('create_date','&lt;=',self)]"/>
+                    <field name="due_date_from" string="Desde Dia Previsto" filter_domain="[('create_date','&gt;=',self)]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+#filtros para permitir buscar eventos entre fechas previstas segun nuevos campos funcion
+        <record id="event_event_fromtodate_filter" model="ir.ui.view">
+            <field name="name">event.event.fromtodate.search</field>
+            <field name="model">event.event</field>
+            <field name="inherit_id" ref="event.view_event_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="due_date_to" string="Hasta Fecha Inicio" filter_domain="[('date_begin','&lt;=',self)]"/>
+                    <field name="due_date_to" string="Hasta Fecha Fin" filter_domain="[('date_end','&lt;=',self)]"/>
+                    <field name="due_date_from" string="Desde Fecha Inicio" filter_domain="[('date_begin','&gt;=',self)]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+  </data>
+</openerp>

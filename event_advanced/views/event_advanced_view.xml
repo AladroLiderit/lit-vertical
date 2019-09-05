@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+ <record model="ir.ui.view" id="view_event_advanced_form">
+   <field name="name">Events</field>
+   <field name="model">event.event</field>
+   <field name="inherit_id" ref="event.view_event_form"/>
+   <field name="arch" type="xml">
+      <xpath expr="//field[@name='address_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='user_id']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='type']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+      <xpath expr="//field[@name='date_tz']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='organizer_id']" position="before">      
+        <field name="programa_event"/>
+        <field name="actividad_event"/>
+      </xpath>
+
+      <xpath expr="//field[@name='organizer_id']" position="after">
+        <field name="centro_actividad_event" />
+        <field name="destino_event" />
+        <field name="pais_event" />
+      </xpath>
+
+      <xpath expr="//field[@name='date_begin']" position="before">
+        <field name="tipo_event" required="True"/>
+        <field name="subtipo_event" required="True"/>
+      </xpath>
+
+      <xpath expr="//field[@name='date_begin']" position="attributes">
+        <attribute name="widget">date</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='date_end']" position="attributes">
+        <attribute name="widget">date</attribute>
+      </xpath>
+
+      <xpath expr="//field[@name='date_tz']" position="before">
+        <field name="duracion_event" required="True"/>   
+      </xpath>
+
+      <xpath expr="//page[@string='Registrations']" position="before">
+       <page string="Características">
+         <!--group>
+           <group>
+             <field name="tax_ids" widget="many2many_tags"/>
+           </group>
+           <group>
+             <field name="account_id" />
+             
+           </group>  
+         </group>
+      	 <group>
+      	   <group>
+      	     <field name="programa_event" />
+      	     <field name="duracion_event" />
+      	   </group>
+      	   <group>
+      	     <field name="actividad_event" />
+      	     <field name="comercial_event" />
+      	   </group>
+      	   <group col="4">
+            <group col="2" colspan="2">
+              <field name="facturacion_event"/>
+              <field name="account_analytic_id" required="True" options="{'no_quick_create':True,'no_create_edit':True}"/>
+            </group>
+            <group col="2" colspan="2">
+              <field name="precio_total_event" widget='monetary'/>
+              <field name="descuento_event" widget='monetary'/>
+            </group>
+      	   </group>
+      	 </group-->
+
+        <group col="6">
+
+          <group col="2" colspan="2">    
+            <field name="precio_total_event" widget='monetary' string="Precio Actividad por alumno"/>
+            <field name="precio_reserva_event" widget='monetary' string="Precio Reserva por alumno"/>
+            <field name="descuento_event" widget='monetary' strign="Descuento Actividad por alumno"/>
+            <field name="recargo_extemporaneo"/>
+            <field name="precio_web" widget='monetary' string="Precio Pago en Web"/>
+            <field name="total_formacion" readonly="True"/>
+            <field name="invoice_concept" />
+            
+          </group>
+
+          <group col="2" colspan="2">
+            <field name="alojamiento_actividad"/>
+            <field name="regimen_actividad"/>
+            <field name="jornada_event" />
+            <field name="horas_event" />
+            <field name="idioma_actividad"/>
+            <field name="caracteristicas_actividad" widget="many2many_tags"/> 
+          </group>
+
+      	  <group col="2" colspan="2">
+            <field name="account_analytic_id" required="True" options="{'no_quick_create':True,'no_create_edit':True}"/>
+            <field name="account_id" />
+            <field name="tax_ids" widget="many2many_tags"/>
+            <field name="facturacion_event"/>
+            <field name="transporte_event" />
+            <field name="tipo_transporte_event" attrs="{'invisible': [('transporte_event','=',False)]}"  />
+      	  </group>
+
+           <group col="2" colspan="2">
+              <field name="conceptos_contratados_event" string="Conceptos">
+                <tree>
+                  <field name="name" string="Concepto"/>
+                  <!--field name="importe_concepto"/-->
+                  <!--field name="tax_id"/-->
+                </tree>
+              </field>
+            </group>
+            <group col="2" colspan="4">
+              <field name="suplidos_event" string="Suplidos">
+                <tree editable="bottom">
+                  <field name="suplido_id" string="Suplido"/>
+                  <field name="importe_concepto" sum="Total Neto"/>
+                  <field name="tax_id"/>
+                  <field name="importe_impuesto" sum ="Total Impuestos"/>
+                </tree>
+              </field>
+            </group>
+
+
+      	</group>
+
+      </page>
+       
+     </xpath>
+
+   </field>
+ </record>
+
+ <record model="ir.ui.view" id="view_event_advanced_search">
+   <field name="name">Events</field>
+   <field name="model">event.event</field>
+   <field name="inherit_id" ref="event.view_event_search"/>
+   <field name="arch" type="xml">
+     <xpath expr="//search[@string='Events']" position="inside">
+       <field name="programa_event" string="Programa"/>
+       <field name="actividad_event" string="Actividad" />
+       <!--field name="comercial_event" string="Comercial" /-->
+       <field name="organizer_id" string="Organizador" />
+       <field name="centro_actividad_event" string="Centro de actividad" />       
+       
+     </xpath>
+     <xpath expr="//group[@string='Group By']" position="inside">
+       <filter string="Programa" context="{'group_by':'programa_event'}"/>
+       <filter string="Actividad" context="{'group_by':'actividad_event'}"/>
+       <!--filter string="Comercial" context="{'group_by':'comercial_event'}"/-->
+       <filter string="Organizador" context="{'group_by':'organizer_id'}"/>
+       <filter string="Centro de actividad" context="{'group_by':'centro_actividad_event'}"/>
+     </xpath>
+     
+   </field>
+
+ </record>
+
+ <!--ampliamos la vista  tree de actividades (event) para mostrar la duracion del evento-->
+      <record model="ir.ui.view" id="view_event_duracion_tree">
+        <field name="name">view.event.duracion.tree</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_tree"/>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='date_end']" position="before">
+            <field name="duracion" />   
+          </xpath>
+
+        </field>
+      </record>
+
+ <record model="ir.ui.view" id="view_event_advanced_kanban">
+            <field name="name">event.event.kanban</field>
+            <field name="model">event.event</field>
+	    <field name="inherit_id" ref="event.view_event_kanban"/>
+            <field name="arch" type="xml">
+	        <xpath expr="//a[@class='oe_module_icon']" position="replace">
+                <a type="open" class="oe_module_icon">
+                  <div class="oe_event_date ">
+		    <t t-if="record.date_begin.raw_value == false">--</t>
+                    <t t-if="record.date_begin.raw_value != false">
+                      <t t-esc="record.date_begin.raw_value.getDate()"/>
+                    </t>
+                  </div>
+                  <div class="oe_event_month_year">
+		    <t t-if="record.date_begin.raw_value == false">--</t>
+                    <t t-if="record.date_begin.raw_value != false">
+
+                    <t t-esc="record.date_begin.raw_value.toString('MMM')"/>
+                    <t t-esc="record.date_begin.raw_value.getFullYear()"/>
+                    </t>
+                  </div>
+                  <div class="oe_event_time">
+		    <t t-if="record.date_begin.raw_value == false">--</t>
+                    <t t-if="record.date_begin.raw_value != false">
+                      <t t-esc="record.date_begin.raw_value.toString('hh:mm tt')"/>
+                    </t>
+                  </div>
+                </a>
+
+	      </xpath>
+	    </field>
+ </record>
+
+
+
+    </data>
+</openerp>

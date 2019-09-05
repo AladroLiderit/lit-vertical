@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="pos_session_kanban_view">
+        <field name="name">pos.session.kanban.view</field>
+        <field name="model">pos.session</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="start_at"/>
+                <field name="stop_at"/>
+                <field name="config_id"/>
+                <field name="user_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Sesion Num: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Inicio: </b><field name="start_at"/></li>
+                                    <li><b>Cierre: </b><field name="stop_at"/></li>
+                                    <li><b>Tienda: </b><field name="config_id"/></li>
+                                    <li><b>Comercial: </b><field name="user_id"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+    <record model="ir.ui.view" id="pos_order_kanban_view">
+        <field name="name">pos.order.kanban.view</field>
+        <field name="model">pos.order</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date_order"/>
+                <field name="session_id"/>
+                <field name="user_id"/>
+                <field name="partner_id"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Ref. venta: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Id Sesion: </b><field name="session_id"/></li>
+                                    <li><b>Fecha: </b><field name="date_order"/></li>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Vendedor: </b><field name="user_id"/></li>
+                                    <li><b>Total: </b><field name="amount_total" sum="Total"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+  </data>
+</openerp>

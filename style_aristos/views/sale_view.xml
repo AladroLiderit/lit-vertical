@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<record id="sale_line_type_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.type.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale.view_order_form"/>
+		    <field name="arch" type="xml">
+
+                <button name="print_quotation" position="after">
+                    <button type="object" name="sale_order_print" string="Preparar"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}" class="oe_highlight" />
+                </button>
+
+		    	<!--xpath expr="//field[@name='order_line']" position="attributes">
+                	<attribute name="attrs">{'invisible': [('name', '=', '/')]}</attribute>
+                </xpath-->
+
+                <xpath expr="//field[@name='pricelist_id']" position="before">
+                    <field name="preparation_user"/>
+                </xpath>
+
+		    	<xpath expr="//field[@name='order_line']/tree//field[@name='discount']" position="after">
+                    <field name="line_type"/>
+                </xpath>
+                <!--oculta el campo de peso y direccion de entrega del core que no se usa-->
+                <xpath expr="//field[@name='order_line']/form//field[@name='address_allotment_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='th_weight']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+
+
+                <xpath expr="//field[@name='order_line']/form//field[@name='tax_id']" position="after">
+                	<field name="warehouse_id"/>
+                	<label for ="line_type">Entrega</label>
+                	<div>
+	                	<field name="line_type" widget="many2many_checkboxes"/>
+	                </div>
+	                 
+                </xpath>
+
+                <!--oculta las lineas de factura del core que no se quieren ver-->
+                <xpath expr="//field[@name='order_line']/form//label[@for='invoice_lines']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='invoice_lines']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!--mueve el plazo de pago a la pagina principal sobre las notas-->
+                <xpath expr="//field[@name='payment_term']" position="replace"/>
+
+                <xpath expr="//field[@name='note']" position="before">
+                    <group name="sale_payment" col="8">
+                        <group col="4">
+                            <field name="payment_term" options="{'no_create': True}"/>
+                        </group>
+                        <group col="4">
+                            <field name="payment_mode_id" domain="[('sale_ok', '=', True)]" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                </xpath>
+
+
+		    </field>
+		</record>
+
+        <record id="account_payment_pral_sale_form_view" model="ir.ui.view">
+            <field name="name">account.payment.pral.sale.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="account_payment_sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <!--elimina el modo de pago que se carga en el anterior-->
+                <xpath expr="//field[@name='payment_mode_id']" position="replace"/>
+
+            </field>
+        </record>
+
+
+        
+
+		<record id="sale_line_nodelay_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.nodelay.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+		    <field name="arch" type="xml">
+
+		    	<!--oculta el campo tiempo de entrega que pone el módulo sale_stock-->
+		    	<xpath expr="//field[@name='delay']/parent::div" position="replace"/>
+
+                <xpath expr="//field[@name='order_line']/form//label[@for='delay']" position="replace"/>
+
+
+            </field>
+        </record>
+
+        <!-- oculta el campo wharehouse actual para cambiarlo de sitio-->
+        <record id="sale_line_nowh_form_view" model="ir.ui.view">
+		    <field name="name">sale.line.nowh.form</field>
+		    <field name="model">sale.order</field>
+		    <field name="inherit_id" ref="sale_sourced_by_line.view_order_form_form"/>
+		    <field name="arch" type="xml">
+               
+                <xpath expr="//field[@name='order_line']/form//field[@name='warehouse_id']" position="attributes">
+                	<attribute name="invisible">1</attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!--opcion en menu de pedidos para marcar como impreso a la vez que lanza report-->
+
+  
+        <record id="action_sale_as_printed" model="ir.actions.server">
+                <field name="name">Imprimir para preparar</field>
+                <field name="type">ir.actions.server</field>
+                <field name="model_id" ref="model_sale_order"/>
+                <field name="state">code</field>
+                <field name="code">
+                    action = self.sale_order_print_multi(cr, uid, context.get('active_ids', []), context=context)
+                </field>
+
+          </record>
+
+        <record id="ir_sale_as_printed" model="ir.values">
+                <field eval="'client_action_multi'" name="key2"/>
+                <field eval="'sale.order'" name="model"/>
+                <field name="name">Imprimir para preparar</field>
+                <field eval="'ir.actions.server,%d'%action_sale_as_printed" name="value"/>
+          </record>  
+
+
+        <!--campo para determinar si un tipo de pedido afecta a las lineas de impuestos del pedido-->
+        <record id="sale_order_type_taxes_form_view" model="ir.ui.view">
+            <field name="name">sale.order.type.taxes.form</field>
+            <field name="model">sale.order.type</field>
+            <field name="inherit_id" ref="sale_order_type.sot_sale_order_type_form_view"/>
+            <field name="arch" type="xml">
+
+
+                <xpath expr="//field[@name='sequence_id']" position="after">
+                    <field name="taxes" />
+
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <!--colores en las vistas lista de pedidos de venta-->
+        <record id="sale_order_view_colored_tree" model="ir.ui.view">
+            <field name="name">sale.order.view.colored.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="tax_by_type" invisible="1" />
+                </xpath>
+                <xpath expr="//tree[@string='Sales Orders']" position="attributes">
+                    <attribute name="colors">hotpink:tax_by_type;grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="sale_quotation_view_colored_tree" model="ir.ui.view">
+            <field name="name">sale.quotation.view.colored.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="tax_by_type" invisible="1"/>
+                </xpath>
+                <xpath expr="//tree[@string='Quotation']" position="attributes">
+                    <attribute name="colors">hotpink:tax_by_type;grey:state=='cancel';blue:state in ('waiting_date','manual');red:state in ('invoice_except','shipping_except')</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+    </data>
+</openerp>

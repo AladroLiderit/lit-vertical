@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+<!--opcion en menu de movimientos para hacer un cambio masivo a procesado-->
+
+  
+      <record id="action_move_as_done" model="ir.actions.server">
+            <field name="name">Establecer como Procesado</field>
+            <field name="model_id" ref="stock.model_stock_move"/>
+            <field name="state">code</field>
+            <field name="code">
+                if context.get('active_model') == 'stock.move' and context.get('active_ids'):
+                    self.action_done(cr, uid, context['active_ids'], context=context)
+            </field>
+      </record>
+
+      <record id="ir_move_as_done" model="ir.values">
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="'stock.move'" name="model"/>
+            <field name="name">Establecer como Procesado</field>
+            <field eval="'ir.actions.server,%d'%action_move_as_done" name="value"/>
+      </record>
+
+</data>
+</openerp>

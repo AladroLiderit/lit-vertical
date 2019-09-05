@@ -1,0 +1,216 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* asb_move_line_report_xls
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-29 07:49+0000\n"
+"PO-Revision-Date: 2016-09-29 09:51+0100\n"
+"Last-Translator: Manuel Llano\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.10\n"
+"Language: es_ES\n"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Journal Items"
+msgstr "Asientos"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Entry"
+msgstr "Asiento"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Name"
+msgstr "Ref."
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Reference"
+msgstr "Ref."
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Effective Date"
+msgstr "Fecha Asiento"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Period"
+msgstr "Periodo"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Partner Reference"
+msgstr "Ref. Empresa"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Account Name"
+msgstr "Nombre Cuenta"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Maturity Date"
+msgstr "Vencimiento"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Debit"
+msgstr "Debe"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Credit"
+msgstr "Haber"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Rec."
+msgstr "Conc."
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Part. Rec."
+msgstr "Conc. Parcial"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Tax Code"
+msgstr "Tipo IVA"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Tax/Base Amount"
+msgstr "Base de IVA"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Am. Currency"
+msgstr "Total en Moneda"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Curr."
+msgstr "Moneda"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Journal"
+msgstr "Libro"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Comp. Curr."
+msgstr "Moneda de Empresa"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Analytic Account"
+msgstr "Cuenta Analítica"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Product Reference"
+msgstr "Ref. Producto"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Unit of Measure"
+msgstr "Unidad de Medida"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Qty"
+msgstr "Cant."
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Statement"
+msgstr "Estado"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Residual Amount"
+msgstr "Saldo Pendiente"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Res. Am. in Curr."
+msgstr "Saldo Pendiente en Moneda"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: asb_move_line_report_xls
+#: report:move.line.list.xls:0
+msgid "Lit."
+msgstr "Lit."
+
+#. module: asb_move_line_report_xls
+#: code:addons/asb_move_line_report_xls/report/move_line_list_xls.py:300
+#, python-format
+msgid "Customisation Error!"
+msgstr "Error de personalización"
+
+#. module: asb_move_line_report_xls
+#: model:ir.actions.report.xml,name:asb_move_line_report_xls.action_move_line_list_xls
+msgid "Export Selected Lines"
+msgstr "Exportar movimientos seleccionados"
+
+#. module: asb_move_line_report_xls
+#: code:addons/asb_move_line_report_xls/report/move_line_list_xls.py:305
+#: model:ir.model,name:asb_move_line_report_xls.model_account_move_line
+#, python-format
+msgid "Journal Items"
+msgstr "Apuntes del diario"
+
+#. module: asb_move_line_report_xls
+#: code:addons/asb_move_line_report_xls/report/move_line_list_xls.py:283
+#, python-format
+msgid "Lit."
+msgstr "Lit."
+
+#. module: asb_move_line_report_xls
+#: code:addons/asb_move_line_report_xls/report/move_line_list_xls.py:301
+#, python-format
+msgid ""
+"The 'Balance' field is a calculated XLS field requiring                 the "
+"presence of the 'Debit' and 'Credit' fields !"
+msgstr "El cálculo de 'Balance' requiere valores de Debe y Haber!"
+

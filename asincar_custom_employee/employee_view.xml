@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+        <record id="employee_asincar_form_view" model="ir.ui.view">
+            <field name="name">employee.asincar.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='coach_id']" position="after">
+                    <field name="fecha_alta"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- AMPLIAR DOMINIO DE PRODUCTOS A LOS QUE SON DE COSTE LABORAL-->
+        <record id="contrato_asincar_form_view" model="ir.ui.view">
+            <field name="name">contrato.asincar.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_employee_extd_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="before">
+                    <field name="perfil_id"/>
+                </xpath>
+                <xpath expr="//field[@name='product_id']" position="attributes">
+                    <attribute name="domain">[('type','=','service'),('is_employee_cost','=','True')]</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="tipo_contrato"/>
+                </xpath>
+                <xpath expr="//group[@string='Active']" position="before">
+                    <group string="Coste actual del trabajador">
+                        <field name="actual_cost" readonly="True"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="employee_asincar_search_view" model="ir.ui.view">
+            <field name="name">employee.asincar.search.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Group By']" position="inside">
+                    <filter string="Perfil Laboral" domain="[]" context="{'group_by':'perfil_id'}"/>
+                    <filter string="Coste Laboral" domain="[]" context="{'group_by':'product_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+         <record id="product_asincar_form_view" model="ir.ui.view">
+            <field name="name">product.asincar.view.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//label[@for='sale_ok']" position="after">
+                    <div>
+                        <field name="is_employee_cost"/>
+                        <label for="is_employee_cost"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='sales']" position="after">
+                    <page string='Costes laborales' name='costs' attrs="{'invisible': [('is_employee_cost','=',False)]}">
+                        <group>
+                            <field name='actual_cost'/>
+                            <field name='hourly_cost_ids'>
+                                <tree editable='bottom' string='Histórico de costes'>
+                                    <!--field name='product_tmpl_id'/-->
+                                    <field name='rate'/>
+                                    <field name='date_start'/>
+                                    <field name='date_end'/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+
+
+        <!--opcion en vista de apuntes analíticos para hacer un cambio masivo de coste-->
+
+      <record id="action_act_cost" model="ir.actions.server">
+            <field name="name">Actualizar costes</field>
+            <field name="model_id" ref="model_account_analytic_line"/>
+            <field name="state">code</field>
+            <field name="code">
+                if context.get('active_model') == 'account.analytic.line' and context.get('active_ids'):
+                    self.button_act_cost(cr, uid, context['active_ids'], context=context)
+            </field>
+      </record>
+
+      <record id="ir_reg_cost_act" model="ir.values">
+            <field eval="'client_action_multi'" name="key2"/>
+            <field eval="'account.analytic.line'" name="model"/>
+            <field name="name">Actualizar costes</field>
+            <field eval="'ir.actions.server,%d'%action_act_cost" name="value"/>
+      </record> 
+
+
+
+	</data>
+</openerp>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_partner_moves_tree" model="ir.actions.act_window">
+            <field name="name">Movimientos</field>
+            <field name="res_model">stock.move</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('picking_partner', '=', active_id)]</field>
+        </record>
+
+        <record model="ir.ui.view" id="view_res_partner_moves_form">
+            <field name="name">res.partner.moves.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button name="%(res_partner_stock_info.view_partner_moves_tree)d"
+                        type="action"
+                        class="oe_stat_button oe_inline"
+                        icon="fa-user"
+                        attrs="{'invisible': [('customer', '=', False)]}"
+                        help="Stock Moves from partner">
+                        <field name="count_stock_move" widget="statinfo" string="Movimientos"/>
+                    </button>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="view_move_lot_tree" model="ir.ui.view">
+            <field name="name">view.move.lot.tree</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock_move_partner_info.view_move_picking_tree_inh_pickingpartner" />
+            <field name="arch" type="xml">
+                <field name="picking_partner" position="after">
+                    <field name="lot_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

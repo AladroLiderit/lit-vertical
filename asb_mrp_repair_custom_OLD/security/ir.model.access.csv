@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asb_albaran_historico,access_asb_albaran_historico,model_asb_albaran_historico,base.group_sale_salesman,1,1,1,1
+access_asb_lineas_historico,access_asb_lineas_historico,model_asb_lineas_historico,base.group_sale_salesman,1,1,1,1
+access_mrp_repair_accs,access_mrp_repair_accs,model_mrp_repair_accs,base.group_sale_salesman,1,1,1,1
+access_mrp_production_accs,access_mrp_production_accs,model_mrp_production_accs,base.group_sale_salesman,1,1,1,1

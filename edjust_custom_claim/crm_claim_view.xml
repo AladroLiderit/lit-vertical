@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- ampliamos el form de claim para nuevos campos-->
+        <record id="crm_claim_edjust_form_view" model="ir.ui.view">
+            <field name="name">crm.claim.edjust.view.form</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//field[@name='user_fault']" position="replace">
+                    <field name="user_fault_id"/>
+                </xpath>
+                <xpath expr="//field[@name='email_from']" position="after">
+                    <field name="claim_order_line_id" domain="[('partner_id','=',partner_id)]"/>
+                    <field name="claim_analytic_id" domain="[('partner_id','=',partner_id),('state','in',('open','pending'))]"/>
+                </xpath>
+                <xpath expr="//field[@name='description']" position="after">
+                    <separator colspan="2" string="Closing Note"/>
+                    <div>
+                        <!--label for="closing_note"/-->
+                        <field name="closing_note"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@string='Follow Up']/group" position="replace">
+                    <group colspan="2" col="2">
+                        <separator colspan="2" string="Actions"/>
+                            <field name="action_ids">
+                                <tree string="Actions" editable="top">
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                    </group>
+                </xpath>
+                <xpath expr="//field[@name='date_closed']" position="replace">
+                    <field name="date_closed" invisible="context.get('date_closed') == False"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <!--ampliamos las busquedas de crm claim-->
+        <record id="crm_claim_filter_edjust" model="ir.ui.view">
+            <field name="name">crm.claim.filter.edjust</field>
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.view_crm_case_claims_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search/field[@name='user_id']" position="after">
+                    <field name="user_fault_id" string="Responsable"/>
+                </xpath>
+                <xpath expr="//filter[@string='Unassigned Claims']" position="after">
+                    <filter string="Open Claims" icon="terp-personal-" domain="[('closing_note','=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- ampliamos el form de claim_stage para nuevos campos-->
+        <record id="crm_claim_stage_edjust_form_view" model="ir.ui.view">
+            <field name="name">crm.claim.stage.edjust.view.form</field>
+            <field name="model">crm.claim.stage</field>
+            <field name="inherit_id" ref="crm_claim.crm_claim_stage_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="after">
+                    <field name="is_close_stage"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+       
+        
+
+    </data>
+</openerp>

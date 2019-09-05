@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+         <template id="liderit_syg_aladro_report">
+            <t t-call="report.html_container">
+                <div class="page">
+                    <t t-foreach="docs" t-as="o">
+                            <div style="width:48%;height:12.5%;padding:20px 0px 0px 20px;float:left">   
+                                <table>     
+                                    <tr>
+                                        <td><span t-field="o.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span t-field="o.street"/></td>
+                                    </tr>                
+                                    <tr>
+                                        <td><span t-field="o.zip">  </span><span>   </span><span t-field="o.city"/></td>
+                                       
+                                    </tr>
+                                    
+                                </table>         
+                            </div>
+                    </t> 
+                </div> 
+            </t>
+        </template>   
+       
+    </data>
+</openerp>
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+	<!--=========================================================================== product.templae ======================================================================================= -->
+	 	<record id="grupo_style_aristos_product_1" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_product_1</field>
+		    <field name="model">product.template</field>
+		    <field name="type">form</field> 
+	        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+		    <field name="arch" type="xml">  
+			    <field name="standard_price" position="attributes">
+	    			<!--attribute name="groups">style_aristos_price.group_style_aristos_direccion,style_aristos_price.group_style_aristos_admin,style_aristos_price.group_style_aristos_finanzas,style_aristos_price.group_style_aristos_produccion,style_aristos_price.group_style_aristos_compras</attribute-->
+	    			<attribute name="groups">style_aristos_price.group_style_aristos_direccion, style_aristos_price.group_style_aristos_finanzas</attribute>
+				</field>
+		    </field>
+		</record>	
+	<!--=========================================================================== product.product ======================================================================================= -->
+	 	<record id="grupo_style_aristos_product_2" model="ir.ui.view">
+		    <field name="name">grupo_style_aristos_product_2</field>
+		    <field name="model">product.product</field>
+		    <field name="type">form</field> 
+	        <field name="inherit_id" ref="product.product_normal_form_view"/>
+		    <field name="arch" type="xml">  
+			    <field name="standard_price" position="attributes">
+	    			<attribute name="groups">style_aristos_price.group_style_aristos_direccion, style_aristos_price.group_style_aristos_finanzas</attribute>
+				</field>		
+		    </field>
+		</record>	
+	</data>
+</openerp>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>    
+     <menuitem
+			name="Especial Parameters" 
+           	parent="base.menu_config"
+            action="st_action_parameters"
+            id="menu_st_parameters"
+            sequence="20"/>  
+ 	  <menuitem
+	 	    name='Type of Material' 
+	 	   	parent="purchase.menu_purchase_config_purchase"          
+	        action="action_type_of_material" 
+			id="menu_st_type_of_material_action"
+	        sequence="14" />      
+	  <menuitem
+	 	    name='Colection' 
+	 	   	parent="purchase.menu_purchase_config_purchase"          
+	        action="action_collection" 
+			id="menu_st_collection_action"
+	        sequence="15" />
+  
+	</data>
+</openerp>

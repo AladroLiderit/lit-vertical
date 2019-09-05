@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<template id="index" inherit_id='point_of_sale.index' name="Gift Coupon">&lt;!DOCTYPE html&gt;
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/pos_gift_voucher/static/src/css/pos_gift_voucher.css" />
+            </xpath>
+        </template>
+        <template id="web_assets_backend" inherit_id="web.assets_backend">
+          <xpath expr="." position="inside">
+          		  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/jquery.msgBox.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/main.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/models.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/widgets.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/screens.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/devices.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/bwip.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/canvas.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/bwipp/code128.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/bwipp/renlinear.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/bwipp/renmatrix.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/bwipp/renmaximatrix.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/needyoffset.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/jquery.dataTables.js"/>
+                  <script type="text/javascript" src="/pos_gift_voucher/static/src/js/jquery.dataTables.min.js"/>
+
+         </xpath>
+        </template>
+        	
+    </data>
+</openerp>

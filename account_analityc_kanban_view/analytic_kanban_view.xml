@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="analytic_kanban_view">
+        <field name="name">analytic.kanban.view</field>
+        <field name="model">account.analytic.account</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" string="Contrato"/>
+                <field name="date_start"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Contrato: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Comercial: </b><field name="user_id"/></li>
+                                    <li><b>Fecha de inicio: </b><field name="date_start"/></li>
+                                    <li><b>Fecha de fin: </b><field name="date"/></li>
+                                    <li><b>Estado: </b><field name="state"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="analytic_line_kanban_view">
+        <field name="name">analytic.line.kanban.view</field>
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name" string="Tarea"/>
+                <field name="date"/>
+                <field name="account_id"/>
+                <field name="user_id"/>
+                <field name="amount" sum="Total"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Tarea: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Cuenta / Proy.: </b><field name="account_id"/></li>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Usuario: </b><field name="user_id"/></li>
+                                    <li><b>Importe: </b><field name="amount" sum="Total"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+  </data>
+</openerp>

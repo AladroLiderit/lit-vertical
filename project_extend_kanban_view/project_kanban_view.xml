@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+     <record model="ir.ui.view" id="project_project_extend_kanban_view">
+        <field name="name">project.project.extend.kanban.view</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_kanban_content']/h4" position="replace">
+                <h4 class="text-center">
+                    <a type="open">
+                        <strong><field name="name"/></strong>
+                    </a>
+                </h4>
+            </xpath>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="project_task_extend_kanban_view">
+        <field name="name">project.task.extend.kanban.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_kanban_content']/div" position="replace">
+                <div>
+                    <a type="open">
+                        <b><field name="name"/></b>
+                    </a>
+                </div>
+            </xpath>
+        </field> 
+    </record>
+
+    <record model="ir.ui.view" id="project_issue_extend_kanban_view">
+        <field name="name">project.issue.extend.kanban.view</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.project_issue_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_kanban_content']/div" position="replace">
+                <div>
+                    <a type="open">
+                        <h4><field name="name"/></h4>
+                    </a>
+                    <field name="partner_id"/> <br/>
+                    <field name="version_id"/>
+                </div>
+            </xpath>
+        </field> 
+    </record>
+
+
+  </data>
+</openerp>

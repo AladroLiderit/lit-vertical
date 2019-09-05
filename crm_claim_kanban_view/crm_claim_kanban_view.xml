@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="crm_claim_kanban_view">
+        <field name="name">crm.claim.kanban.view</field>
+        <field name="model">crm.claim</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="stage_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_vignette oe_semantic_html_override">
+                            <div class="oe_kanban_details">
+                                <h4>
+                                    <a type="open">
+                                        <b>Reclamacion Num: </b><field name="code"/><br/>
+                                        <b>Objeto: </b><field name="name"/>
+                                    </a>
+                                </h4>
+                                <ul>
+                                    <li><b>Fecha: </b><field name="date"/></li>
+                                    <li><b>Cliente: </b><field name="partner_id"/></li>
+                                    <li><b>Comercial: </b><field name="user_id"/></li>
+                                    <li><b>Estado: </b><field name="stage_id"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t> 
+                </templates>
+            </kanban>
+        </field> 
+    </record>
+
+
+  </data>
+</openerp>
