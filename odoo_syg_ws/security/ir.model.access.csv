@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+"access_syg_alumnos","access_syg_alumnos","model_tabla_alumnos_syg","base.group_user",1,1,1,1
+"access_syg_actividades","access_syg_actividades","model_tabla_actividades_syg","base.group_user",1,1,1,1
+"access_syg_coles","access_syg_coles","model_tabla_coles_syg","base.group_user",1,1,1,1

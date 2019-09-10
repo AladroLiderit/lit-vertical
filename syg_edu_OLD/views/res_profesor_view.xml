@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_res_profesor_form" model="ir.ui.view">
+            <field name="name">res.profesor.form</field>
+            <field name="model">syg.profesor</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <!--xpath expr="//field[@name=&quot;ref&quot;]" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath-->
+                <xpath expr="//field[@name='function']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='title']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!--xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="attrs">{
+                        'readonly': [('is_company', '=', False)],
+                        'required': [('is_company', '=', True)]
+                    }</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <group attrs="{'invisible': [('is_company', '=', True)]}">
+                         <field name="firstname" attrs=
+                            "{'required': [('lastname', '=', False),
+                                           ('is_company', '=', False)]}"/>
+                        <field name="lastname" attrs=
+                            "{'required': [('firstname', '=', False),
+                                           ('is_company', '=', False)]}"/>
+                    </group>
+                </xpath-->
+
+                <xpath expr="//field[@name='website']" position="replace"/>
+
+                <xpath expr="//field[@name='city']" position="before">
+                  <field name="zip_id" options="{'create_name_field': 'city'}" placeholder="Buscar Ciudad por C.P." class="oe_edit_only"/>
+                </xpath>
+
+                <xpath expr="//field[@name='category_id']" position="after">
+                  <field name="es_profesor" colspan="2" class="oe_inline"/> 
+                  <label for="es_profesor" string="Es Personal Propio?"/>
+                  <field name="es_externo" colspan="2" class="oe_inline"/> 
+                  <label for="es_externo" string="Es Externo?"/>
+                </xpath>
+
+                <xpath expr="//field[@name='phone']" position="after">
+                  <field name="phone_trabajo"/> 
+                </xpath>
+
+                <xpath expr="//field[@name='email']" position="after">
+                  <field name="email_trabajo" widget="email"/> 
+                </xpath>
+
+                 <xpath expr="//field[@name='title']" position="after">
+                     <field name="website"/>
+                </xpath>
+
+                <xpath expr="//field[@name='country_id']" position="replace">
+                    <group col="4">
+                       <field name="ccaa_id" colspan="2" placeholder="CC.AA." options="{'no_quick_create':True,'no_create_edit':True}" nolabel="1"/>
+                       <field name="country_id" colspan="2" placeholder="País" options="{'no_quick_create':True,'no_create_edit':True}" nolabel="1"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//div[@name='buttons']" position="after">
+                  <div name="edad">
+                    <group col="10" colspan="4">
+                      <field name="gender" string="H / M" colspan="4"/>
+                      <field name="nationality" colspan="6" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                    </group>
+                    <group col="6" colspan="4">
+                      <field name="birth_date" colspan="2"/>
+                      <field name="edad" string="Edad" colspan="2"/>
+                      <group>
+                        <button name="create_employee" string="Crear empleado" type="object" groups="base.group_hr_user" 
+                            attrs="{'invisible': ['|','|',('employee','=', True),('is_company','=', True),('es_externo','=', True)]}"/>
+                      </group>
+                      <group>
+                          <field name="employee" readonly="1"/>
+                      </group>
+                    </group>
+                  </div>
+                </xpath>
+
+                <page name="sales_purchases" position="before">
+                  <page string="Notas de Salud">
+                    <group>
+                      <field name="health_lines">
+                        <tree editable='bottom'>
+                          <field name="tipo_nota" required="True" />
+                          <field name="texto_nota"/>
+                          <field name="date"/>
+                        </tree>
+                      </field>
+                    </group>
+                  </page>
+                  <page string="Documentos">
+                    <separator string="Documentos" colspan="4" />
+                    <group colspan="4" col="4">
+                      <field name="vat" placeholder="ES12345678A" string="DNI / NIE"/>
+                      <field name="vat_caduc" />
+                    </group>
+                    <group colspan="4" col="4">
+                      <field name="passport_num" />
+                      <field name="pass_caduc" />
+                    </group>
+                    <group>
+                      <field name="seg_social_num"  colspan="2"/>
+                    </group>
+                  </page>
+                  <page string="Puestos" attrs="{'invisible': [('es_profesor','=',False)]}">
+                    <group>
+                        <field name="trabajos_ids" colspan="4" nolabel="1" context="{'profesor_id': active_id }">
+                          <tree editable='bottom'>    
+                            <field name="name" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="programa_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="fecha_alta"/>
+                            <field name="fecha_baja"/>
+                          </tree>
+                        </field>
+                      </group>
+
+                    <!--group colspan="2" col="4">
+                      <field name="puesto_id" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                      <field name="programa_id" options="{'no_quick_create':True,'no_create_edit':True}" widget="many2many_tags"/>
+                    </group>
+                    <group colspan="2" col="4">
+                    </group>
+                    <group colspan="2" col="4">
+                      <field name="alta_date" />
+                      <field name="baja_date" />
+                    </group-->
+                  </page>
+                  <page string="PRL Y LOPD" col="4" name="prlopd" attrs="{'invisible': [('es_profesor','=',False)]}">
+                    <separator string="PRL" colspan="4" />
+                      <group col="2" colspan="4">
+                        <group col="2" colspan="1">
+                          <field name="reconocimiento"/>
+                          <field name="prl"/>
+                        </group>
+                        <group col="2" colspan="1">
+                          <field name="rec_date"/>
+                          <field name="prl_date"/>
+                        </group>
+                      </group>
+                    <separator string="LOPD" col="1" colspan="4" />
+                      <group col="2" colspan="4">
+                        <group col="4" colspan="1">
+                          <field name="acc_datos" colspan="2"/>
+                          <field name="baja_lopd" colspan="2"/>
+                        </group>
+                        <group col="4" colspan="1">
+                          <field name="acc_equipos"/>
+                        </group>
+                        <group col="4" colspan="1">
+                          <field name="nivelacceso_id" attrs="{'invisible': [('acc_datos','=',False)]}" options="{'no_quick_create':True,'no_create_edit':True}" widget="many2many_tags"/>
+                        </group>
+                      </group>
+                  </page>
+                  <page string="Certificados" attrs="{'invisible': [('es_profesor','=',False)]}">
+                    <separator string="Certificados" col="1" colspan="4" />
+                      <group>
+                        <field name="certificados_ids" colspan="4" nolabel="1" context="{'profesor_id': active_id }">
+                          <tree editable='bottom'>    
+                            <field name="name" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="ccaa_cert" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="fecha_cert"/>
+                            <field name="fecha_caduca"/>
+                          </tree>
+                        </field>
+                      </group>
+                    <separator string="Idiomas" col="1" colspan="4" />
+                      <group>
+                        <field name="idioma_ids" widget="many2many">
+                          <tree string="Conocimiento de Idiomas" editable='bottom'>
+                            <field name="name" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                            <field name="nivel_idioma" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                          </tree>
+                        </field>
+                      </group>
+                    <separator string="Otras titulaciones" col="1" colspan="4" />
+                      <field name="otros_titulos"/>
+                  </page>
+
+                </page>
+
+                <page name="sales_purchases" position="after">
+                  <page string="Accounting" col="4" name="accounting" attrs="{'invisible': [('is_company','=',False),('parent_id','!=',False)]}">
+                      <group>
+                          <group>
+                              <field name="property_account_position" widget="selection"/>
+                          </group>
+                          <group>
+                              <field name="last_reconciliation_date"/>
+                          </group>
+                          <group>
+                              <field name="property_account_receivable"/>
+                              <field name="property_payment_term" widget="selection"/>
+                              <field name="customer_payment_mode" widget="selection"/>
+                              <field name="credit"/>
+                              <field name="credit_limit"/>
+                          </group>
+                          <group>
+                              <field name="property_account_payable"/>
+                              <field name="property_supplier_payment_term" widget="selection"/>
+                              <field name="supplier_payment_mode" widget="selection"/>
+                              <field name="debit"/>
+                          </group>
+                      </group>
+                      <field name="bank_ids" context="{'default_partner_id': active_id, 'form_view_ref': 'base.view_partner_bank_form'}">
+                          <tree string="Bank Details">
+                              <field name="state" invisible="1"/>
+                              <field name="sequence" invisible="1"/>
+                              <field name="acc_number"/>
+                              <field name="bank_name"/>
+                              <field name="owner_name"/>
+                          </tree>
+                      </field>
+                  </page>
+                </page>
+
+            </field>
+        </record>
+
+        <record id="view_res_profesor_tree" model="ir.ui.view">
+            <field name="name">res.profesor.tree</field>
+            <field name="model">syg.profesor</field>
+            <field name="inherit_id" ref="base.view_partner_tree" />
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+              </xpath>
+                <xpath expr="//field[@name='display_name']" position="after">
+                    <field name="name"/>
+                </xpath>
+                <xpath expr="//field[@name='phone']" position="after">
+                    <field name="mobile"/>
+                    <field name="es_externo"/>
+                </xpath>
+            </field>
+        </record>
+
+<!-- vista para el dropdwon de search more en personal / profesor-->
+        <record id="view_res_profesor2_tree" model="ir.ui.view">
+            <field name="name">res.profesor2.tree</field>
+            <field name="model">syg.profesor</field>
+            <field name="arch" type="xml">
+              <tree>
+                <field name="name"/>
+                <field name="es_profesor"/>
+                <field name="es_externo"/>
+              </tree>
+            </field>
+        </record>
+
+        <!-- filtro para los clientes de tipo profesores-->
+      <record id="view_res_partner_profesor_search" model="ir.ui.view">
+            <field name="name">res.partner.profesor.search</field>
+            <field name="model">syg.profesor</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="before">
+                  <field name="programa_id" string="Programa"/>
+                  <filter string="Personal" name="profesor" domain="[('es_profesor','=',1)]"/>
+                  <filter string="Externo" name="externos" domain="[('es_externo','=',1)]"/>
+                </xpath>
+            </field>
+      </record>
+
+
+        <record model="ir.actions.act_window" id="act_open_profesor_view">
+          <field name="name">Personal</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">syg.profesor</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="view_res_partner_profesor_search" />
+          <field name="domain">[]</field>
+          <!--field name="context">{'search_default_profesor':1}</field-->
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_op_profesor_view_form">
+          <field name="act_window_id" ref="act_open_profesor_view" />
+          <field name="sequence" eval="15" />
+          <field name="priority" eval="16" />
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="view_res_profesor_form" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_profesor_view_tree">
+          <field name="act_window_id" ref="act_open_profesor_view" />
+          <field name="sequence" eval="10" />
+          <field name="view_mode">tree</field>
+          <field name="view_id" ref="view_res_profesor_tree" />
+        </record>
+
+        <menuitem id="menu_syg_profesor_sub" name="Personal" parent="menu_op_school_main"
+      sequence="50" action="act_open_profesor_view"/>
+
+      <!--nueva vista para la gestion de certificados del personal-->
+        <record id="view_res_certs_form" model="ir.ui.view">
+            <field name="name">res.certs.form</field>
+            <field name="model">syg.cert</field>
+            <field name="arch" type="xml">
+              <form string="Certificados">
+                <sheet>
+                  <group colspan="4">
+                    <field name="name" string="Certificado"/>
+                  </group>
+                  <group colspan="4">
+                    <field name="profesor_id" string="Personal"/>
+                    <field name="ccaa_cert" string="CC.AA."/>
+                  </group>
+                  <group colspan="4">
+                    <field name="fecha_cert" string="Fecha"/>
+                    <field name="fecha_caduca" string="Caduca"/>
+                  </group>
+                </sheet>
+              </form>
+            </field>
+        </record>
+
+        <record id="view_res_certs_tree" model="ir.ui.view">
+            <field name="name">res.certs.tree</field>
+            <field name="model">syg.cert</field>
+            <field name="arch" type="xml">
+              <tree>
+                <field name="name" string="Certificado"/>
+                <field name="profesor_id" string="Personal"/>
+                <field name="ccaa_cert" string="CC.AA."/>
+                <field name="fecha_cert" string="Fecha"/>
+                <field name="fecha_caduca" string="Caduca"/>
+              </tree>
+            </field>
+        </record>
+
+        <record id="view_certs_search" model="ir.ui.view">
+            <field name="name">syg.certs.search</field>
+            <field name="model">syg.cert</field>
+            <field name="arch" type="xml">
+              <search>
+                <field name="name" string="Certificado"/>
+                <field name="profesor_id" string="Profesor"/>
+                <separator/>
+                <filter string="Caducado" name="caducado" domain="[('fecha_caduca', '!=', False), ('fecha_caduca', '&lt;=', (context_today().strftime('%Y-%m-%d')))]"/>
+                <filter string="Caducidad cercana" name="caducadara" domain="[('fecha_caduca', '!=', False), ('fecha_caduca', '&lt;=', ((context_today()+ datetime.timedelta(30)).strftime('%Y-%m-%d')))]"/>
+                <filter string="Vigentes" name="vigente" domain="['|',('fecha_caduca', '=', False), ('fecha_caduca', '&gt;=', (context_today().strftime('%Y-%m-%d')))]"/>
+                <separator/>
+                <group string="Agrupado por">
+                  <filter string="Personal"  domain="[]" context="{'group_by':'profesor_id'}"/>
+                  <filter string="Tipo"  domain="[]" context="{'group_by':'name'}"/>
+                </group>
+              </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_open_certs_view">
+          <field name="name">Certificados</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">syg.cert</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="view_certs_search" />
+          <field name="domain">[]</field>
+          <field name="context">{'search_default_vigente':1}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_op_certs_view_form">
+          <field name="act_window_id" ref="act_open_certs_view" />
+          <field name="sequence" eval="15" />
+          <field name="priority" eval="16" />
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="view_res_certs_form" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_certs_view_tree">
+          <field name="act_window_id" ref="act_open_certs_view" />
+          <field name="sequence" eval="10" />
+          <field name="view_mode">tree</field>
+          <field name="view_id" ref="view_res_certs_tree" />
+        </record>
+
+        <menuitem id="menu_syg_certs_sub" name="Certificados" parent="menu_op_school_main"
+      sequence="60" action="act_open_certs_view"/>
+
+
+
+
+
+      <!--ampliamos la vista de actividades (event) para registrar el dato de profesor-->
+      <record model="ir.ui.view" id="view_event_profesor_form">
+        <field name="name">view.event.profesor.form</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+
+          <xpath expr="//field[@name='organizer_id']" position="after">
+            <field name="colegio_event" context="{'tree_view_ref': 'syg_edu.view_res_colegio_tree','search_view_ref':'syg_edu.view_res_partner_colegio_search'}"/>
+          </xpath>
+
+          <xpath expr="//field[@name='date_tz']" position="before">
+            <!--field name="profesor_id" options="{'no_quick_create':True,'no_create_edit':True}"/--> 
+            <!--field name="profesor_id" options="{'no_quick_create':True}" context="{'form_view_ref': 'syg_edu.view_res_profesor_form'}"/--> 
+            <field name="teacher_ids" options="{'no_quick_create':True,'no_create_edit':True}" widget="many2many_tags" domain="[('es_profesor','=',1)]"> 
+                <attribute name="context">{'tree_view_ref': 'view_res_profesor2_tree'}</attribute>
+            </field>
+            <field name="externos_ids" options="{'no_quick_create':True,'no_create_edit':True}" widget="many2many_tags" domain="[('es_externo','=',1)]">
+                <attribute name="context">{'tree_view_ref': 'view_res_profesor2_tree'}</attribute>
+            </field>
+            <field name="codigo_fotos"/>
+
+          </xpath>
+
+        </field>
+      </record>
+
+      <!--ampliamos el search de event para poder buscar y agrupar por profesor-->
+      <record model="ir.ui.view" id="view_event_profesor_search">
+       <field name="name">view.event.profesor.search</field>
+       <field name="model">event.event</field>
+       <field name="inherit_id" ref="event.view_event_search"/>
+       <field name="arch" type="xml">
+         <xpath expr="//search[@string='Events']" position="inside">
+           <field name="profesor_id" string="Personal"/>    
+         </xpath>
+         <xpath expr="//group[@string='Group By']" position="inside">
+           <filter string="Personal" context="{'group_by':'profesor_id'}"/>
+         </xpath>
+         
+       </field>
+
+     </record>
+
+    </data>
+</openerp>

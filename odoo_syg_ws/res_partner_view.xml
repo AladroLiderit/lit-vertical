@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data> 
+
+
+
+<!--form view de partner para gestionar comisionistas y filtrar-->
+    <record id="view_ws_dniweb_form" model="ir.ui.view">
+        <field name="name">ws.dniweb.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="syg_edu.view_op_student_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='pass_caduc']" position="after">
+                  <group>
+                    <field name="dni_num" readonly="True"/>
+                  </group>
+                </xpath>
+            </field>
+    </record>
+
+
+<!--form view de registration para filtrar las que vienen de web-->
+    <record id="view_ws_regweb_form" model="ir.ui.view">
+        <field name="name">ws.regweb.form</field>
+            <field name="model">event.registration</field>
+            <field name="inherit_id" ref="event_invoice_wizard.view_event_registration_advanced_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='extemporanea']" position="after">
+                  <group>
+                    <field name="web" readonly="True"/>
+                  </group>
+                </xpath>
+            </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_registration_regweb_search">
+       <field name="name">Registrations</field>
+       <field name="model">event.registration</field>
+       <field name="inherit_id" ref="event.view_registration_search"/>
+       <field name="arch" type="xml">
+
+         <xpath expr="//filter[@string='My Registrations']" position="after">
+           <filter string="De Web" domain="[('web','=','True')]" />       
+         </xpath>
+         
+       </field>
+       
+     </record>
+
+
+
+    </data>
+</openerp>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+ <record model="ir.ui.view" id="view_event_registration_advanced_form">
+   <field name="name">event.registration.form</field>
+   <field name="model">event.registration</field>
+   <field name="inherit_id" ref="event.view_event_registration_form"/>
+   <field name="arch" type="xml">
+   	<xpath expr="//sheet[@string='Registration']/group/group/field[@name='partner_id']" position="replace">
+        <field name="partner_id" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('alumni_boolean','=','True')]" required = "True"  context="{'form_view_ref': 'syg_edu.view_op_student_form'}"/>
+	</xpath>
+
+	<xpath expr="//sheet[@string='Registration']/group/group/field[@name='partner_id']" position="attributes">
+        <attribute name="string">Alumno</attribute>
+	</xpath>
+
+    <xpath expr="//sheet[@string='Registration']" position="inside">
+
+       <notebook>
+         <!--page string="Alojamiento">
+		   <group col="4" colspan="4">
+		     <field name="alojamiento_registro" colspan="2"/>
+		     <field name="regimen_registro" colspan="2"/>
+		     <field name="idioma_registro" colspan="2"/>
+		     <field name="madrugador_registro" colspan="2"/>
+		     <field name="caracteristicas_registro" widget="many2many_tags" colspan="4"/>
+		   </group>
+		   <group col="8" colspan="4">
+		   	<field name="comedor_registro" colspan="2"/>
+		   	<field name="animales_registro" colspan="2"/>
+		   	<field name="quiere_compartir" colspan="4"/>
+		   </group>
+		 </page-->
+		 <!--page string="Jornada y Tpte.">
+		 	<group col="4" colspan="4">
+		     <field name="jornada_registration" colspan="2"/>
+		     <field name="horas_registration" colspan="2"/>
+		   </group>
+		   <group col="4" colspan="4">
+		     <field name="transporte_registration" colspan="2"/>
+		     <field name="tipo_transporte_registration" colspan="2" attrs="{'invisible': [('transporte_registration','=',False)]}"/>
+		   </group>
+		 </page-->
+         <page string="Financiero">
+         	<group col="6">
+         		<field name="madrugador_inscripcion" colspan="2"/>
+         		<field name="comedor_registro" colspan="2"/>
+		   		<field name="animales_registro" colspan="2"/>
+         	</group>
+
+		    <group col="6">
+		     <field name="pago_fraccionado_registro" colspan="2"/>
+		     <field name="dto_alumno" colspan="2"/>
+		    </group>
+
+		    <group col="10">
+		     <field name="pago_inscripcion_registro" attrs="{'invisible': [('pago_fraccionado_registro','=',False)]}" colspan="2"/>
+		     <field name="forma_pago_registro" attrs="{'invisible': [('pago_fraccionado_registro','=',False)]}" colspan="4"/>
+		     <field name="plazo_pago_registro" attrs="{'invisible': [('pago_fraccionado_registro','=',False)]}" colspan="4"/>
+		     <field name="pago_resto_registro" colspan="2"/>
+		     <field name="forma_pago_resto_registro" colspan="4"/>
+		     <field name="plazo_pago_resto_registro" colspan="4"/>
+		    </group>
+		    <group>
+		     <field name="conceptos_contratados_registro" widget="many2many_tags" colspan="4"/>
+		   </group>
+		 </page>
+	 
+       </notebook>
+     </xpath>
+   </field>
+ </record>
+
+
+
+
+    </data>
+</openerp>
+

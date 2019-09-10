@@ -1,0 +1,8 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+"access_tercap_clientes","access_tercap_clientes","model_tabla_clientes_tercap","base.group_user",1,1,1,1
+"access_tercap_tarifas","access_tercap_tarifas","model_tabla_tarifas_tercap","base.group_user",1,1,1,1
+"access_tercap_direccionescliente","access_tercap_direccionescliente","model_tabla_direccionescliente_tercap","base.group_user",1,1,1,1
+"access_tercap_familias","access_tercap_familias","model_tabla_familias_tercap","base.group_user",1,1,1,1
+"access_tercap_impuestos","access_tercap_impuestos","model_tabla_tiposimpuesto_tercap","base.group_user",1,1,1,1
+"access_tercap_tarifasprod","access_tercap_tarifasprod","model_tabla_tarifaprod_tercap","base.group_user",1,1,1,1
+"access_syg_tabla_envents","access_syg_tabla_events","model_tabla_actividades_syg","base.group_user",1,1,1,1

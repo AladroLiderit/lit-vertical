@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_res_colegio_form3" model="ir.ui.view">
+            <field name="name">res.colegio.form3</field>
+            <field name="model">syg.colegio</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name=&quot;ref&quot;]" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='function']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='title']" position="attributes">
+                  <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr="//field[@name='city']" position="before">
+                  <field name="zip_id" options="{'create_name_field': 'city'}" placeholder="Buscar Ciudad por C.P." class="oe_edit_only"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name=&quot;parent_id&quot;]" position="before">
+                  <label for="vat" />
+                  <field name="vat" colspan="2" placeholder="ES12345678A" class="oe_inline" />
+                </xpath>
+
+                <xpath expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']" position="after">
+                  <field name="comisiona"/>
+                </xpath>
+
+                <xpath expr="//field[@name='country_id']" position="replace">
+                    <group col="4">
+                       <field name="ccaa_id" colspan="2" placeholder="CC.AA." options="{'no_quick_create':True,'no_create_edit':True}" nolabel="1"/>
+                       <field name="country_id" colspan="2" placeholder="País" options="{'no_quick_create':True,'no_create_edit':True}" nolabel="1"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="pertenece_id"/>
+                    <group col="4" colspan="2">
+                      <field name="bilingue"/>
+                      <field name="segundo_idioma" attrs="{'invisible': [('bilingue', '=', False)]}"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='title']" position="after">
+                     <field name="titular"/>
+                     <field name="tipo_centro" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='category_id']" position="after">
+                  <field name="colegio_boolean" colspan="2" class="oe_inline"/> 
+                  <label for="colegio_boolean" string="Es Colegio?"/>
+                  <group colspan="2">
+                    <field name="ref" placeholder="Codigo Centro" string="Código del colegio" class="oe_inline" />
+                  </group>
+                </xpath>
+
+                <page name="sales_purchases" position="before">
+                    <page string="AMPA" col="4" name="ampa" attrs="{'invisible': [('colegio_boolean','=',False)]}">
+                      <field name="ampa_id" mode="kanban" context="{'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_phone': phone,
+                      'default_name':'AMPA '+name}"/>
+                    </page>
+                </page>
+
+                <page name="sales_purchases" position="after">
+                  <page string="Accounting" col="4" name="accounting" attrs="{'invisible': [('is_company','=',False),('parent_id','!=',False)]}">
+                      <group>
+                          <group>
+                              <field name="property_account_position" widget="selection"/>
+                          </group>
+                          <group>
+                              <field name="last_reconciliation_date"/>
+                          </group>
+                          <group>
+                              <field name="property_account_receivable"/>
+                              <field name="property_payment_term" widget="selection"/>
+                              <field name="customer_payment_mode" widget="selection"/>
+                              <field name="credit"/>
+                              <field name="credit_limit"/>
+                          </group>
+                          <group>
+                              <field name="property_account_payable"/>
+                              <field name="property_supplier_payment_term" widget="selection"/>
+                              <field name="supplier_payment_mode" widget="selection"/>
+                              <field name="debit"/>
+                          </group>
+                      </group>
+                      <field name="bank_ids" context="{'default_partner_id': active_id, 'form_view_ref': 'base.view_partner_bank_form'}">
+                          <tree string="Bank Details">
+                              <field name="state" invisible="1"/>
+                              <field name="sequence" invisible="1"/>
+                              <field name="acc_number"/>
+                              <field name="bank_name"/>
+                              <field name="owner_name"/>
+                          </tree>
+                      </field>
+                  </page>
+                </page>
+<!--para incluir cif y departamentos en los contactos-->
+                <xpath expr="//field[@name='child_ids']/form//field[@name='function']" position="after">
+                  <field name="is_company" invisible="True"/>
+                  <field name="vat"
+                   placeholder="DNI / NIE"/>
+                  <field name="department_id"
+                   placeholder="Department"
+                   attrs="{'invisible': [('is_company','=', True)]}"
+                   options='{"no_open": True}'/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+        <record id="view_res_colegio_tree" model="ir.ui.view">
+            <field name="name">res.colegio.tree</field>
+            <field name="model">syg.colegio</field>
+            <field name="inherit_id" ref="base.view_partner_tree" />
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='display_name']" position="attributes">
+                <attribute name="invisible">1</attribute>
+              </xpath>
+              <xpath expr="//field[@name='display_name']" position="after">
+                  <field name="name"/>
+                  <field name="city"/>
+                  <field name="ccaa_id"/>
+              </xpath>
+            </field>
+        </record>
+
+      <!-- filtro para los colegios-->
+      <record id="view_res_partner_colegio_search" model="ir.ui.view">
+            <field name="name">res.partner.colegio.search</field>
+            <field name="model">syg.colegio</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+              <xpath expr="//search[@string='Search Partner']" position="replace">
+                <search string="Search Partner">
+                  <field name="name"
+                         filter_domain="['|','|',('display_name','ilike',self),('ref','=',self),('email','ilike',self)]"/>
+                  <field name="city" string="Ciudad"/>
+                  <field name="pertenece_id" string="Pertenece a"/>
+                  <field name="tipo_centro" string="Tipo de Colegio"/>
+
+                  <separator/>
+                  <field name="segundo_idioma" string="Idioma"/>
+                  <field name="ccaa_id" string="CC.AA."/>
+
+                  <separator/>
+                  <filter string="Colegios" name="colegio" domain="[('colegio_boolean','=',1)]"/>
+                  <filter string="Bilingüe" name="bilingue" domain="[('bilingue','=',1)]"/>
+
+                  <separator/>
+                  <group expand="0" string="Group By">
+                    <filter string="Idioma" context="{'group_by':'segundo_idioma'}"/>
+                    <filter string="CC.AA." context="{'group_by':'ccaa_id'}"/>
+                    <filter string="Pertenece" context="{'group_by':'pertenece_id'}"/>
+                  </group>      
+                </search>
+              </xpath>
+            </field>
+      </record>
+
+
+        <record model="ir.actions.act_window" id="act_open_colegio_view">
+          <field name="name">Colegios</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">syg.colegio</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="search_view_id" ref="view_res_partner_colegio_search" />
+          <field name="domain">[]</field>
+          <field name="context">{'search_default_colegio':1}</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_op_colegio_view_form">
+          <field name="act_window_id" ref="act_open_colegio_view" />
+          <field name="sequence" eval="20" />
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="view_res_colegio_form3" />
+        </record>
+
+        <record model="ir.actions.act_window.view" id="act_open_colegio_view_tree">
+          <field name="act_window_id" ref="act_open_colegio_view" />
+          <field name="sequence" eval="10" />
+          <field name="view_mode">tree</field>
+          <field name="view_id" ref="view_res_colegio_tree" />
+        </record>
+
+        <menuitem id="menu_syg_colegio_sub" name="Colegios" parent="menu_op_school_main"
+      sequence="30" action="act_open_colegio_view"/>
+
+
+      <!-- filtro para los comisionistas en partner-->
+      <record id="view_res_partner_comisiona_search" model="ir.ui.view">
+            <field name="name">res.partner.comisiona.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@string='Companies']" position="before">
+                  <filter string="Comisionistas" name="es_comisionista" domain="[('comisiona','=',1)]"/>
+                </xpath>
+            </field>
+      </record>
+
+
+    </data>
+</openerp>

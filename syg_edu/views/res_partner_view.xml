@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data> 
+
+<!--forms para gestion de alumnos-->
+      <record id="view_op_student_tree" model="ir.ui.view">
+      <field name="name">op.student.tree</field>
+      <field name="model">res.partner</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Alumno">
+          <field name="name" />
+          <field name="study_center" />
+          <field name="city" />
+          <field name="vat" string="DNI / NIE"/>
+          <field name="de_cliente" />
+          <field name="nationality" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_student_form" model="ir.ui.view">
+      <field name="name">op.student.form</field>
+      <field name="model">res.partner</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Alumno" version="7.0">
+          <header>
+            <span>
+            </span>
+          </header>
+          <sheet>
+            <field name="image" widget='image' class="oe_left oe_avatar" options='{"preview_image": "image_medium", "size": [90, 90]}'/>
+
+              <div class="oe_title oe_left">
+                <h1>
+                  <table>
+                  <!--tr>
+                    <td><field name="name" placeholder="Nombre" style="padding-right:10px"  readonly="True"/></td>
+                  </tr-->
+                  <tr>
+                    <td><field name="firstname" placeholder="Nombre" style="padding-right:10px" required="True" /></td>
+                  </tr>
+                  <tr>
+                    <td><field name="lastname" placeholder="Apellidos" style="padding-right:10px" required="True"/></td>
+                  </tr>
+                  </table>
+                </h1>
+              </div>
+
+
+            <div class="oe_right oe_button_box" name="buttons"> </div>
+
+            <!--separator colspan="4" string="Inf" /-->
+            <group col="12" colspan="4">
+              <field name="a_inscribir" colspan="2" options="{'no_quick_create':True,'no_create_edit':True}" required="True"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="gender" string="H / M"/>
+              <field name="birth_date"/>
+              <field name="edad" string="Edad"/>
+              <field name="email" colspan="6"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="street" colspan="12" placeholder="Calle..." />
+                <!--field name="street2" placeholder="Calle(ampl.)..." /-->
+              <field name="zip_id" colspan="6" options="{'create_name_field': 'city'}" placeholder="Buscar Ciudad por C.P." 
+                  class="oe_edit_only"/>               
+              <field name="zip" colspan="2" placeholder="C.P."/>
+              <field name="city" placeholder="Ciudad" colspan="4"/>
+
+              <field name="state_id" class="oe_no_button"
+                        placeholder="Provincia" colspan="6" options='{"no_open": True}' /> 
+              <field name="country_id" placeholder="Pais" class="oe_no_button"
+                      options='{"no_open": True}' colspan="6"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="sms_phone" string="Teléfono SMS" />
+              <field name="phone" string="Teléfono 2" />
+              <field name="nationality" options="{'no_quick_create':True,'no_create_edit':True}"/>
+              <field name="estado_civil"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="vat" placeholder="ES12345678A" string="DNI / NIE" colspan="3"/>
+              <field name="vat_caduc" colspan="3"/>
+              <field name="passport_num" colspan="3"/>
+              <field name="pass_caduc" colspan="3"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="study_center" colspan="8" options="{'no_quick_create':True,'no_create_edit':True}" context="{'tree_view_ref': 'syg_edu.view_res_colegio_tree','search_view_ref':'syg_edu.view_res_partner_colegio_search'}"/>
+              <!--field name="study_center" colspan="8" options="{'no_quick_create':True,'no_create_edit':True}" context="{'form_view_ref':'syg_edu.view_res_colegio_form3'}"/-->
+              <field name="quiere_compartir" colspan="4"/>
+            </group>
+
+            <group col="12" colspan="4">
+              <field name="de_cliente" colspan="8" options="{'no_quick_create':True,'no_create_edit':True}"/>
+              <field name="camiseta" colspan="4"/>
+            </group>
+            
+            <group col="12" colspan="4">
+              <field name="alumni_boolean" invisible="True"/>
+            </group>
+
+            <notebook colspan="4">
+
+              <page string="Salud">
+                <separator string="Detalle Salud" colspan="4" />
+                <field name="health_lines" colspan="4" nolabel="1" context="{'student_id': active_id }">
+                  <tree editable='bottom'>
+                    <field name="tipo_nota" required="True" />
+                    <field name="texto_nota"/>
+                    <field name="date"/>
+                  </tree>
+                </field>
+
+                <separator string="Datos" colspan="4" />
+                <group colspan="4" col="4">
+                  <field name="fotos_sms"/>
+                  <field name="aut_redes"/>
+                  <field name="vacunas" string="Vacunaciones al dia?"/>
+                  <field name="nada" string="Sabe nadar?"/>
+                </group>
+     
+              </page>
+
+              <page string="Tutores">
+                <group col="6" colspan="4">
+                  <separator string="Padres / Tutores" colspan="6" />
+                  <field name="parent_ids" colspan="4" nolabel="1">
+                    <tree>
+                      <field name="name" />
+                      <field name="vat" string="DNI / NIE"/>
+                      <field name="city" />
+                      <field name="nationality" />
+                    </tree>
+                  </field>
+                  <group col ="2" colspan="2">
+                    <field name="representante" attrs="{'invisible': [('parent_ids', '=', False)]}" 
+                      domain="[('id', 'in', parent_ids[0][2])]"/>
+                    <!--dejamos de usar este check: factura si hay dato en representante sin mas-->
+                    <!--field name="factura_rpte" attrs="{'invisible': [('parent_ids', '=', False),('representante','=',False)]}"/-->
+                  </group>
+                </group>
+                <group col="6" colspan="4">
+                  <separator string="Contacto para Emergencias" colspan="4" />
+                  <group colspan="4" col="2">
+                    <field name="emergency_contact"/>
+                  </group>
+                  <group colspan="4" col="8">
+                    <field name="emergency_phone1"/>
+                    <field name="emergency_phone2"/>
+                    <field name="emergency_email" colspan="4"/>
+                  </group>
+                </group>
+
+              </page>
+
+              <page string="Otros Datos">
+                <separator string="Otros Datos" colspan="4" />
+                <group colspan="4" col="2">
+                  <field name="estadistica"/>
+                </group>
+                <group colspan="4" col="4">
+                  <field name="otras_obsv" string = "Otros datos" colspan="4"/>
+                </group>
+              </page>
+
+
+            <page string="Contabilidad" col="4" name="accounting">
+                      <group>
+                          <group>
+                              <field name="property_account_position" widget="selection"/>
+                          </group>
+                          <group>
+                              <field name="last_reconciliation_date"/>
+                          </group>
+                          <group>
+                              <field name="property_account_receivable"/>
+                              <field name="property_payment_term" widget="selection"/>
+                              <field name="customer_payment_mode" widget="selection"/>
+                              <field name="credit"/>
+                              <field name="credit_limit"/>
+                          </group>
+                          <group>
+                              <field name="property_account_payable"/>
+                              <field name="property_supplier_payment_term" widget="selection"/>
+                              <field name="supplier_payment_mode" widget="selection"/>
+                              <field name="debit"/>
+                          </group>
+                      </group>
+                      <field name="bank_ids" context="{'default_partner_id': active_id, 'form_view_ref': 'base.view_partner_bank_form'}">
+                          <tree string="Bank Details">
+                              <field name="state" invisible="1"/>
+                              <field name="sequence" invisible="1"/>
+                              <field name="acc_number"/>
+                              <field name="bank_name"/>
+                              <field name="owner_name"/>
+                          </tree>
+                      </field>
+                  </page>
+
+                
+
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_op_student_search" model="ir.ui.view">
+      <field name="name">op.student.search</field>
+      <field name="model">res.partner</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <search string="Alumno">
+          <field name="name" />
+          <field name="study_center" />
+          <field name="a_inscribir" />
+          <filter string="Alumno" name="alumno" domain="[('alumni_boolean', '=', True)]"/>
+          <newline />
+          <group expand="0" string="Group By...">
+            <filter string="Nacionalidad" domain="[]"
+              context="{'group_by':'nationality'}" />
+            <filter string="Colegio" domain="[]" context="{'group_by':'study_center'}" />
+            <filter string="Clientes de" domain="[]" context="{'group_by':'de_cliente'}" />
+            <filter string="A inscribirse en" domain="[]" context="{'group_by':'a_inscribir'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_student_view">
+      <field name="name">Alumno</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">res.partner</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="search_view_id" ref="view_op_student_search" />
+      <field name="domain">[]</field>
+      <field name="context">{'search_default_alumno':1}</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_student_view_form">
+      <field name="act_window_id" ref="act_open_op_student_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_student_form" />
+      <field name="context">{'default_alumni_boolean':True}</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_student_view_tree">
+      <field name="act_window_id" ref="act_open_op_student_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_student_tree" />
+    </record>
+
+
+<!--forms para gestion de centro pertenece a-->
+
+    <record id="view_op_pertenece_tree" model="ir.ui.view">
+      <field name="name">op.pertenece.tree</field>
+      <field name="model">syg.colegio.belongs</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Gestores de centros">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_pertenece_form" model="ir.ui.view">
+      <field name="name">op.pertenece.form</field>
+      <field name="model">syg.colegio.belongs</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Gestor de centros">
+          <label for="name" string="Gestor de centros:" />
+          <field name="name" />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_pertenece_view">
+      <field name="name">Gestores de centros</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.colegio.belongs</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_pertenece_view_form">
+      <field name="act_window_id" ref="act_open_op_pertenece_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_pertenece_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_pertenece_view_tree">
+      <field name="act_window_id" ref="act_open_op_pertenece_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_pertenece_tree" />
+    </record>
+
+
+<!--forms para gestion de tipos de colegio-->
+
+    <record id="view_op_tipo_colegio_tree" model="ir.ui.view">
+      <field name="name">op.tipo.colegio.tree</field>
+      <field name="model">syg.tipo.colegio</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Colegio">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_tipo_colegio_form" model="ir.ui.view">
+      <field name="name">op.tipo.colegio.form</field>
+      <field name="model">syg.tipo.colegio</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Tipo de Colegio">
+          <group>
+            <field name="name" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_tipo_colegio_view">
+      <field name="name">Tipos de Colegio</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.tipo.colegio</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_tipo_colegio_view_form">
+      <field name="act_window_id" ref="act_open_op_tipo_colegio_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_tipo_colegio_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_tipo_colegio_view_tree">
+      <field name="act_window_id" ref="act_open_op_tipo_colegio_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_tipo_colegio_tree" />
+    </record>
+
+
+<!--forms para gestion de puestos de trabajo-->
+
+  <record id="view_op_puesto_tree" model="ir.ui.view">
+      <field name="name">op.puesto.tree</field>
+      <field name="model">syg.puesto</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Puestos de Trabajo">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_puesto_form" model="ir.ui.view">
+      <field name="name">op.puesto.form</field>
+      <field name="model">syg.puesto</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Puesto de Trabajo">
+          <label for="name" string="Puesto de Trabajo:" />
+          <field name="name" />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_puesto_view">
+      <field name="name">Puestos de Trabajo</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.puesto</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_puesto_view_form">
+      <field name="act_window_id" ref="act_open_op_puesto_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_puesto_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_puesto_view_tree">
+      <field name="act_window_id" ref="act_open_op_puesto_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_puesto_tree" />
+    </record>
+
+
+<!--forms para gestion de certificados-->
+
+  <record id="view_op_cert_tree" model="ir.ui.view">
+      <field name="name">op.certf.tree</field>
+      <field name="model">syg.tipo.cert</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Certificados de Personal">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_cert_form" model="ir.ui.view">
+      <field name="name">op.cert.form</field>
+      <field name="model">syg.tipo.cert</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Certificado">
+          <group>
+            <field name="name" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_cert_view">
+      <field name="name">Certificados de Personal</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.tipo.cert</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_cert_view_form">
+      <field name="act_window_id" ref="act_open_op_cert_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_cert_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_cert_view_tree">
+      <field name="act_window_id" ref="act_open_op_cert_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_cert_tree" />
+    </record>
+
+
+<!--forms para gestion de niveles de acceso-->
+
+  <record id="view_op_acceso_tree" model="ir.ui.view">
+      <field name="name">op.acceso.tree</field>
+      <field name="model">syg.nivelacceso</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Niveles de acceso">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_acceso_form" model="ir.ui.view">
+      <field name="name">op.acceso.form</field>
+      <field name="model">syg.nivelacceso</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Niveles de acceso">
+          <label for="name" string="Nivel de acceso:" />
+          <field name="name" />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_acceso_view">
+      <field name="name">Niveles de acceso</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.nivelacceso</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_acceso_view_form">
+      <field name="act_window_id" ref="act_open_op_acceso_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_acceso_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_acceso_view_tree">
+      <field name="act_window_id" ref="act_open_op_acceso_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_acceso_tree" />
+    </record>
+
+
+<!--forms para gestion de idiomas-->
+
+  <record id="view_op_idiomas_tree" model="ir.ui.view">
+      <field name="name">op.idiomas.tree</field>
+      <field name="model">syg.idioma</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Idiomas">
+          <field name="name" />
+          <field name="nivel_idioma" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_idiomas_form" model="ir.ui.view">
+      <field name="name">op.idiomas.form</field>
+      <field name="model">syg.idioma</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Idiomas">
+          <label for="name" string="Idioma" />
+          <field name="name" />
+          <field name="nivel_idioma" />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_idiomas_view">
+      <field name="name">Idiomas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.idioma</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_idiomas_view_form">
+      <field name="act_window_id" ref="act_open_op_idiomas_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_idiomas_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_idiomas_view_tree">
+      <field name="act_window_id" ref="act_open_op_idiomas_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_idiomas_tree" />
+    </record>
+
+
+<!--forms para gestion de estadistica-->
+
+  <record id="view_op_estadistica_tree" model="ir.ui.view">
+      <field name="name">op.estadistica.tree</field>
+      <field name="model">syg.estadistica</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Cómo nos conocen">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_estadistica_form" model="ir.ui.view">
+      <field name="name">op.estadistica.form</field>
+      <field name="model">syg.estadistica</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Cómo nos conocen">
+          <group>
+            <field name="name" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_estadistica_view">
+      <field name="name">Estadisticas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">syg.estadistica</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_estadistica_view_form">
+      <field name="act_window_id" ref="act_open_op_estadistica_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_estadistica_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_estadistica_view_tree">
+      <field name="act_window_id" ref="act_open_op_estadistica_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_estadistica_tree" />
+    </record>
+
+
+<!--form view de partner para gestionar comisionistas y filtrar-->
+    <record id="view_res_comisiona_form" model="ir.ui.view">
+        <field name="name">res.comisiona.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']/group/group/field[@name='supplier']" position="after">
+                    <field name="comisiona"/>
+                </xpath>
+            </field>
+    </record>
+
+    <record id="view_res_comisiona_filter" model="ir.ui.view">
+        <field name="name">res.comisiona.filter</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <filter string="Comisionistas" name="type_comisiona" domain="[('comisiona','=',1)]"/>
+                </xpath>
+            </field>
+    </record>
+
+
+
+<!--form view de company para registrar el texto en contratos y el representante legal-->
+
+    <record id="view_company_syg_form" model="ir.ui.view">
+        <field name="name">company.syg.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='account_grp']" position="after">
+                    <group name="pain" string="Datos para contrato">
+                        <field name="representante"/>
+                        <field name="texto_contratos"/>
+                    </group>
+                </xpath>
+            </field>
+    </record>
+
+
+
+
+
+<!-- menus-->
+
+    <menuitem id="menu_op_school_root" name="SyG Educacion"
+      parent="" sequence="75"/>
+
+    <menuitem id="menu_op_school_main" name="Fichas" parent="menu_op_school_root"
+      sequence="20" />
+
+    <menuitem id="menu_op_config_main" name="Configuracion" parent="menu_op_school_root"
+      sequence="40" />
+
+    <menuitem id="menu_op_student_sub" name="Alumnos" parent="menu_op_school_main"
+      sequence="20" action="act_open_op_student_view"/>
+
+    <menuitem id="menu_op_pertenece_sub" name="Gestores de colegios" parent="menu_op_config_main"
+      sequence="20" action="act_open_op_pertenece_view"/>
+
+    <menuitem id="menu_op_tipo_colegio_sub" name="Tipos de colegio" parent="menu_op_config_main"
+      sequence="30" action="act_open_op_tipo_colegio_view"/>
+
+
+    <menuitem id="menu_op_puesto_sub" name="Puestos de Trabajo" parent="menu_op_config_main"
+      sequence="40" action="act_open_op_puesto_view"/>
+
+    <menuitem id="menu_op_acceso_sub" name="Niveles de acceso" parent="menu_op_config_main"
+      sequence="50" action="act_open_op_acceso_view"/>
+
+    <menuitem id="menu_op_cert_sub" name="Certificados" parent="menu_op_config_main"
+      sequence="55" action="act_open_op_cert_view"/>
+
+    <menuitem id="menu_op_idiomas_sub" name="Idiomas" parent="menu_op_config_main"
+      sequence="60" action="act_open_op_idiomas_view"/>
+
+    <menuitem id="menu_op_estadistica_sub" name="Cómo nos conocen" parent="menu_op_config_main"
+      sequence="70" action="act_open_op_estadistica_view"/>
+
+
+    </data>
+</openerp>

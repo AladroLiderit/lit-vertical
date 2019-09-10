@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!--lo mismo para el payment mode-->
+        <record model="ir.ui.view" id="tercap_payment_mode_form_view">
+            <field name="name">payment_mode_tercap_form</field>
+            <field name="model">payment.mode</field>
+            <field name="inherit_id" ref="account_payment.view_payment_mode_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='journal']" position="after">
+                    <field name="tercap_sat_cod_modo_pago" />
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="tercap_account_tax_form_view">
+            <field name="name">account.tax.tercap.form</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_form" />
+            <field name="arch" type="xml">
+              <notebook position="inside">
+              <page string="TERCAP SAT">
+                <group>
+                   <field name="tercap_sat_codiva" />
+                   <field name="tercap_retax" />
+                 </group>
+                </page>
+              </notebook>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tercap_account_tax_tree_view">
+            <field name="name">account.tax.tercap.tree</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_tax_tree" />
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='description']" position="after">
+                     <field name="tercap_sat_codiva" />
+              </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="tercap_account_tax_search">
+            <field name="name">account.tax.tercap.search</field>
+            <field name="model">account.tax</field>
+            <field name="inherit_id" ref="account.view_account_tax_search"/>
+            <field name="arch" type="xml">
+                <group string="Group By" position="inside">
+                    <filter string="tratamiento en Tercap" context="{'group_by':'tercap_sat_codiva'}"/>       
+                </group>
+            </field>
+        </record>
+
+
+        <!-- modificamos la vista de tipo de fiscalidad para poder registrar la relacion con Tercap-->
+        <record model="ir.ui.view" id="tercap_account_fiscal_position_form_view">
+            <field name="name">account_fiscal_position_tercap_form</field>
+            <field name="model">account.fiscal.position</field>
+            <field name="inherit_id" ref="account.view_account_position_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='active']" position="before">
+                    <field name="tercap_sat_tipo_iva" />
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

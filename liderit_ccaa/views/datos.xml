@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate='0'>
+    
+        <record model="res.partner.ccaa" id="ccaa1">
+            <field name="name">Galicia</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa2">
+            <field name="name">Asturias</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa3">
+            <field name="name">Cantabria</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa4">
+            <field name="name">País Vasco</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa5">
+            <field name="name">Navarra</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa6">
+            <field name="name">La Rioja</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa7">
+            <field name="name">Aragón</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa8">
+            <field name="name">Cataluña</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa9">
+            <field name="name">Castilla-León</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa10">
+            <field name="name">Valencia</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa11">
+            <field name="name">Islas Baleares</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa12">
+            <field name="name">Madrid</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa13">
+            <field name="name">Extremadura</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa14">
+            <field name="name">Castilla-La Mancha</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa15">
+            <field name="name">Murcia</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa16">
+            <field name="name">Andalucía</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa17">
+            <field name="name">Islas Canarias</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa18">
+            <field name="name">Ceuta</field>
+            <field name="country_id">69</field>
+        </record>
+        <record model="res.partner.ccaa" id="ccaa19">
+            <field name="name">Melilla</field>
+            <field name="country_id">69</field>
+        </record>
+  </data>
+</openerp>

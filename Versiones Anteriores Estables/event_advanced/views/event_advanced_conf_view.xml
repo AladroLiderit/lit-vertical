@@ -1,0 +1,746 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+<!--forms para gestion de programas de actividades.-->
+
+  <record id="view_op_programa_tree" model="ir.ui.view">
+      <field name="name">op.programa.tree</field>
+      <field name="model">event_advanced.programa_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Programas de actividades">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_programa_form" model="ir.ui.view">
+      <field name="name">op.programa.form</field>
+      <field name="model">event_advanced.programa_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Programa de actividades">
+          <label for="name" string="Programa de actividades:" />
+          <field name="name" />
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_programa_view">
+      <field name="name">Programas de actividades</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.programa_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_programa_view_form">
+      <field name="act_window_id" ref="act_open_op_programa_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_programa_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_programa_view_tree">
+      <field name="act_window_id" ref="act_open_op_programa_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_programa_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_programa_sub" name="Programas de actividades" parent="event.event_configuration"
+      sequence="10" action="act_open_op_programa_view"/>
+
+
+
+<!-- forms para  configurar actividades-->
+    <record id="view_op_actividad_tree" model="ir.ui.view">
+      <field name="name">op.actividad.tree</field>
+      <field name="model">event_advanced.actividad_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Actividad">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_actividad_form" model="ir.ui.view">
+      <field name="name">op.actividad.form</field>
+      <field name="model">event_advanced.actividad_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Tipo de Actividad">
+        	<group>
+          		<field name="name" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_actividad_view">
+      <field name="name">Tipos de Actividad</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.actividad_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_actividad_view_form">
+      <field name="act_window_id" ref="act_open_op_actividad_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_actividad_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_actividad_view_tree">
+      <field name="act_window_id" ref="act_open_op_actividad_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_actividad_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_actividad_sub" name="Gestión de Actividades" parent="event.event_configuration"
+      sequence="20" action="act_open_op_actividad_view"/>
+
+
+<!-- forms para  configurar duración de los cursos-->
+    <record id="view_op_duracion_tree" model="ir.ui.view">
+      <field name="name">op.duracion.tree</field>
+      <field name="model">event_advanced.duracion_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Duración para los programas">
+          <field name="name" />
+          <field name="dias_duracion" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_duracion_form" model="ir.ui.view">
+      <field name="name">op.duracion.form</field>
+      <field name="model">event_advanced.duracion_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Duracion para los programas">
+          <group>
+            <field name="name" />
+            <field name="dias_duracion" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_duracion_view">
+      <field name="name">Duracion para los programas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.duracion_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_duracion_view_form">
+      <field name="act_window_id" ref="act_open_op_duracion_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_duracion_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_duracion_view_tree">
+      <field name="act_window_id" ref="act_open_op_duracion_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_duracion_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_duracion_sub" name="Duracion para los programas" parent="event.event_configuration"
+      sequence="30" action="act_open_op_duracion_view"/>
+
+
+<!-- forms para  configurar los subtipos de cursos-->
+    <record id="view_op_subtipo_tree" model="ir.ui.view">
+      <field name="name">op.subtipo.tree</field>
+      <field name="model">event_advanced.subtipo_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Subtipos de Cursos">
+        	<field name="tipo" />
+          	<field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_subtipo_form" model="ir.ui.view">
+      <field name="name">op.subtipo.form</field>
+      <field name="model">event_advanced.subtipo_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Subtipo de Curso">
+        	<group>
+        		<field name="tipo" />
+          		<field name="name" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_subtipo_view">
+      <field name="name">Subtipos de Cursos</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.subtipo_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_subtipo_view_form">
+      <field name="act_window_id" ref="act_open_op_subtipo_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_subtipo_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_subtipo_view_tree">
+      <field name="act_window_id" ref="act_open_op_subtipo_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_subtipo_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_subtipo_sub" name="Subtipos de Cursos" parent="event.event_configuration"
+      sequence="40" action="act_open_op_subtipo_view"/>
+
+
+<!-- forms para  configurar los centros de actividad-->
+    <record id="view_op_centro_tree" model="ir.ui.view">
+      <field name="name">op.centro.tree</field>
+      <field name="model">event_advanced.centro_actividad_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Centros de Actividades">
+          <field name="name" />
+          <field name="city" />
+          <field name="state_id" />
+          <field name="country_id" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_centro_form" model="ir.ui.view">
+      <field name="name">op.centro.form</field>
+      <field name="model">event_advanced.centro_actividad_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Centro de Actividades">
+        	<group>
+          		<field name="name" />
+          		<field name="city" />
+          		<field name="state_id" />
+          		<field name="country_id" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_centro_view">
+      <field name="name">Centros de Actividades</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.centro_actividad_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_centro_view_form">
+      <field name="act_window_id" ref="act_open_op_centro_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_centro_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_centro_view_tree">
+      <field name="act_window_id" ref="act_open_op_centro_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_centro_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_centro_sub" name="Centros de Actividades" parent="event.event_configuration"
+      sequence="50" action="act_open_op_centro_view"/>
+
+
+<!-- forms para  configurar los modos de facturación-->
+    <record id="view_op_factura_tree" model="ir.ui.view">
+      <field name="name">op.factura.tree</field>
+      <field name="model">event_advanced.facturacion_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Facturación">
+          <field name="name" />
+          <field name="es_global" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_factura_form" model="ir.ui.view">
+      <field name="name">op.factura.form</field>
+      <field name="model">event_advanced.facturacion_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Tipo de Facturación">
+          <group>
+            <field name="name" />
+            <field name="es_global" />
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_factura_view">
+      <field name="name">Tipos de Facturación</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.facturacion_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_factura_view_form">
+      <field name="act_window_id" ref="act_open_op_factura_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_factura_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_factura_view_tree">
+      <field name="act_window_id" ref="act_open_op_factura_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_factura_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_factura_sub" name="Tipos de Facturación" parent="event.event_configuration"
+      sequence="30" action="act_open_op_factura_view"/>
+
+
+<!-- forms para  configurar los tipos de jornada-->
+    <record id="view_op_jornada_tree" model="ir.ui.view">
+      <field name="name">op.jornada.tree</field>
+      <field name="model">event_advanced.jornada_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Jornadas">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_jornada_form" model="ir.ui.view">
+      <field name="name">op.jornada.form</field>
+      <field name="model">event_advanced.jornada_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Tipo de Jornada">
+        	<group>
+          		<field name="name" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_jornada_view">
+      <field name="name">Tipos de Jornadas</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.jornada_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_jornada_view_form">
+      <field name="act_window_id" ref="act_open_op_jornada_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_jornada_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_jornada_view_tree">
+      <field name="act_window_id" ref="act_open_op_jornada_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_jornada_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_jornada_sub" name="Tipos de Jornadas" parent="event.event_configuration"
+      sequence="60" action="act_open_op_jornada_view"/>
+
+
+<!-- forms para  configurar los tipos de transporte-->
+    <record id="view_op_tpte_tree" model="ir.ui.view">
+      <field name="name">op.tpte.tree</field>
+      <field name="model">event_advanced.tipo_transporte_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Transporte">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_tpte_form" model="ir.ui.view">
+      <field name="name">op.tpte.form</field>
+      <field name="model">event_advanced.tipo_transporte_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Tipo de Transporte">
+        	<group>
+          		<field name="name" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_tpte_view">
+      <field name="name">Tipos de Transporte</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.tipo_transporte_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_tpte_view_form">
+      <field name="act_window_id" ref="act_open_op_tpte_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_tpte_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_tpte_view_tree">
+      <field name="act_window_id" ref="act_open_op_tpte_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_tpte_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_tpte_sub" name="Tipos de Transporte" parent="event.event_configuration"
+      sequence="60" action="act_open_op_tpte_view"/>
+
+
+<!-- forms para  configurar las horas por semana-->
+    <record id="view_op_hxs_tree" model="ir.ui.view">
+      <field name="name">op.hxs.tree</field>
+      <field name="model">event_advanced.horas_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Horas / Semana">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_hxs_form" model="ir.ui.view">
+      <field name="name">op.hxs.form</field>
+      <field name="model">event_advanced.horas_event</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Horas / Semana">
+        	<group>
+          		<field name="name" />
+          	</group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_hxs_view">
+      <field name="name">Horas / Semana</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.horas_event</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_hxs_view_form">
+      <field name="act_window_id" ref="act_open_op_hxs_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_tpte_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_hxs_view_tree">
+      <field name="act_window_id" ref="act_open_op_hxs_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_hxs_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_hxs_sub" name="Horas / Semana" parent="event.event_configuration"
+      sequence="70" action="act_open_op_hxs_view"/>
+
+
+<!--Apartado de Registros en Menu Config-->
+	<menuitem name="Inscripciones" id="registration_configuration" parent="base.menu_marketing_config_root" sequence="20"/>
+
+<!-- forms para  configurar alojamientos-->
+    <record id="view_op_alojamiento_tree" model="ir.ui.view">
+      <field name="name">op.alojamiento.tree</field>
+      <field name="model">event_advanced.alojamiento_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Tipos de Alojamiento">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_alojamiento_form" model="ir.ui.view">
+      <field name="name">op.alojamiento.form</field>
+      <field name="model">event_advanced.alojamiento_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Alojamiento">
+          <group>
+              <field name="name" />
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_alojamiento_view">
+      <field name="name">Tipos de Alojamiento</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.alojamiento_registro</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_alojamiento_view_form">
+      <field name="act_window_id" ref="act_open_op_alojamiento_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_alojamiento_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_alojamiento_view_tree">
+      <field name="act_window_id" ref="act_open_op_alojamiento_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_alojamiento_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_alojamiento_sub" name="Gestión de Alojamientos" parent="registration_configuration"
+      sequence="20" action="act_open_op_alojamiento_view"/>
+
+
+<!-- forms para  configurar caracteristicas de alojamientos-->
+    <record id="view_op_caraloj_tree" model="ir.ui.view">
+      <field name="name">op.caraloj.tree</field>
+      <field name="model">event_advanced.caracteristicas_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Características de Alojamiento">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_caraloj_form" model="ir.ui.view">
+      <field name="name">op.caraloj.form</field>
+      <field name="model">event_advanced.caracteristicas_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Característica de Alojamiento">
+          <group>
+              <field name="name" />
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_caraloj_view">
+      <field name="name">Caracteristica de Alojamiento</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.caracteristicas_registro</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_caraloj_view_form">
+      <field name="act_window_id" ref="act_open_op_caraloj_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_caraloj_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_caraloj_view_tree">
+      <field name="act_window_id" ref="act_open_op_caraloj_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_caraloj_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_caraloj_sub" name="Características de Alojamientos" parent="registration_configuration"
+      sequence="30" action="act_open_op_caraloj_view"/>
+
+<!-- forms para  configurar regimenes de alojamientos-->
+    <record id="view_op_regimen_tree" model="ir.ui.view">
+      <field name="name">op.regimen.tree</field>
+      <field name="model">event_advanced.regimen_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Regimenes de Alojamiento">
+          <field name="name" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_regimen_form" model="ir.ui.view">
+      <field name="name">op.regimen.form</field>
+      <field name="model">event_advanced.regimen_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Régimen de Alojamiento">
+          <group>
+              <field name="name" />
+            </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_regimen_view">
+      <field name="name">Regimenes de Alojamiento</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.regimen_registro</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_regimen_view_form">
+      <field name="act_window_id" ref="act_open_op_regimen_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_regimen_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_regimen_view_tree">
+      <field name="act_window_id" ref="act_open_op_regimen_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_regimen_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_regimen_sub" name="Regimenes de Alojamiento" parent="registration_configuration"
+      sequence="40" action="act_open_op_regimen_view"/>
+
+
+<!-- forms para  configurar conceptos contratados-->
+    <record id="view_op_contract_concept_tree" model="ir.ui.view">
+      <field name="name">op.contract.concept.tree</field>
+      <field name="model">event_advanced.conceptos_contratados_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Conceptos Contratables">
+          <field name="name" />
+          <!--field name="importe_concepto" /-->
+          <!--field name="tax_id" /-->
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_contract_concept_form" model="ir.ui.view">
+      <field name="name">op.contract.concept.form</field>
+      <field name="model">event_advanced.conceptos_contratados_registro</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Concepto Contratable">
+          <group col="6">
+            <field name="name" colspan="4"/>
+          </group>
+          <!--group col="4">
+            <field name="importe_concepto" colspan="2" />
+            <field name="tax_id" colspan="2"/>
+          </group-->
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_contract_concept_view">
+      <field name="name">Conceptos Contratables</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event_advanced.conceptos_contratados_registro</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_contract_concept_view_form">
+      <field name="act_window_id" ref="act_open_op_contract_concept_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_contract_concept_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_contract_concept_view_tree">
+      <field name="act_window_id" ref="act_open_op_contract_concept_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_contract_concept_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_contract_concept_sub" name="Conceptos Contratables" parent="registration_configuration"
+      sequence="50" action="act_open_op_contract_concept_view"/>
+
+<!-- forms para  configurar SUPLIDOS-->
+    <record id="view_op_suplidos_tree" model="ir.ui.view">
+      <field name="name">op.suplidos.tree</field>
+      <field name="model">event.suplido</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <tree string="Suplidos">
+          <field name="name" />
+          <field name="importe_concepto"/>
+          <field name="tax_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_op_suplidos_form" model="ir.ui.view">
+      <field name="name">op.suplidos.form</field>
+      <field name="model">event.suplido</field>
+      <field name="priority" eval="8" />
+      <field name="arch" type="xml">
+        <form string="Suplido">
+          <group col="6">
+            <field name="name" colspan="4"/>
+          </group>
+          <group col="4">
+            <field name="importe_concepto" colspan="2"  placeholder="Importe por defecto"/>
+            <field name="tax_id" colspan="2" placeholder="Tipo de IVA por defecto"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="act_open_op_suplidos_view">
+      <field name="name">Suplidos</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">event.suplido</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_suplidos_view_form">
+      <field name="act_window_id" ref="act_open_op_suplidos_view" />
+      <field name="sequence" eval="20" />
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="view_op_suplidos_form" />
+    </record>
+
+    <record model="ir.actions.act_window.view" id="act_open_op_suplidos_view_tree">
+      <field name="act_window_id" ref="act_open_op_suplidos_view" />
+      <field name="sequence" eval="10" />
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="view_op_suplidos_tree" />
+    </record>
+
+    <menuitem id="menu_event_config_suplidos_sub" name="Suplidos" parent="registration_configuration"
+      sequence="60" action="act_open_op_suplidos_view"/>
+
+    </data>
+</openerp>
+

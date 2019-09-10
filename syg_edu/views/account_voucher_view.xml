@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- Only Supplier in view -->
+
+        <record model="ir.ui.view" id="view_vendor_event_receipt_form">
+            <field name="name">account.voucher.event.receipt.form</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form" />
+            <field name="arch" type="xml">
+                <field name="journal_id" position="after">
+                    <field name="event_id" required="1" domain="['|',('state','=','confirm'),('state','=','done')]" string="Actividad"
+                        options="{'no_quick_create':True,'no_create_edit':True}"/>
+                </field>
+                
+            </field>
+        </record>
+
+
+<!-- Personal en facturas de compra-->
+        <record model="ir.ui.view" id="view_supplier_personal_form">
+            <field name="name">account.supplier.personal.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+                <field name="journal_id" position="after">
+                    <field name="personal_id" options="{'no_quick_create':True,'no_create_edit':True}" domain="[('es_profesor','=','True')]"/>
+                </field>
+                
+            </field>
+        </record>
+
+
+
+        <!--filter by employee in field partner_id-->
+        <record model="ir.ui.view" id="event_account_voucher_search_view">
+            <field name="name">event_account_voucher_search_view</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_filter_customer_pay"/>
+            <field name="arch" type="xml">
+                <xpath expr="/search/field[@name='date']" position="after">
+                    <field name="event_id" />
+                </xpath>
+                <xpath expr="/search/group[@string='Group By']" position="inside">
+                    <filter icon="terp-document-new" string="Actividad" domain="['|',('state','=','confirm'),('state','=','done')]"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+ <!--filter by personal in supplier invoice-->
+        <record id="account_invoice_personal_filter" model="ir.ui.view">
+            <field name="name">account.invoice.personal.search</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="personal_id" string="Personal"/>
+                </xpath>
+                <xpath expr="//search/group" position="inside">
+                    <filter string="Personal" context="{'group_by':'personal_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>
